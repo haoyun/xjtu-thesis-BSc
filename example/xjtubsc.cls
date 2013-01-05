@@ -1,12 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lishuthesis}[2012/12/20 lishuthesis Ver 1.0]
+\ProvidesClass{xjtubsc}[2012/12/20 lishuthesis Ver 1.0]
 
 %=========加入ctexart类==============%
 \LoadClass[cs4size,twoside]{ctexart}
-%jkfdgmfg
-%
-%gfhgfh
-%cesh
+
 %=========宏包===================%
 \usepackage{amsfonts,verbatim}
 \usepackage{amssymb}

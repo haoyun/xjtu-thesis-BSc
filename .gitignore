@@ -1,0 +1,12 @@
+*.out
+*.bbl
+*.toc
+*.blg
+*.log
+*.aux
+*.thm
+*.bak
+*.~
+*.backup
+*.synctex*
+*.fuse_hidden*

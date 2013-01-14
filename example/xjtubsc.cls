@@ -2,7 +2,7 @@
 \ProvidesClass{xjtubsc}[2012/12/20 xjtuthesis Ver 1.0]
 
 %=========加入ctexart类==============%
-\LoadClass[cs4size,twoside]{ctexart}
+\LoadClass[cs4size,twoside,adobefonts]{ctexart}
 
 %=========宏包===================%
 \usepackage{amsfonts,verbatim}
@@ -102,10 +102,10 @@
 %================致谢===================%
 \newcommand{\mythanksname}{\zihao{3} 致 \quad 谢}
 \newenvironment{mythanks}{
-      \if@twocolumn \section *{\mythanksname }\else \zihao
+      \if@twocolumn \section *{\mythanksname }  \else \zihao
 {-4} \begin {center}{\songti \mythanksname \vspace {-.5em}\vspace {\z@
 }}\end {center}\quotation \fi
-}{\par}
+}{\par \addcontentsline{toc}{chapter}{致谢}}
 
 
 

@@ -55,16 +55,16 @@
 \newcommand{\chkeywords}[1]{\par{\vspace{1ex} \zihao{5} {\bf关键词：}#1}\relax}
 
 %==========英文摘要=====================%
-\newcommand{\enabstractname }{\zihao{3} ABSTRACT}
+\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman MT Std} ABSTRACT}
 \newenvironment{enabstract}{
       \if@twocolumn \section *{\enabstractname }\else \zihao
-{-4} \begin {center}{\songti \enabstractname \vspace {-.5em}\vspace {\z@
+{-4} \fontspec{Times New Roman MT Std} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center}\quotation \fi
 }{\par}
-\newcommand{\enkeywords}[1]{\par{\vspace{1ex}\zihao{5} {\bf KEY WORDS ：}#1}\relax}
+\newcommand{\enkeywords}[1]{\par{\vspace{1ex}\zihao{5} \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
 %且英文关键词字号设置有问题，不知是否为大小写的差异
 %关键词并没有左对齐，且英文摘要内容用小四号Times New Roman，摘要正文每段开头不空格，每段之间空一行，未实现
-
+%QinYuguo::英文摘要字体使用了\fontspec实现,现在是Times New Roman MT Std.
 
 %===============目录=================%
 
@@ -106,7 +106,7 @@
 {-4} \begin {center}{\songti \mythanksname \vspace {-.5em}\vspace {\z@
 }}\end {center}\quotation \fi
 }{\par \addcontentsline{toc}{chapter}{致谢}}
-
+%QinYuguo::使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 
 
 

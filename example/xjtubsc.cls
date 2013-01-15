@@ -16,6 +16,8 @@
 \usepackage{subfigure}
 \usepackage{float}
 \usepackage{fancyhdr}
+%\usepackage{titlesec}
+\usepackage{titletoc}
 
 
 %==========页面设置===============%
@@ -100,7 +102,10 @@
 \fancyhead[CO]{\songti \zihao{5} 目录}
 \oldtableofcontents
 }
-
+%设置目录格式
+\titlecontents{section}[0pt]{}{\contentslabel{1em}}{}{\titlerule*[1mm]{.}\contentspage}[]
+\titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
+\titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\zihao{-4}\songti}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
 %=============正文================%
 \newcommand{\mainbodyformat}{
 %页眉

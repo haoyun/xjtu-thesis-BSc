@@ -21,13 +21,6 @@
 
 
 
-
-%\def\section{\@startsection{section}{1}{\z@}
- % {-3ex\@plus -1ex \@minus -.2ex}
- % {2ex \@plus.2ex}
- % {\normalfont\Large\bfseries}}
-
-
 %==========页面设置===============%
 
 \RequirePackage[left=2.6cm,right=2.6cm,top=3.0cm,bottom=2.5cm,a4paper]{geometry}
@@ -50,11 +43,12 @@
 
 %======实现三级标题==============%
 
-\CTEXsetup[format={\centering\zihao{3}\songti}]{section}
+%\CTEXsetup[format={\centering\zihao{3}\songti}]{section}
 \CTEXsetup[format={\raggedright\zihao{-3}\songti}]{subsection}
 \CTEXsetup[format={\hskip 0.15cm\zihao{4}}\songti]{subsubsection}
 %未实现手册中的“单倍行距，段前空三行，段后空两行“要求。其次有一个丑陋的做法：在实现”三级标题：左起空两字符“用了”\hskip 0.15cm“
 
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{-3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
 
 
 %============插图、表格及公式设置=============%

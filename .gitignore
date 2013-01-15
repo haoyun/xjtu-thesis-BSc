@@ -10,3 +10,5 @@
 *.backup
 *.synctex*
 *.fuse_hidden*
+#*#
+*.pdf

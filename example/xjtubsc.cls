@@ -24,7 +24,12 @@
 
 %设置页眉
 \fancyhf{}
-\renewcommand{\headrulewidth}{0.177mm}
+\renewcommand{\headrule}{%设置页眉双线
+\hrule height0.5pt width\headwidth
+\vspace{0.5pt}
+\hrule height0.5pt width\headwidth
+}
+
 \renewcommand{\sectionmark}[1]{\markleft{\thesection #1}}
 \pagestyle{fancy}
 \fancyhead[CE]{\songti \zihao{5}西安交通大学本科毕业设计（论文）}

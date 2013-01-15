@@ -20,6 +20,14 @@
 \usepackage{titletoc}
 
 
+
+
+%\def\section{\@startsection{section}{1}{\z@}
+ % {-3ex\@plus -1ex \@minus -.2ex}
+ % {2ex \@plus.2ex}
+ % {\normalfont\Large\bfseries}}
+
+
 %==========页面设置===============%
 
 \RequirePackage[left=2.6cm,right=2.6cm,top=3.0cm,bottom=2.5cm,a4paper]{geometry}
@@ -41,6 +49,7 @@
 
 
 %======实现三级标题==============%
+
 \CTEXsetup[format={\centering\zihao{3}\songti}]{section}
 \CTEXsetup[format={\raggedright\zihao{-3}\songti}]{subsection}
 \CTEXsetup[format={\hskip 0.15cm\zihao{4}}\songti]{subsubsection}
@@ -99,13 +108,14 @@
 %页眉
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
-\fancyhead[CO]{\songti \zihao{5} 目录}
+\fancyhead[CO]{\songti \zihao{5} 目\quad录}
 \oldtableofcontents
 }
 %设置目录格式
 \titlecontents{section}[0pt]{}{\contentslabel{1em}}{}{\titlerule*[1mm]{.}\contentspage}[]
 \titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
 \titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\zihao{-4}\songti}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
+\renewcommand{\contentsname}{\zihao{3}\songti 目\quad录}
 %=============正文================%
 \newcommand{\mainbodyformat}{
 %页眉

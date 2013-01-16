@@ -41,12 +41,15 @@
 \renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
 %设置公式缩进
 \setlength{\mathindent}{2em}
+%设置公式编号样式
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
 %======实现三级标题==============%
 
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
 \renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\zihao{-3}\songti}}
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{1ex}{0.1ex}{\zihao{4}\songti}}
-%已经实现对一、二、三级标题的要求，虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
+%已经实现对一、二、三级标题的要求（包括上下空行），虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
 
 
 %============插图、表格及公式设置=============%

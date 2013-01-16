@@ -35,8 +35,8 @@
 \pagestyle{fancy}
 \fancyhead[CE]{\songti \zihao{5}西安交通大学本科毕业设计（论文）}
 %设置页脚
-\fancyfoot[RO]{\roman{page}}
-\fancyfoot[LE]{\roman{page}}
+\fancyfoot[RO]{\Roman{page}}
+\fancyfoot[LE]{\Roman{page}}
 %设置行距
 \renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
 
@@ -112,8 +112,18 @@
 %页眉
 \fancyhead[CO]{\songti \zihao{5} \leftmark}
 %页脚
+\lfoot{}
+\rfoot{}
+\ifodd\thepage{
+\setcounter{page}{1}
 \fancyfoot[RO]{\arabic{page}}
 \fancyfoot[LE]{\arabic{page}}
+}
+\else{
+\setcounter{page}{1}
+\fancyfoot[RE]{\arabic{page}}
+\fancyfoot[LO]{\arabic{page}}
+}
 %设置字体
 \zihao{-4} \songti
 }

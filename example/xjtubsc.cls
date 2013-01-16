@@ -168,9 +168,7 @@
 
 \newenvironment{mythanks}{
 \fancyhead[CO]{\songti \zihao{5} 致谢}
-      \if@twocolumn \section *{\mythanksname }  \else \zihao
-{-4} \begin {center}{\songti \mythanksname \vspace {-.5em}\vspace {\z@
-}}\end {center}\quotation \fi
+       \section *{\mythanksname } 
 }{\par 
 \addcontentsline{toc}{section}{致谢}
 %使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.

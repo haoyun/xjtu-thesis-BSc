@@ -7,7 +7,7 @@
 %=========宏包===================%
 \usepackage{amsfonts,verbatim}
 \usepackage{amssymb}
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}%公式左对齐，缩进在下面设置
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{ragged2e}
@@ -39,7 +39,8 @@
 \fancyfoot[LE]{\Roman{page}}
 %设置行距
 \renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
-
+%设置公式缩进
+\setlength{\mathindent}{2em}
 %======实现三级标题==============%
 
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
@@ -113,7 +114,7 @@
 \fancyhead[CO]{\songti \zihao{5} \leftmark}
 %页脚
 \ifodd\thepage{}
-\else{\mbox{}\newpage}
+\else{\mbox{}\newpage}%如果正文开始在偶数页则自动补充一页空白
 \setcounter{page}{1}
 \lfoot{}
 \rfoot{}

@@ -16,7 +16,6 @@
 \usepackage{subfigure}
 \usepackage{float}
 \usepackage{fancyhdr}
-%\usepackage{titlesec}
 \usepackage{titletoc}
 
 
@@ -32,26 +31,21 @@
 \vspace{0.5pt}
 \hrule height0.5pt width\headwidth
 }
-
 \renewcommand{\sectionmark}[1]{\markleft{\thesection #1}}
 \pagestyle{fancy}
 \fancyhead[CE]{\songti \zihao{5}西安交通大学本科毕业设计（论文）}
 %设置页脚
 \fancyfoot[RO]{\roman{page}}
 \fancyfoot[LE]{\roman{page}}
-
+%设置行距
+\renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
 
 %======实现三级标题==============%
-
-%\CTEXsetup[format={\centering\zihao{3}\songti}]{section}
-%\CTEXsetup[format={\raggedright\zihao{-3}\songti}]{subsection}
-%\CTEXsetup[format={\hskip 0.15cm\zihao{4}}\songti]{subsubsection}
-%未实现手册中的“单倍行距，段前空三行，段后空两行“要求。其次有一个丑陋的做法：在实现”三级标题：左起空两字符“用了”\hskip 0.15cm“
 
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
 \renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\zihao{-3}\songti}}
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{1ex}{0.1ex}{\zihao{4}\songti}}
-%已经实现对一、二、三级标题的要求，虽然Ugly。。。有图片的章节不太正常。。。
+%已经实现对一、二、三级标题的要求，虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
 
 
 %============插图、表格及公式设置=============%
@@ -120,6 +114,8 @@
 %页脚
 \fancyfoot[RO]{\arabic{page}}
 \fancyfoot[LE]{\arabic{page}}
+%设置字体
+\zihao{-4} \songti
 }
 %附录在自动生成目录时并未出现在目录中，不知如何处理
 %=============附录================%

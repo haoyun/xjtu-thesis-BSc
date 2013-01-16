@@ -112,18 +112,13 @@
 %页眉
 \fancyhead[CO]{\songti \zihao{5} \leftmark}
 %页脚
+\ifodd\thepage{}
+\else{\mbox{}\newpage}
+\setcounter{page}{1}
 \lfoot{}
 \rfoot{}
-\ifodd\thepage{
-\setcounter{page}{1}
 \fancyfoot[RO]{\arabic{page}}
 \fancyfoot[LE]{\arabic{page}}
-}
-\else{
-\setcounter{page}{1}
-\fancyfoot[RE]{\arabic{page}}
-\fancyfoot[LO]{\arabic{page}}
-}
 %设置字体
 \zihao{-4} \songti
 }

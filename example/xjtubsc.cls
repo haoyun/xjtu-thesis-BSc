@@ -1,4 +1,4 @@
-\NeedsTeXFormat{LaTeX2e}
+﻿\NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{xjtubsc}[2012/12/20 xjtuthesis Ver 1.0]
 
 %=========加入ctexart类==============%

@@ -57,7 +57,14 @@
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
 \captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
 \captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}
-%以上并未按章节编号，且还需多次调整
+%插图编号
+\numberwithin{figure}{section}
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} \zihao{5} \songti}
+%表格编号
+\numberwithin{table}{section}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table} \zihao{5} \songti}
+%引用图或表在图题或表题右上角标出文献来源。
+%这个图表与上下文间隔真心0.5行？
 
 %加载booktabs绘制三线表
 \usepackage{booktabs}

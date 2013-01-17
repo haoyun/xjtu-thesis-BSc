@@ -4,7 +4,7 @@
 \centering
 \subfigure[原始图像]{\label{figure:001} \includegraphics[width=0.4\textwidth]{001}}
 \subfigure[噪声图像（$\mu=0,\sigma=20$)]{\label{figure:002} \includegraphics[width=0.4\textwidth]{002}}
-
+\caption{初始图像及噪声图像}
 \end{figure}
 
 \subsection{实验1}
@@ -13,11 +13,13 @@
 \centering
 \subfigure[$\lambda=\frac{1}{20^2}$]{\label{figure:1/20} \includegraphics[width=0.4\textwidth]{003}}
 \subfigure[$\lambda=\frac{5}{20^2}$]{\label{figure:5/20} \includegraphics[width=0.4\textwidth]{004}}
+\caption{第一组实验图}
 \end{figure}
 \begin{figure}[H]
 \centering
 \subfigure[$\lambda=\frac{10}{20^2}$]{\label{figure:10/20} \includegraphics[width=0.4\textwidth]{005}}
 \subfigure[$\lambda=\frac{20}{20^2}$]{\label{figure:20/20} \includegraphics[width=0.4\textwidth]{006}}
+\caption{第二组实验图}
 \end{figure}
 由上结果可以知道因为参数 $\lambda$ 对平衡去噪与平滑起到重要作用，因此参数 $\lambda$ 对于复原效果很重要。$\lambda$太小时，图像过度平滑以致边缘严重模糊；相反，$\lambda$ 太大时，图像去噪效果不好。
 \subsection{实验2}

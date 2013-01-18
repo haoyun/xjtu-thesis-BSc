@@ -37,7 +37,7 @@
 %======= base calss ======%
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
-\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
+\LoadClass[cs4size, fancyhdr, hyperref, twoside,adobefonts]{ctexart}
 
 % Comments by hy_haoyun
 %	option openright may by included.
@@ -101,7 +101,7 @@
 \renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
 
 %====== English Font =====%
-\setmainfont{Times New Roman}
+\setmainfont{Times New Roman MT Std}
 % Comments by hy_hauyun:
 %	Times New Roman MT Std or Times New Roman
 %	I use Windows 7, the fontname is Times New Roman.
@@ -131,7 +131,11 @@
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
 \captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
 \captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}
-%以上并未按章节编号，且还需多次调整
+%图表按章编号
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\renewcommand{\thefigure}{\arabic{section}-\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}-\arabic{table}}
 
 
 %==============封面及任务书===========%
@@ -158,17 +162,17 @@
 \newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \zihao{5} {\bf关键词：}#1}\relax}
 
 %=== English ===%
-\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman} ABSTRACT}
+\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman MT Std} ABSTRACT}
 \newenvironment{enabstract}{
       \if@twocolumn \section *{\enabstractname }\else \zihao
-{-4} \fontspec{Times New Roman} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
+{-4} \fontspec{Times New Roman MT Std} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center} \par\fi
 %页眉
 \fancyhead[CO]{\songti \zihao{5} ABSTRACT}
 }{\par}
-\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\zihao{5} \fontspec{Times New Roman} {\bf KEY WORDS ：}#1}\relax}
+\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\zihao{5} \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
 %且英文关键词字号设置有问题，不知是否为大小写的差异
-%关键词并没有左对齐，且英文摘要内容用小四号Times New Roman，摘要正文每段开头不空格，每段之间空一行，未实现
+%关键词并没有左对齐，且英文摘要内容用小四号Times New Roman MT Std，摘要正文每段开头不空格，每段之间空一行，未实现
 %QinYuguo::英文摘要字体使用了\fontspec实现,现在是Times New Roman MT Std.
 %wanghongxin:英文摘要正文每段开头不空格，未实现
 

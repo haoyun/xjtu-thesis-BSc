@@ -163,7 +163,7 @@
 \newcommand{\chabstractname }{\huge 摘 \quad 要}
 \newenvironment{chabstract}{
 %页眉
-\fancyhead[CO]{ \small 摘要}
+\fancyhead[CO]{ \small 摘 \quad 要}
       \if@twocolumn \section *{\chabstractname }\else \zihao
 {-4} \begin {center}{ \chabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center} \par \fi
@@ -279,7 +279,7 @@
 %====== Acknowledgement ======%
 \newcommand{\mythanksname}{\huge 致 \quad 谢}
 \newenvironment{mythanks}{
-\fancyhead[CO]{ \small 致谢}
+\fancyhead[CO]{ \small 致 \quad 谢}
        \section *{\mythanksname } 
 }{\par 
 \addcontentsline{toc}{section}{致谢}

@@ -135,8 +135,8 @@
 
 % Comments by hy_haoyun:
 %	The followings should be improved.
-
-\usepackage{caption}
+\RequirePackage{float}
+\RequirePackage{caption}
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
 \captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
 \captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}

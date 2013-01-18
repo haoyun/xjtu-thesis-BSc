@@ -55,7 +55,7 @@
 \RequirePackage{amssymb}
 \RequirePackage[fleqn]{amsmath}
 \RequirePackage{titletoc}
-
+\RequirePackage{float}
 %====== English Font =====%
 \setmainfont{Times New Roman MT Std}
 % Comments by hy_hauyun:

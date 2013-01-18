@@ -53,3 +53,5 @@ Todo List
 * The toc shouldn't be colored.
 * The fontsize should be redefined. We should defined the whole set of \normalsize, \small, \huge, etc.
 
+* 完成对脚注设置，并对摘要，表格进行微调。
+* 现在就剩参考文献，主要符号页面还没着手了

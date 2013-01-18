@@ -6,7 +6,7 @@
 *.aux
 *.thm
 *.bak
-*.~
+*.*~
 *.backup
 *.synctex*
 *.fuse_hidden*

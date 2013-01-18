@@ -1,28 +1,78 @@
-﻿\NeedsTeXFormat{LaTeX2e}
+% !Mode:: "TeX:UTF-8"
+%%
+%%
+%%  MCMTHESIS.cls  CopyLeft 2011/8/24 by
+%%  wanghongxin <>
+%%  hugo <>
+%%  hy_haoyun <haoyun_tex@163.com>
+%%
+%%  Department of mathematics, School of science, Xi'an JIaotong University
+%%  No.28, Xianning West Road, Xi'an, Shaanxi, 710049, P.R. China
+%%
+%% This program is ...
+%%
+%% This program is free software: you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License as published by
+%% the Free Software Foundation, either version 3 of the License, or
+%% (at your option) any later version.
+%%
+%% This program is distributed in the hope that it will be useful,
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%% GNU General Public License for more details.
+%%
+%% You should have received a copy of the GNU General Public License
+%% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%%
+%%
+
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{xjtubsc}[2012/12/20 xjtuthesis Ver 1.0]
+\typeout{something here, if necessary}
 
-%=========加入ctexart类==============%
-\LoadClass[cs4size,twoside,adobefonts]{ctexart}
+%======= options =======%
+\ProcessOptions\relax
 
-%=========宏包===================%
-\usepackage{amsfonts,verbatim}
-\usepackage{amssymb}
-\usepackage[fleqn]{amsmath}%公式左对齐，缩进在下面设置
-\usepackage{array}
-\usepackage{graphicx}
-\usepackage{ragged2e}
-\usepackage{tabularx}
-\usepackage{listings}
-\usepackage{subfigure}
-\usepackage{float}
-\usepackage{fancyhdr}
-\usepackage{titletoc}
+%======= base calss ======%
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\ProcessOptions\relax
+\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
 
+% Comments by hy_haoyun
+%	option openright may by included.
+%	Try using \include rather than \input in the document.
 
+%======= packages ======%
 
-%==========页面设置===============%
+% Comments by hy_haoyun
+%	Please only include all the indispensable packages
+%	Do NOT include paakges that is not needed for the template. 
+%	This can save the time to load the documentclass as well as
+%	to avoid the incompatibility and errors when users load packages 
+%	that have been loaded in the cls.
 
-\RequirePackage[left=2.6cm,right=2.6cm,top=3.0cm,bottom=2.5cm,a4paper]{geometry}
+\RequirePackage{amssymb}
+\RequirePackage[fleqn]{amsmath}
+\RequirePackage{titletoc}
+
+%====== page layout ======%
+\RequirePackage[hmargin = 2.6 true cm, %
+	top = 3.0 true cm, %
+	bottom = 2.5 true cm, %
+	a4paper,]%
+{geometry}
+
+% comments by hy_haoyun:
+%	it's required that
+%		纸型为A4（21.0 cm×29.7cm）标准，双面打印。
+%		页边距：上、下、左、右、装订线的页边距分别为：3.0cm, 2.5cm, 2.6cm, 2.6cm, 0cm，
+%		装订线位置：左。
+%		左右对称页边距。
+% 	I think we may take care about the definition of margin in TeX and the Word. 
+
+% Comments by hy_haoyun:
+%	I didn't modify the following settings for header, pagenumber and linespread.
 
 %设置页眉
 \fancyhf{}
@@ -39,12 +89,32 @@
 \fancyfoot[LE]{\Roman{page}}
 %设置行距
 \renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
-%设置公式缩进
-\setlength{\mathindent}{2em}
-%设置公式编号样式
+
+%====== displaymath ======%
+
+% Comments by hy_haoyun:
+%	\ccwd is defined in ctex package. It's the length of one Chinese
+%	character with the separation between two characters considered.
+
+\setlength{\mathindent}{2\ccwd}
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
-%======实现三级标题==============%
+
+%====== English Font =====%
+\setmainfont{Times New Roman}
+% Comments by hy_hauyun:
+%	Times New Roman MT Std or Times New Roman
+%	I use Windows 7, the fontname is Times New Roman.
+%	It's dilivered with Win7 and provied by Monotype.
+%	Is Times New Roman MT Std Adobe's font?
+
+
+%====== titles ======%
+
+% Comments by hy_haoyun:
+%	The titles can be formated using the \CTEXsetup defined in ctex package.
+%	I will make it when I am free.
+%	The followings are contributed by Hugo.
 
 \renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
 \renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\zihao{-3}\songti}}
@@ -52,61 +122,58 @@
 %已经实现对一、二、三级标题的要求（包括上下空行），虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
 
 
-%============插图、表格及公式设置=============%
+%====== captions ======%
+
+% Comments by hy_haoyun:
+%	The followings should be improved.
+
 \usepackage{caption}
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
 \captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
 \captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}
-%插图编号
-\numberwithin{figure}{section}
-\renewcommand{\thefigure}{\arabic{section}-\arabic{figure} \zihao{5} \songti}
-%表格编号
-\numberwithin{table}{section}
-\renewcommand{\thetable}{\arabic{section}-\arabic{table} \zihao{5} \songti}
-%引用图或表在图题或表题右上角标出文献来源。
-%这个图表与上下文间隔真心0.5行？
-
-%加载booktabs绘制三线表
-\usepackage{booktabs}
+%以上并未按章节编号，且还需多次调整
 
 
 %==============封面及任务书===========%
 
 %这个嘛，到时再处理
 
+%====== Abstract ======%
 
-%==============中文摘要====================%
+% Comments by hy_haoyun:
+%	The followings should be improved.
+% 	\fontspec should be avoided!
+%	\zihao should be avoided!
+%	\sontti should be avoided!
+
+%=== Chinese ===%
 \newcommand{\chabstractname }{\zihao{3} 摘 \quad 要}
 \newenvironment{chabstract}{
 %页眉
 \fancyhead[CO]{\songti \zihao{5} 摘要}
       \if@twocolumn \section *{\chabstractname }\else \zihao
 {-4} \begin {center}{\songti \chabstractname \vspace {-.5em}\vspace {\z@
-}}\end {center}\quotation \fi
-
-
-
+}}\end {center} \par \fi
 }{\par}
-\newcommand{\chkeywords}[1]{\par{\vspace{1ex} \zihao{5} {\bf关键词：}#1}\relax}
+\newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \zihao{5} {\bf关键词：}#1}\relax}
 
-%==========英文摘要=====================%
-
-\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman MT Std} ABSTRACT}
+%=== English ===%
+\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman} ABSTRACT}
 \newenvironment{enabstract}{
       \if@twocolumn \section *{\enabstractname }\else \zihao
-{-4} \fontspec{Times New Roman MT Std} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
-}}\end {center}\quotation \fi
+{-4} \fontspec{Times New Roman} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
+}}\end {center} \par\fi
 %页眉
 \fancyhead[CO]{\songti \zihao{5} ABSTRACT}
 }{\par}
-\newcommand{\enkeywords}[1]{\par{\vspace{1ex}\zihao{5} \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
+\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\zihao{5} \fontspec{Times New Roman} {\bf KEY WORDS ：}#1}\relax}
 %且英文关键词字号设置有问题，不知是否为大小写的差异
 %关键词并没有左对齐，且英文摘要内容用小四号Times New Roman，摘要正文每段开头不空格，每段之间空一行，未实现
 %QinYuguo::英文摘要字体使用了\fontspec实现,现在是Times New Roman MT Std.
+%wanghongxin:英文摘要正文每段开头不空格，未实现
 
+%====== TOC ======%
 
-
-%===============目录=================%
 %页眉
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
@@ -118,7 +185,9 @@
 \titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
 \titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\zihao{-4}\songti}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
 \renewcommand{\contentsname}{\zihao{3}\songti 目\quad录}
-%=============正文================%
+
+%====== mainmatter ======%
+
 \newcommand{\mainbodyformat}{
 %页眉
 \fancyhead[CO]{\songti \zihao{5} \leftmark}
@@ -133,8 +202,11 @@
 %设置字体
 \zihao{-4} \songti
 }
+
+
+
+%====== Appendix ======%
 %附录在自动生成目录时并未出现在目录中，不知如何处理
-%=============附录================%
 \newcounter{appends} %附录计数器
 \newcounter{appendshead}%附录页眉计数器
 \setcounter{appends}{1} %初始化为1
@@ -172,16 +244,17 @@
 
 %============参考文献与标注==============%
 
+% Comments by hy_haoyun:
+%	To design a bst is a lot of pain. There seems to be no need to modify this.
 
 
 %清华模板中有已设置好的格式，但不知如何使用thubib.bst。如若自己设置应如何做？
 
+%=================脚注==================sh
+\renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize \arabic{footnote}}}}} 
 
-
-
-%================致谢===================%
+%====== Acknowledgement ======%
 \newcommand{\mythanksname}{\zihao{3} 致 \quad 谢}
-
 \newenvironment{mythanks}{
 \fancyhead[CO]{\songti \zihao{5} 致谢}
        \section *{\mythanksname } 
@@ -189,12 +262,3 @@
 \addcontentsline{toc}{section}{致谢}
 %使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }
-
-
-
-
-
-
-
-
-

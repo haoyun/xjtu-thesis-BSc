@@ -56,6 +56,23 @@
 \RequirePackage[fleqn]{amsmath}
 \RequirePackage{titletoc}
 
+%====== English Font =====%
+\setmainfont{Times New Roman MT Std}
+% Comments by hy_hauyun:
+%	Times New Roman MT Std or Times New Roman
+%	I use Windows 7, the fontname is Times New Roman.
+%	It's dilivered with Win7 and provied by Monotype.
+%	Is Times New Roman MT Std Adobe's font?
+%====== 中文字体 ======%
+\setCJKmainfont{方正精宋简体}
+
+%====== 字体属性 ======%
+\renewcommand{\normalsize}{\zihao{-4}}
+\renewcommand{\large}{\zihao{4}}
+\renewcommand{\Large}{\zihao{-3}}
+\renewcommand{\huge}{\zihao{3}}
+\renewcommand{\small}{\zihao{5}}
+
 %====== page layout ======%
 \RequirePackage[hmargin = 2.6 true cm, %
 	top = 3.0 true cm, %
@@ -83,7 +100,7 @@
 }
 \renewcommand{\sectionmark}[1]{\markleft{\thesection #1}}
 \pagestyle{fancy}
-\fancyhead[CE]{\songti \zihao{5}西安交通大学本科毕业设计（论文）}
+\fancyhead[CE]{ \small西安交通大学本科毕业设计（论文）}
 %设置页脚
 \fancyfoot[RO]{\Roman{page}}
 \fancyfoot[LE]{\Roman{page}}
@@ -100,14 +117,6 @@
 \numberwithin{equation}{section}
 \renewcommand{\theequation}{\arabic{section}-\arabic{equation}}
 
-%====== English Font =====%
-\setmainfont{Times New Roman MT Std}
-% Comments by hy_hauyun:
-%	Times New Roman MT Std or Times New Roman
-%	I use Windows 7, the fontname is Times New Roman.
-%	It's dilivered with Win7 and provied by Monotype.
-%	Is Times New Roman MT Std Adobe's font?
-
 
 %====== titles ======%
 
@@ -116,9 +125,9 @@
 %	I will make it when I am free.
 %	The followings are contributed by Hugo.
 
-\renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\zihao{3}\songti\centering}}
-\renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\zihao{-3}\songti}}
-\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{1ex}{0.1ex}{\zihao{4}\songti}}
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\huge\centering}}
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\Large}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{1ex}{0.1ex}{\large}}
 %已经实现对一、二、三级标题的要求（包括上下空行），虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
 
 
@@ -151,35 +160,36 @@
 %	\sontti should be avoided!
 
 %=== Chinese ===%
-\newcommand{\chabstractname }{\zihao{3} 摘 \quad 要}
+\newcommand{\chabstractname }{\huge 摘 \quad 要}
 \newenvironment{chabstract}{
 %页眉
-\fancyhead[CO]{\songti \zihao{5} 摘要}
+\fancyhead[CO]{ \small 摘要}
       \if@twocolumn \section *{\chabstractname }\else \zihao
-{-4} \begin {center}{\songti \chabstractname \vspace {-.5em}\vspace {\z@
+{-4} \begin {center}{ \chabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center} \par \fi
 }{\par}
-\newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \zihao{5} {\bf关键词：}#1}\relax}
+\newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \small {\bf关键词：}#1}\relax}
 
 %=== English ===%
-\newcommand{\enabstractname }{\zihao{3} \fontspec{Times New Roman MT Std} ABSTRACT}
+\newcommand{\enabstractname }{\huge \fontspec{Times New Roman MT Std} ABSTRACT}
 \newenvironment{enabstract}{
 %设置段行距
 \setlength\parskip{1ex}
 %设置段首缩进
 \setlength\parindent{0em}
+%摘要内容
       \if@twocolumn \section *{\enabstractname }\else \zihao
 {-4} \fontspec{Times New Roman MT Std} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center} \par\fi
 %页眉
-\fancyhead[CO]{\songti \zihao{5} ABSTRACT}
+\fancyhead[CO]{ \small ABSTRACT}
 }{
 %恢复行距
 \setlength\parskip{0ex}
 %恢复段首缩进
 \setlength\parindent{2\ccwd}
 \par}
-\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\zihao{5} \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
+\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\small \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
 %且英文关键词字号设置有问题，不知是否为大小写的差异
 %关键词并没有左对齐，且英文摘要内容用小四号Times New Roman MT Std，摘要正文每段开头不空格，每段之间空一行，未实现
 %QinYuguo::英文摘要字体使用了\fontspec实现,现在是Times New Roman MT Std.
@@ -190,20 +200,20 @@
 %页眉
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
-\fancyhead[CO]{\songti \zihao{5} 目\quad录}
+\fancyhead[CO]{ \small 目\quad录}
 \oldtableofcontents
 }
 %设置目录格式
 \titlecontents{section}[0pt]{}{\contentslabel{1em}}{}{\titlerule*[1mm]{.}\contentspage}[]
-\titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
-\titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\zihao{-4}\songti}{}{\titlerule*[1mm]{.}\contentspage\zihao{-4}\songti}[]
-\renewcommand{\contentsname}{\zihao{3}\songti 目\quad录}
+\titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\normalsize}[]
+\titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\normalsize}{}{\titlerule*[1mm]{.}\contentspage\normalsize}[]
+\renewcommand{\contentsname}{\huge 目\quad录}
 
 %====== mainmatter ======%
 
 \newcommand{\mainbodyformat}{
 %页眉
-\fancyhead[CO]{\songti \zihao{5} \leftmark}
+\fancyhead[CO]{ \small \leftmark}
 %页脚
 \ifodd\thepage{}
 \else{\mbox{}\newpage}%如果正文开始在偶数页则自动补充一页空白
@@ -213,7 +223,7 @@
 \fancyfoot[RO]{\arabic{page}}
 \fancyfoot[LE]{\arabic{page}}
 %设置字体
-\zihao{-4} \songti
+\normalsize 
 }
 
 
@@ -226,7 +236,7 @@
 \setcounter{appendshead}{0}%初始化为0
 \newcommand{\appendixs}[1]{
 %设置页眉
-\fancyhead[CO]{\songti \zihao{5} 附录\theappendshead \hspace{0.15cm} #1}
+\fancyhead[CO]{ \small 附录\theappendshead \hspace{0.15cm} #1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
 \addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
 %计数器加1
@@ -241,7 +251,7 @@
 \newenvironment{denotation}[1][2.5cm]{
   \section*[]{主要符号表} % no tocline
   \noindent\begin{list}{}%
-    {\vskip-30bp\zihao{-4}
+    {\vskip-30bp\normalsize
      \renewcommand\makelabel[1]{##1\hfil}
      \setlength{\labelwidth}{#1} % 标签盒子宽度
      \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
@@ -267,9 +277,9 @@
 \renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize \arabic{footnote}}}}} 
 
 %====== Acknowledgement ======%
-\newcommand{\mythanksname}{\zihao{3} 致 \quad 谢}
+\newcommand{\mythanksname}{\huge 致 \quad 谢}
 \newenvironment{mythanks}{
-\fancyhead[CO]{\songti \zihao{5} 致谢}
+\fancyhead[CO]{ \small 致谢}
        \section *{\mythanksname } 
 }{\par 
 \addcontentsline{toc}{section}{致谢}

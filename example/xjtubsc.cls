@@ -37,7 +37,7 @@
 %======= base calss ======%
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
-\LoadClass[cs4size, fancyhdr, hyperref, twoside,adobefonts]{ctexart}
+\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
 
 % Comments by hy_haoyun
 %	option openright may by included.
@@ -57,14 +57,14 @@
 \RequirePackage{titletoc}
 
 %====== English Font =====%
-\setmainfont{Times New Roman MT Std}
+\setmainfont{Times New Roman}
 % Comments by hy_hauyun:
 %	Times New Roman MT Std or Times New Roman
 %	I use Windows 7, the fontname is Times New Roman.
 %	It's dilivered with Win7 and provied by Monotype.
 %	Is Times New Roman MT Std Adobe's font?
 %====== 中文字体 ======%
-\setCJKmainfont{方正精宋简体}
+%\setCJKmainfont{方正精宋简体}
 
 %====== 字体属性 ======%
 \renewcommand{\normalsize}{\zihao{-4}}

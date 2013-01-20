@@ -37,7 +37,7 @@
 %======= base calss ======%
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
-\LoadClass[cs4size, fancyhdr, hyperref, twoside,adobefonts]{ctexart}
+\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
 
 % Comments by hy_haoyun
 %	option openright may by included.
@@ -57,14 +57,14 @@
 \RequirePackage{titletoc}
 
 %====== English Font =====%
-\setmainfont{Times New Roman MT Std}
+\setmainfont{Times New Roman}
 % Comments by hy_hauyun:
 %	Times New Roman MT Std or Times New Roman
 %	I use Windows 7, the fontname is Times New Roman.
 %	It's dilivered with Win7 and provied by Monotype.
 %	Is Times New Roman MT Std Adobe's font?
 %====== 中文字体 ======%
-\setCJKmainfont{方正精宋简体}
+%\setCJKmainfont{方正精宋简体}
 
 %====== 字体属性 ======%
 \renewcommand{\normalsize}{\zihao{-4}}
@@ -125,7 +125,7 @@
 %	I will make it when I am free.
 %	The followings are contributed by Hugo.
 
-\renewcommand{\section}{\@startsection{section}{1}{0pt}{3ex}{5ex}{\vspace*{2ex}\huge\centering}}
+\renewcommand{\section}{\@startsection{section}{1}{0pt}{0.1ex}{5ex}{\vspace*{2ex}\huge\centering}}
 \renewcommand{\subsection}{\@startsection{subsection}{1}{0pt}{9.4mm}{4.7mm}{\Large}}
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{1}{0pt}{1ex}{0.1ex}{\large}}
 %已经实现对一、二、三级标题的要求（包括上下空行），虽然Ugly。。。有图片的章节不太正常。。。如果适当调整图片大小可以正常
@@ -163,7 +163,7 @@
 \newcommand{\chabstractname }{\huge 摘 \quad 要}
 \newenvironment{chabstract}{
 %页眉
-\fancyhead[CO]{ \small 摘要}
+\fancyhead[CO]{ \small 摘 \quad 要}
       \if@twocolumn \section *{\chabstractname }\else \zihao
 {-4} \begin {center}{ \chabstractname \vspace {-.5em}\vspace {\z@
 }}\end {center} \par \fi
@@ -247,22 +247,23 @@
 
 
 %=============主要符号================%
-%试图复制清华模板，但失败了。。。
-\newenvironment{denotation}[1][2.5cm]{
-  \section*[]{主要符号表} % no tocline
-  \noindent\begin{list}{}%
-    {\vskip-30bp\normalsize
-     \renewcommand\makelabel[1]{##1\hfil}
-     \setlength{\labelwidth}{#1} % 标签盒子宽度
-     \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
-     \setlength{\itemindent}{0cm} % 标签缩进量
-     \setlength{\leftmargin}{\labelwidth+\labelsep} % 左边界
-     \setlength{\rightmargin}{0cm}
-     \setlength{\parsep}{0cm} % 段落间距
-     \setlength{\itemsep}{0cm} % 标签间距
-    \setlength{\listparindent}{0cm} % 段落缩进量
-    \setlength{\topsep}{0pt} % 标签与上文的间距
-   }}{\end{list}}
+\newenvironment{denotation}{\section*{主要符号表}
+\fancyhead[CO]{\small 主要符号表}
+\addcontentsline{toc}{section}{主要符号表}
+\begin{list}{}{
+\renewcommand{\makelabel}[1]{##1\hfil}
+\vskip-30bp\normalsize
+\setlength{\labelwidth}{2.5cm}
+\setlength{\labelsep}{0.5cm} % 标签与列表文本距离
+\setlength{\itemindent}{\ccwd} % 标签缩进量
+\setlength{\leftmargin}{3cm} % 左边界
+\setlength{\rightmargin}{0cm}
+\setlength{\parsep}{0cm} % 段落间距
+\setlength{\itemsep}{0cm} % 标签间距
+\setlength{\listparindent}{0cm} % 段落缩进量
+\setlength{\topsep}{0pt} % 标签与上文的间距
+}
+}{\end{list}}
 
 
 %============参考文献与标注==============%
@@ -279,9 +280,7 @@
 %====== Acknowledgement ======%
 \newcommand{\mythanksname}{\huge 致 \quad 谢}
 \newenvironment{mythanks}{
-\fancyhead[CO]{ \small 致谢}
+\fancyhead[CO]{ \small 致 \quad 谢}
        \section *{\mythanksname } 
-}{\par 
-\addcontentsline{toc}{section}{致谢}
-%使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
-}
+\addcontentsline{toc}{section}{致谢}%使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
+}{\par}

@@ -251,7 +251,7 @@
 \fancyhead[CO]{\small 主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
-\renewcommand{\makelabel}[1]{\bf ##1\hfil}
+\renewcommand{\makelabel}[1]{##1\hfil}
 \vskip-30bp\normalsize
 \setlength{\labelwidth}{2.5cm}
 \setlength{\labelsep}{0.5cm} % 标签与列表文本距离

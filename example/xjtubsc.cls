@@ -277,7 +277,14 @@
 %	To design a bst is a lot of pain. There seems to be no need to modify this.
 
 
-%清华模板中有已设置好的格式，但不知如何使用thubib.bst。如若自己设置应如何做？
+%QinYuguo::哥重写了个bst~~
+\def\mybibliography#1
+{\fancyhead[CO]{ \small 参考文献}
+\bibliographystyle{newbibsty}
+\renewcommand{\refname}{\huge 参考文献}
+\addcontentsline{toc}{section}{参考文献}
+\bibliography{#1}
+}
 
 
 %=================脚注==================sh

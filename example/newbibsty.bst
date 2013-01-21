@@ -270,17 +270,30 @@ FUNCTION {pubinformation}
   if$
 }
   
-FUNCTION {fin.entry}
+FUNCTION {fin.entry}%标点符号修改地
 { 
   lang missing$
     {#1}
-    {lang "zh" =}
+    {lang "zh" = not}
   if$
     'add.period$
     'addperiod.zh
   if$
   write$
   newline$
+}
+
+FUNCTION {output.edition}
+{
+  edition missing$
+    'skip$
+    {
+      edition "1" =
+	'skip$
+      {edition output}
+      if$
+    }
+  if$
 }
 
 FUNCTION {book}%专著
@@ -303,10 +316,7 @@ FUNCTION {book}%专著
   if$
   new.block
   %版本
-  edition missing$
-    'skip$
-    {edition output}
-  if$
+  output.edition
   %出版信息
   pubinformation output
   %页码

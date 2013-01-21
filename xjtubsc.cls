@@ -38,7 +38,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 \LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
-
+%\def\newblock{\hskip .11em plus .33em minus .07em}
 % Comments by hy_haoyun
 %	option openright may by included.
 %	Try using \include rather than \input in the document.
@@ -55,6 +55,11 @@
 \RequirePackage{amssymb}
 \RequirePackage[fleqn]{amsmath}
 \RequirePackage{titletoc}
+\RequirePackage{url}
+\RequirePackage{cite}
+
+
+
 
 %====== English Font =====%
 \setmainfont{Times New Roman}
@@ -272,7 +277,15 @@
 %	To design a bst is a lot of pain. There seems to be no need to modify this.
 
 
-%清华模板中有已设置好的格式，但不知如何使用thubib.bst。如若自己设置应如何做？
+%QinYuguo::哥重写了个bst~~
+\def\mybibliography#1
+{\fancyhead[CO]{ \small 参考文献}
+\bibliographystyle{newbibsty}
+\renewcommand{\refname}{\huge 参考文献}
+\addcontentsline{toc}{section}{参考文献}
+\bibliography{#1}
+}
+
 
 %=================脚注==================sh
 \renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize \arabic{footnote}}}}} 

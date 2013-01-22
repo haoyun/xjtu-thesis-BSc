@@ -1,0 +1,96 @@
+\section{参考文献用法}
+\begin{lstlisting}[language=tex,escapeinside='']
+%'下面提到的项，带*的是必有的，其他的选填'
+
+%专著
+@book{citeentry, %'引用标识*'
+  author={AAA and BBB}, %'主要责任者，多个人用and连接*'
+  title={ASDFG}, %'文献题名*'
+  type={M}, %'文献标识类型*'
+  otherauthor={DDD and EEE}, %'其他负责人，多个人用and链接'
+  edition={第二版}, %'版本项（第一版不写此项）'
+  pubaddress={ZXCVB}, %'出版地'
+  publisher={QWERT} %'出版者*'
+  pubyear=2000, %'出版年*'
+  pages={100-200}, %'引文页码'
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+%专著中的析出文献
+@inbook{citeentry, %'引用标识*'
+  inauthor={AAA and BBB}, %'析出文献主要责任者，多个人用and连接*'
+  intitle={ASDFG}, %'析出文献题名*'
+  type={M}, %'文献标识类型*'
+  inotherauthor={DDD and EEE}, %'析出文献其他负责人，多个人用and链接'
+  author={FFF},  %'专著主要责任者，多个人用and连接*'
+  title={NMKL}, %'专著题名*'
+  othertitle={UIOP}, %'其他题名信息'
+  edition={第二版}, %'版本项（第一版不写此项）'
+  pubaddress={ZXCVB}, %'出版地'
+  publisher={QWERT} %'出版者*'
+  pubyear=2000, %'出版年*'
+  pages={100-200}, %'析出文献起止页码'
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+%连续出版物
+@countinue{citeentry, %'引用标识*'
+  author={AAA and BBB}, %'主要责任者，多个人用and连接*'
+  title={ASDFG}, %'文献题名*'
+  othertitle={YUIO}, %'其他题名信息'
+  type={M}, %'文献标识类型*'
+  startyear={1234}, %'起始年*'
+  startvolume={90}, %'起始卷'
+  endyear={1245}, %'终止年'
+  endvolume={99}, %'终止卷'
+  pubaddress={NJIUHY}, %'出版地'
+  publisher={QWERT} %'出版者*'
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+%连续出版物中的析出文献
+@countinue{citeentry, %'引用标识*'
+  inauthor={AAA and BBB}, %'析出文献主要责任者，多个人用and连接*'
+  intitle={ASDFG}, %'析出文献题名*'
+  type={M}, %'文献标识类型*'
+  title={KJHGUU}, %'连续出版物题名*'
+  othertitle={YUIO}, %'其他题名信息'
+  startyear={1234}, %'年*'
+  startvolume={90}, %'卷'
+  pages={124}, %'页码'
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+%专利文献
+@patent{citeentry, %'引用标识*'
+  author={AAA and BBB}, %'专利发明者，多个人用and连接*'
+  otherauthor={DDD and EEE}, %'专利申请者或所有者，多个人用and链接'
+  title={ASDFG}, %'专利题名*'
+  nation={China}, %'专利国别*'
+  number={123456}, %'专利号*'
+  type={M}, %'文献标识类型*'
+  date={2013}, %公告日期或公开日期
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+%电子文献
+@emedia{citeentry, %'引用标识*'
+  author={AAA and BBB}, %'主要责任者，多个人用and连接*'
+  title={ASDFG}, %'题名*'
+  othertitle={TGBJ}, %'其他题名信息'
+  type={M}, %'文献标识类型*'
+  mediatype={CD}, %'载体类型标识*'
+  pubaddress={ZXCVB}, %'出版地'
+  publisher={QWERT} %'出版者*'
+  pubyear=2000, %'出版年*'
+  date={1234}, %'更新或修改日期'
+  theurl={QWER} %'获取和访问路径'
+  lang = {zh} %'语言项，中文写{zh}，外文不写此项'
+}
+
+\end{lstlisting}

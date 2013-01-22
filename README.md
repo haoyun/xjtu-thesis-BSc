@@ -22,7 +22,7 @@ For Authors
 ------
 To get started, run:
 
-    git clone https://FireUponSky@bitbucket.org/FireUponSky/xjtu-thesis-bsc.git XXXXX/
+    git clone https://YourUserame@bitbucket.org/FireUponSky/xjtu-thesis-bsc.git XXXXX/
     cd XXXXX/
 
 in the shell, where XXXXX is your working directory with arbitary name.

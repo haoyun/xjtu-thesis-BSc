@@ -1,5 +1,15 @@
 \section{参考文献用法}
-\begin{lstlisting}[language=tex,escapeinside='']
+参考文献用下面的语法写bib文件就可以，就跟填空一样:)\par
+建议在ref目录下建立bib文件，比如说我们在ref目录下建立了testref.bib文件，那么就把\mainfile中的
+\begin{lstlisting}[language=tex,frame=single]
+\mybibliography{}
+\end{lstlisting}
+大括号里填上ref/testref.bib,变成
+\begin{lstlisting}[language=tex,frame=single]
+\mybibliography{ref/testref.bib}
+\end{lstlisting}
+bib文件可以包含下面的内容
+\begin{lstlisting}[language=tex,escapeinside='',frame=single]
 %'下面提到的项，带*的是必有的，其他的选填'
 
 %专著

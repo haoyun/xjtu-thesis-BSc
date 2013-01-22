@@ -57,7 +57,16 @@
 \RequirePackage{titletoc}
 \RequirePackage{url}
 \RequirePackage{cite}
-
+%========color===========%
+\hypersetup{%
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  colorlinks=false,
+  plainpages=false,
+  pdfpagelabels,
+  pdfborder=0 0 0}
 
 
 

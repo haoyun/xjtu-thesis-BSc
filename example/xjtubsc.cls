@@ -282,6 +282,7 @@
 {\fancyhead[CO]{ \small 参考文献}
 \bibliographystyle{newbibsty}
 \renewcommand{\refname}{\huge 参考文献}
+\mbox{}
 \addcontentsline{toc}{section}{参考文献}
 \bibliography{#1}
 }

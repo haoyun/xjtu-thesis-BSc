@@ -23,7 +23,7 @@
 }
 \graphicspath{{figures/}}
 \begin{document}
-
+\frontmatter
 \include{pages/chabstract}
 \include{pages/enabstract}
 \tableofcontents
@@ -31,12 +31,12 @@
 % Comment by hy_haoyun:
 %	1. 目录的页码应该是罗马的。
 
-\newpage
-\mainbodyformat
+\mainmatter
 \include{./pages/first}
 \include{./pages/second}
 \include{pages/third}
 \include{pages/fourth}
+\latermatter
 \mybibliography{ref/testref.bib}
 \include{pages/appendix}
 \include{pages/appendix1}

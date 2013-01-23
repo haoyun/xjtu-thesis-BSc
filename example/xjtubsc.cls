@@ -50,9 +50,10 @@
 \RequirePackage{titletoc}
 \RequirePackage{titleps}
 \RequirePackage{ifxetex}
-
-\RequirePackage{url}
-\RequirePackage{cite}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage{hypernat}
+%\RequirePackage{url}
+%\RequirePackage{cite}
 %=====color=========%
 \hypersetup{%
   bookmarksnumbered=true,
@@ -423,11 +424,10 @@
 %	To design a bst is a lot of pain. There seems to be no need to modify this.
 
 
-%QinYuguo::哥重写了个bst~~
 \def\mybibliography#1
 {%\fancyhead[CO]{ \small 参考文献}
 \sectionmark{\small 参考文献}
-\bibliographystyle{newbibsty}
+\bibliographystyle{GBT7714-2005NLang-UTF8}
 \renewcommand{\refname}{\huge 参考文献}
 \mbox{}
 \addcontentsline{toc}{section}{参考文献}

@@ -1,3 +1,4 @@
+%QinYuguo::参考unsrt制作，目前中文标点为全角中文。
 ENTRY
   { author%主要责任者
     title%文献题名

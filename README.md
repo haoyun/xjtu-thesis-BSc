@@ -57,3 +57,7 @@ Todo List
 * 现在就剩参考文献，主要符号页面还没着手了(QinYuguo::参考文献和主要符号都已经制作)
 
 * 利用titlps宏包对页眉页脚重新设置。将example文件夹内的xjtubsc.cls-haoyun做了修改。
+
+Bugs
+------
+1)SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。

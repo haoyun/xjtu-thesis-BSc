@@ -1,47 +1,93 @@
-\appendixs{Matlab程序}
-以下为Matlab程序
-\begin{lstlisting}[frame=trBL]
-close all;
-clc;
-clear all;
-lam=10/20^2;
-eps=0.00001;
-p=1/2;
-I=imread('001.bmp');
-J=I;
-MASK=J;
-[width,height] = size(MASK);
-U=double(J);
-V=double(J);
-T=double(J);
-n=1;
-IterTimes=100;
-while n<=IterTimes
-for i=2:(width-1)
-for j=2:(height-1)
-gridUe2=(eps^2+(V(i+1,j)-V(i,j))^2+
-         (1.0/4)*(V(i+1,j+1)-V(i+1,j-1))^2)^((2-p)/2);
-gridUw2=(eps^2+(V(i,j)-V(i-1,j))^2+
-         (1.0/4)*(V(i-1,j+1)-V(i-1,j-1))^2)^((2-p)/2);
-gridUn2=(eps^2+(V(i,j)-V(i,j+1))^2+
-         (1.0/4)*(V(i+1,j+1)-V(i-1,j+1))^2)^((2-p)/2);
-gridUs2=(eps^2+(V(i,j)-V(i,j-1))^2+
-         (1.0/4)*(V(i+1,j-1)-V(i-1,j-1))^2)^((2-p)/2);
-we=1/gridUe2;
-ww=1/gridUw2;
-wn=1/gridUn2;
-ws=1/gridUs2;
-sum=we+ww+wn+ws;
-h0=lam/(lam+sum);
-U(i,j)=(ww*V(i-1,j)+we*V(i+1,j)+wn*V(i,j+1)+
-        ws*V(i,j-1))/(lam+sum)+h0*T(i,j);
-V(i,j)=U(i,j);
-end
-end
-n=n+1;
-V=U;
-end
-V=U;
-figure;
-imshow(uint8(V));
+\appendixs{testref.bib文件}
+\label{appen1}
+\begin{lstlisting}[frame=single,escapeinside='']
+@book{IEEE-1363,
+  author={IEEE Std 1363-2000 and BBB and CCC and DDD},
+  title={IEEE Standard Specifications for Public-Key Cryptography},
+  type = {M},
+  edition = "2",
+
+  publisher={IEEE},
+  pubyear=2000
+}
+@book{tex,
+  author={'六国军 and 拉里拉 and 我了歌曲 and 呵呵'},
+  title={'深深深色花'},
+  type = {M},
+  edition = "1", 
+  pubaddress={'北京'},
+  publisher={'北京那个什么'},
+  pubyear=2000,
+  pages={100-200},
+  lang="zh"
+}
+@book{clzs,
+  author={'刘国钧 and 郑如斯'},
+  otherauthor={'陈生铮译'},
+  title={'中国书的故事'},
+  type = {M},
+  pubaddress={'北京'},
+  publisher={'北京青年出版社'},
+  pubyear=1979,
+  pages={110-115},
+  lang="zh"
+}
+@book{zjsw,
+  author={asdf and sdfasdf},
+  title={'中国书的故事'},
+  type = {M},
+  pubaddress={'北京'},
+  publisher={'北京青年出版社'},
+  pubyear=1979,
+  pages={110-115},
+}
+@inbook{companion,
+  inauthor={'哈哈哈 and 路奥赛东方i卷 and 阿受到法律空间 and 赛东方卷'},
+  intitle={'这是一个好故事'},
+  author={'刘国钧 and 郑如斯'},
+  inotherauthor={'陈生铮译'},
+  othertitle={'拉斯法家奥斯万恶卷'},
+  title={'中国书的故事'},
+  type = {M},
+  pubaddress={'北京'},
+  publisher={'北京青年出版社'},
+  pubyear=1979,
+  pages={110-115},
+  lang= "zh",
+
+}
+@incountinue{Krasnogor2004e,
+  inauthor={DDD and CCC and asdf and sdfasdf},
+  intitle={'中国书的故事'},
+  type = {J},
+  title ={'二货'},
+  othertitle={'三货'},
+  startyear="1922",
+  startvolume=8,
+  pages={222-333},
+  lang="zh"
+ 
+}
+@patent{ELIDRISSI94,
+  author={ YYY and BBB and CCC and DDD },
+  otherauthor={ KKK and NNN and DDD },
+  title={ New Way of USB using },
+  nation=" China ",
+  number=" 00216384653 ",
+  type = {M},
+  date = " 2013 ",
+  theurl = " asdfa "
+}
+@emedia{MELLINGER96,
+  author={'六国军 and 拉里拉 and 我了歌曲 and 呵呵'},
+  title={'深深深色花'},
+  othertitle={kasdfji},
+  type = {M},
+  mediatype={CD},
+  pubaddress={'北京'},
+  publisher={'北京那个什么'},
+  pubyear=2000,
+  date=1995,
+  lang="zh"
+}
 \end{lstlisting}

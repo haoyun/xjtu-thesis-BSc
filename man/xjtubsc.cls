@@ -9,20 +9,11 @@
 %%  Department of mathematics, School of science, Xi'an JIaotong University
 %%  No.28, Xianning West Road, Xi'an, Shaanxi, 710049, P.R. China
 %%
-%% This program is ...
+%% This program is (description HERE!)
 %%
-%% This program is free software: you can redistribute it and/or modify
-%% it under the terms of the GNU General Public License as published by
-%% the Free Software Foundation, either version 3 of the License, or
-%% (at your option) any later version.
-%%
-%% This program is distributed in the hope that it will be useful,
-%% but WITHOUT ANY WARRANTY; without even the implied warranty of
-%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-%% GNU General Public License for more details.
-%%
-%% You should have received a copy of the GNU General Public License
-%% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%% This program is free software: 
+%% 
+%% LPPL license HERE!
 %%
 %%
 
@@ -37,8 +28,10 @@
 %======= base calss ======%
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
-\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
+%\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
+\LoadClass[cs4size, hyperref, twoside]{ctexart}
 %\def\newblock{\hskip .11em plus .33em minus .07em}
+
 % Comments by hy_haoyun
 %	option openright may by included.
 %	Try using \include rather than \input in the document.
@@ -53,11 +46,14 @@
 %	that have been loaded in the cls.
 
 \RequirePackage{amssymb}
-\RequirePackage[fleqn]{amsmath}
+\RequirePackage[fleqn]{mathtools} % advanced than amsmath
 \RequirePackage{titletoc}
+\RequirePackage{titleps}
+\RequirePackage{ifxetex}
+\RequirePackage{enumerate}
 \RequirePackage{url}
 \RequirePackage{cite}
-%========color===========%
+%=====color=========%
 \hypersetup{%
   bookmarksnumbered=true,
   bookmarksopen=true,
@@ -67,25 +63,84 @@
   plainpages=false,
   pdfpagelabels,
   pdfborder=0 0 0}
-
-
-
 %====== English Font =====%
-\setmainfont{Times New Roman}
-% Comments by hy_hauyun:
+\ifxetex
+	\setmainfont{Times New Roman}
+\else
+	\usepackage[scaled=.93]{newtxtext}
+	\RequirePackage{newtxmath}
+\fi
+% Comments by hy_haoyun
 %	Times New Roman MT Std or Times New Roman
 %	I use Windows 7, the fontname is Times New Roman.
 %	It's dilivered with Win7 and provied by Monotype.
 %	Is Times New Roman MT Std Adobe's font?
-%====== 中文字体 ======%
+%	There are many alternatives for Times-like font.
+%	Option 1:
+%		\RequirePackage[scaled=.93]{newtxtext}
+%		\RequirePackage{newtxmath}  % I think we can add an option for set mathfont in Times.
+%			%or \RequirePackage{mathptmx}  
+%		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ } % for XeTeX only.
+%	Option 2:
+%		\RequirePackage{times}
+%	Option 3:
+%		\setmainfont{TeX Gyre Termes}
+%	Option 4:
+%		\usepackage{unicode-math}
+%		\setmainfont{XITS}
+%		\setmathfont{XITS Math}
+
+%====== Chinese Font ======%
 %\setCJKmainfont{方正精宋简体}
 
 %====== 字体属性 ======%
-\renewcommand{\normalsize}{\zihao{-4}}
-\renewcommand{\large}{\zihao{4}}
-\renewcommand{\Large}{\zihao{-3}}
-\renewcommand{\huge}{\zihao{3}}
-\renewcommand{\small}{\zihao{5}}
+
+% Comment by hy_haoyun
+%	The followings are taken from ctex-class.def 
+%	I modified them to fit our requirement
+
+\renewcommand\normalsize{% 正文——小四号
+  \@setfontsize\normalsize{\CTEX@fs@sfour}{\CTEX@fs@sfourskip}%
+  \abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
+  \abovedisplayshortskip \z@ \@plus3\p@
+  \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+  \belowdisplayskip \abovedisplayskip
+  \let\@listi\@listI}
+\normalsize
+\renewcommand\small{% 图题和表题、脚注、页眉、“关键词”、关键词内容、参考文献内容——五号
+  \@setfontsize\small{\CTEX@fs@five}{\CTEX@fs@fiveskip}%
+  \abovedisplayskip 11\p@ \@plus3\p@ \@minus6\p@
+  \abovedisplayshortskip \z@ \@plus3\p@
+  \belowdisplayshortskip 6.5\p@ \@plus3.5\p@ \@minus3\p@
+  \def\@listi{\leftmargin\leftmargini
+              \topsep 9\p@ \@plus3\p@ \@minus5\p@
+              \parsep 4.5\p@ \@plus2\p@ \@minus\p@
+              \itemsep \parsep}%
+  \belowdisplayskip \abovedisplayskip}
+\renewcommand\footnotesize{% 小五、规定前后矛盾，一处“脚注一律五号”，一处“一般小五号字”。
+  \@setfontsize\footnotesize{\CTEX@fs@sfive}{\CTEX@fs@sfiveskip}%
+  \abovedisplayskip 10\p@ \@plus2\p@ \@minus5\p@
+  \abovedisplayshortskip \z@ \@plus3\p@
+  \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+  \def\@listi{\leftmargin\leftmargini
+              \topsep 6\p@ \@plus2\p@ \@minus2\p@
+              \parsep 3\p@ \@plus2\p@ \@minus\p@
+              \itemsep \parsep}%
+  \belowdisplayskip \abovedisplayskip}
+\renewcommand\scriptsize{% 六号
+  \@setfontsize\scriptsize{\CTEX@fs@six}{\CTEX@fs@sixskip}}
+\renewcommand\tiny{% 小六
+  \@setfontsize\tiny{\CTEX@fs@ssix}{\CTEX@fs@ssixskip}}
+\renewcommand\large{% 三级标题——四号
+  \@setfontsize\large{\CTEX@fs@four}{\CTEX@fs@fourskip}}
+\renewcommand\Large{% 二级标题——小三
+  \@setfontsize\Large{\CTEX@fs@sthree}{\CTEX@fs@sthreeskip}}
+\renewcommand\LARGE{% 一级标题、“摘要”，“Abstract”——三号
+  \@setfontsize\LARGE{\CTEX@fs@three}{\CTEX@fs@threeskip}}
+\renewcommand\huge{% 二号
+  \@setfontsize\huge{\CTEX@fs@two}{\CTEX@fs@twoskip}}
+\renewcommand\Huge{% 一号
+  \@setfontsize\Huge{\CTEX@fs@one}{\CTEX@fs@oneskip}}
 
 %====== page layout ======%
 \RequirePackage[hmargin = 2.6 true cm, %
@@ -105,21 +160,112 @@
 % Comments by hy_haoyun:
 %	I didn't modify the following settings for header, pagenumber and linespread.
 
-%设置页眉
-\fancyhf{}
-\renewcommand{\headrule}{%设置页眉双线
-\hrule height0.5pt width\headwidth
-\vspace{0.5pt}
-\hrule height0.5pt width\headwidth
-}
-\renewcommand{\sectionmark}[1]{\markleft{\thesection #1}}
-\pagestyle{fancy}
-\fancyhead[CE]{ \small西安交通大学本科毕业设计（论文）}
-%设置页脚
-\fancyfoot[RO]{\Roman{page}}
-\fancyfoot[LE]{\Roman{page}}
+% Note! There is an warnning HERE! (2013-01-22)
+%	Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+%	Make it at least 14.14998pt.
+%	We now make it that large for the rest of the document.
+%	This may cause the page layout to be inconsistent, however.
+
+%\renewcommand{\headrule}{%设置页眉双线
+	%\hrule height 0.5pt width \textwidth
+	%\vspace{0.5pt}
+	%\hrule height 0.5pt width \textwidth
+%}
+
+% Comment by hy_haoyun
+% I would like to set the header and foot using *titleps* in an uniform way.
+% There are more things to do than my expectation. 
+% QUICK HELP
+% \sethead[偶页眉左][偶页眉中][偶页眉右]{奇页眉左}{奇页眉中}{奇页眉右}
+%\setfoot[偶页脚左][偶页脚中][偶页脚右]{奇页脚左}{奇页脚中}{奇页脚右}
+%
+%	\newpagestyle{document}{
+%		\headrule
+%		\sethead%
+%		[][\small西安交通大学本科毕业设计（论文）][]{}{}{}
+%		\setfoot%
+%		[\thepage][][]{}{}{\thepage}
+%		}
+%	\pagestyle{document}
+%
+%== frontmatter ==%
+\def\frontmatter{%
+		\cleardoublepage
+	\pagestyle{document}\pagenumbering{roman}}
+	\def\mainmatter{%
+		\cleardoublepage
+		\pagestyle{document}\pagenumbering{arabic}}	
+	
+
 %设置行距
 \renewcommand{\baselinestretch}{1.2}%1.2为1.5倍行距，1.6为2倍行距
+	
+
+%设置页眉
+%\fancyhf{}
+%\renewcommand{\headrule}{%设置页眉双线
+%\hrule height0.5pt width\headwidth
+%\vspace{0.5pt}
+%\hrule height0.5pt width\headwidth
+%}
+%\renewcommand{\sectionmark}[1]{\markleft{\thesection #1}}
+%\pagestyle{fancy}
+%\fancyhead[CE]{\small西安交通大学本科毕业设计（论文）}
+%设置页脚
+%\fancyfoot[RO]{\Roman{page}}
+%\fancyfoot[LE]{\Roman{page}}
+
+
+
+%== mainmatter ==%
+%\newcommand{\mainmatter}{
+%页眉
+%\fancyhead[CO]{ \small \leftmark}
+%页脚
+%\ifodd
+	%\thepage{}
+%\else
+	%{\mbox{}\newpage}%如果正文开始在偶数页则自动补充一页空白
+%\fi
+%\setcounter{page}{1}
+%\lfoot{}
+%\rfoot{}
+%\fancyfoot[RO]{\arabic{page}}
+%\fancyfoot[LE]{\arabic{page}}
+%设置字体
+%\normalsize 
+%}
+\newpagestyle{main}{
+\sethead[][\small西安交通大学本科毕业设计（论文）][] % even
+{}{\sectiontitle}{}       % odd
+\setfoot[\thepage][][] % even
+{}{}{\thepage}              % odd
+\renewcommand{\makeheadrule}{%
+\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
+\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+} 
+
+\newpagestyle{document}{
+\sethead[][\small西安交通大学本科毕业设计（论文）][] % even
+{}{\thesection \quad \sectiontitle}{}       % odd
+\setfoot[\thepage][][] % even
+{}{}{\thepage}              % odd
+\renewcommand{\makeheadrule}{%
+\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
+\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+} 
+
+
+%===== matter =====%
+	\def\frontmatter{%
+		\cleardoublepage
+		\pagestyle{main}\pagenumbering{Roman}}
+	\def\mainmatter{%
+		\cleardoublepage
+	\pagestyle{document}\pagenumbering{arabic}}
+	\def\latermatter{%
+		\cleardoublepage
+	\pagestyle{main}}	
 
 %====== displaymath ======%
 
@@ -174,36 +320,40 @@
 %	\sontti should be avoided!
 
 %=== Chinese ===%
-\newcommand{\chabstractname }{\huge 摘 \quad 要}
+\newcommand{\chabstractname }{\LARGE 摘\hspace{2\ccwd}要}
 \newenvironment{chabstract}{
 %页眉
-\fancyhead[CO]{ \small 摘 \quad 要}
-      \if@twocolumn \section *{\chabstractname }\else \zihao
-{-4} \begin {center}{ \chabstractname \vspace {-.5em}\vspace {\z@
-}}\end {center} \par \fi
-}{\par}
-\newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \small {\bf关键词：}#1}\relax}
+%\fancyhead[CO]{\small 摘\hspace{2\ccwd}要}
+\sectionmark{\small 摘要}
+\if@twocolumn 
+	\section*{\chabstractname}
+\else
+	\begin{center}
+		{\chabstractname \vspace {-.5em}\vspace {\z@}}
+	\end{center}\par
+\fi}{\par}
+\newcommand{\chkeywords}[1]{\hskip -0.92cm{\vspace{1ex} \small {\bfseries 关键词：}#1}\relax}
 
 %=== English ===%
-\newcommand{\enabstractname }{\huge \fontspec{Times New Roman MT Std} ABSTRACT}
+\newcommand{\enabstractname}{\LARGE ABSTRACT}
 \newenvironment{enabstract}{
-%设置段行距
-\setlength\parskip{1ex}
-%设置段首缩进
-\setlength\parindent{0em}
-%摘要内容
-      \if@twocolumn \section *{\enabstractname }\else \zihao
-{-4} \fontspec{Times New Roman MT Std} \begin {center}{ \enabstractname \vspace {-.5em}\vspace {\z@
-}}\end {center} \par\fi
-%页眉
-\fancyhead[CO]{ \small ABSTRACT}
-}{
-%恢复行距
-\setlength\parskip{0ex}
-%恢复段首缩进
-\setlength\parindent{2\ccwd}
+\sectionmark{\small ABSTRACT}
+\setlength\parskip{1ex}	% 设置段行距
+\setlength\parindent{0em}	% 设置段首缩进
+%\fancyhead[CO]{\small ABSTRACT}
+\if@twocolumn
+	\section*{\enabstractname}
+\else 
+	\begin{center}
+		{\enabstractname \vspace {-.5em}\vspace{\z@}}
+	\end {center}\par
+\fi}{%
+\setlength\parskip{0ex}	% 恢复行距
+\setlength\parindent{2\ccwd}% 恢复段首缩进
 \par}
-\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\small \fontspec{Times New Roman MT Std} {\bf KEY WORDS ：}#1}\relax}
+
+\newcommand{\enkeywords}[1]{\hskip -0.88cm{\vspace{1ex}\small {\bfseries KEY WORDS ：}#1}\relax}
+
 %且英文关键词字号设置有问题，不知是否为大小写的差异
 %关键词并没有左对齐，且英文摘要内容用小四号Times New Roman MT Std，摘要正文每段开头不空格，每段之间空一行，未实现
 %QinYuguo::英文摘要字体使用了\fontspec实现,现在是Times New Roman MT Std.
@@ -214,31 +364,16 @@
 %页眉
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
-\fancyhead[CO]{ \small 目\quad录}
+%\fancyhead[CO]{目\hspace{\ccwd}录}
+\sectionmark{\small目录}
 \oldtableofcontents
 }
 %设置目录格式
 \titlecontents{section}[0pt]{}{\contentslabel{1em}}{}{\titlerule*[1mm]{.}\contentspage}[]
 \titlecontents{subsection}[2em]{}{\contentslabel{2em}}{}{\titlerule*[1mm]{.}\contentspage\normalsize}[]
 \titlecontents{subsubsection}[4em]{}{\contentslabel{2.8em}\normalsize}{}{\titlerule*[1mm]{.}\contentspage\normalsize}[]
-\renewcommand{\contentsname}{\huge 目\quad录}
+\renewcommand{\contentsname}{目\hspace{2\ccwd}录}
 
-%====== mainmatter ======%
-
-\newcommand{\mainbodyformat}{
-%页眉
-\fancyhead[CO]{ \small \leftmark}
-%页脚
-\ifodd\thepage{}
-\else{\mbox{}\newpage}%如果正文开始在偶数页则自动补充一页空白
-\setcounter{page}{1}
-\lfoot{}
-\rfoot{}
-\fancyfoot[RO]{\arabic{page}}
-\fancyfoot[LE]{\arabic{page}}
-%设置字体
-\normalsize 
-}
 
 
 
@@ -250,9 +385,11 @@
 \setcounter{appendshead}{0}%初始化为0
 \newcommand{\appendixs}[1]{
 %设置页眉
-\fancyhead[CO]{ \small 附录\theappendshead \hspace{0.15cm} #1}
+%\fancyhead[CO]{ \small 附录\theappendshead \hspace{0.15cm} #1}
+\sectionmark{\small 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
 \addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
+\refstepcounter{appendshead}
 %计数器加1
 \addtocounter{appends}{1} 
 \addtocounter{appendshead}{1} 
@@ -262,7 +399,8 @@
 
 %=============主要符号================%
 \newenvironment{denotation}{\section*{主要符号表}
-\fancyhead[CO]{\small 主要符号表}
+%\fancyhead[CO]{\small 主要符号表}
+\sectionmark{\small 主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
 \renewcommand{\makelabel}[1]{##1\hfil}
@@ -288,12 +426,14 @@
 
 %QinYuguo::哥重写了个bst~~
 \def\mybibliography#1
-{\fancyhead[CO]{ \small 参考文献}
+{%\fancyhead[CO]{ \small 参考文献}
+\sectionmark{\small 参考文献}
 \bibliographystyle{newbibsty}
 \renewcommand{\refname}{\huge 参考文献}
 \mbox{}
 \addcontentsline{toc}{section}{参考文献}
 \bibliography{#1}
+
 }
 
 
@@ -301,9 +441,10 @@
 \renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize \arabic{footnote}}}}} 
 
 %====== Acknowledgement ======%
-\newcommand{\mythanksname}{\huge 致 \quad 谢}
+\newcommand{\mythanksname}{致 \quad 谢}
 \newenvironment{mythanks}{
-\fancyhead[CO]{ \small 致 \quad 谢}
+%\fancyhead[CO]{致 \quad 谢}
        \section *{\mythanksname } 
+         \sectionmark{\small 致 \quad 谢}
 \addcontentsline{toc}{section}{致谢}%使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}

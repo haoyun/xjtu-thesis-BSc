@@ -7,45 +7,44 @@
 % But I don't have enough time to modify the example.
 \usepackage{booktabs}
 \usepackage{listings}
-% The listings package is use improperly.
-% There is many details to be set.
-% It's ugly by default.
-
+\usepackage{xcolor}
+\lstset{upquote,
+	keepspaces=true,
+	columns=spaceflexible,
+	basicstyle=\ttfamily\footnotesize,%
+	breaklines=true,
+	breakindent=0pt,
+	xleftmargin=0pt,
+	xrightmargin=6pt,%
+	language=matlab,
+%	commentstyle=\sffamily\itshape\color{SeaGreen4},
+	emphstyle=\bfseries\color{RoyalBlue3},escapechar={`'},
+	emphstyle={[2]{\bfseries\color{Sienna2}}},
+}
 \graphicspath{{figures/}}
 
-\newcommand{\mainfile}{man.tex}
-
+\newcommand{\mainfile}{main.tex}
 \begin{document}
-
-\newpage
-\input{pages/chabstract.tex}
-\newpage
-\input{pages/enabstract.tex}
-\newpage
+\frontmatter
+\include{pages/chabstract}
+\include{pages/enabstract}
 \tableofcontents
-%\newpage
-%\input{pages/denotation.tex}
-\newpage
-\mainbodyformat
-\input{pages/first.tex}
-\newpage
-\input{pages/second.tex}
-\newpage
-\input{pages/third.tex}
-\newpage
-\input{pages/fourth.tex}
-\newpage
-\input{pages/bibman.tex}
-\newpage
-\input{pages/appendix.tex}
-\newpage
-\input{pages/appendix1.tex}
-\newpage
-\input{pages/denotation.tex}
-\newpage
-\input{pages/thanks.tex}
-\newpage
+
+% Comment by hy_haoyun:
+%	1. 目录的页码应该是罗马的。
+
+\mainmatter
+\include{./pages/first}
+\include{./pages/second}
+\include{pages/third}
+\include{pages/bibman}
+\latermatter
 \mybibliography{ref/testref.bib}
+\include{pages/appendix}
+%\include{pages/appendix1}
+\include{pages/denotation}
+\include{pages/thanks}
+
 
 
 

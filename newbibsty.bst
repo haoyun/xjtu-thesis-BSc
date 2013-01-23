@@ -1,5 +1,3 @@
-%QinYuguo::参考unsrt制作，中文标点符号现在是全角中文。不过要求全角英文~~其实我没找的ubuntu系统自带输入法全角英文怎么打，我会到处乱说~~
-
 ENTRY
   { author%主要责任者
     title%文献题名
@@ -64,18 +62,25 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
-STRINGS{ r }
+STRINGS{ r v }
+INTEGERS{numdot flag}
 
 FUNCTION {addperiod.zh}
 {
-  duplicate$ #-1 #-1 substring$ 'r :=
-  r "}" =
-  r "." =
-  or
-  r "?" =
-  or
-  r "!" =
-  or
+  "}.?!" 'v :=
+  #4 'numdot :=
+  #1 'flag :=
+  duplicate$ #-1 #1 substring$ 'r :=
+  {numdot #0 >}
+  {
+    v numdot #1 substring$ r =
+      {#0 'flag :=}
+      'skip$
+    if$
+    numdot #1 - 'numdot :=
+  }
+  while$
+  #0 flag =
     'skip$
     {"。" *}
   if$
@@ -299,11 +304,32 @@ FUNCTION {output.edition}
   if$
 }
 
-STRINGS {mydot}
+STRINGS {mydot res}
 
 FUNCTION {symconv}%标点符号修改地
 {
   'mydot :=
+%  "[]:,-()" 'v :=
+%  "【】：，-（）" 'res :=
+%  #7 'numdot :=
+%  {numdot #0 >}
+%  {
+%    v numdot #1 substring$ mydot =
+%    {
+%      lang missing$
+%        'mydot
+%	{ lang "zh" =
+%	    {res numdot #1 substring$}
+%	    'mydot
+%	  if$
+%	}
+%       if$
+%    }
+%    'skip$
+%    if$
+%    numdot #1 - 'numdot :=
+%  }
+%  while$
   lang missing$
     {#0}
     {lang "zh" =}
@@ -338,37 +364,8 @@ FUNCTION {symconv}%标点符号修改地
 	'skip$
       if$
     }
-    {
-      mydot "[" =
-	{"["}
-	'skip$
-      if$
-    mydot "]" =
-      {"]"}
-      'skip$
+    'mydot
     if$
-    mydot ":" =
-      {":"}
-      'skip$
-    if$
-    mydot "," =
-      {","}
-      'skip$
-    if$
-    mydot "-" =
-      {"-"}
-      'skip$
-    if$
-    mydot "(" =
-      {"("}
-      'skip$
-    if$
-    mydot ")" =
-      {")"}
-      'skip$
-    if$
-    }
-  if$
 }
 
 FUNCTION {book}%专著

@@ -62,18 +62,25 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
-STRINGS{ r }
+STRINGS{ r v }
+INTEGERS{numdot flag}
 
 FUNCTION {addperiod.zh}
 {
-  duplicate$ #-1 #-1 substring$ 'r :=
-  r "}" =
-  r "." =
-  or
-  r "?" =
-  or
-  r "!" =
-  or
+  "}.?!" 'v :=
+  #4 'numdot :=
+  #1 'flag :=
+  duplicate$ #-1 #1 substring$ 'r :=
+  {numdot #0 >}
+  {
+    v numdot #1 substring$ r =
+      {#0 'flag :=}
+      'skip$
+    if$
+    numdot #1 - 'numdot :=
+  }
+  while$
+  #0 flag =
     'skip$
     {"。" *}
   if$
@@ -297,11 +304,32 @@ FUNCTION {output.edition}
   if$
 }
 
-STRINGS {mydot}
+STRINGS {mydot res}
 
 FUNCTION {symconv}%标点符号修改地
 {
   'mydot :=
+%  "[]:,-()" 'v :=
+%  "【】：，-（）" 'res :=
+%  #7 'numdot :=
+%  {numdot #0 >}
+%  {
+%    v numdot #1 substring$ mydot =
+%    {
+%      lang missing$
+%        'mydot
+%	{ lang "zh" =
+%	    {res numdot #1 substring$}
+%	    'mydot
+%	  if$
+%	}
+%       if$
+%    }
+%    'skip$
+%    if$
+%    numdot #1 - 'numdot :=
+%  }
+%  while$
   lang missing$
     {#0}
     {lang "zh" =}
@@ -336,37 +364,8 @@ FUNCTION {symconv}%标点符号修改地
 	'skip$
       if$
     }
-    {
-      mydot "[" =
-	{"["}
-	'skip$
-      if$
-    mydot "]" =
-      {"]"}
-      'skip$
+    'mydot
     if$
-    mydot ":" =
-      {":"}
-      'skip$
-    if$
-    mydot "," =
-      {","}
-      'skip$
-    if$
-    mydot "-" =
-      {"-"}
-      'skip$
-    if$
-    mydot "(" =
-      {"("}
-      'skip$
-    if$
-    mydot ")" =
-      {")"}
-      'skip$
-    if$
-    }
-  if$
 }
 
 FUNCTION {book}%专著

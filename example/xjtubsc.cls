@@ -427,7 +427,7 @@
 \def\mybibliography#1
 {%\fancyhead[CO]{ \small 参考文献}
 \sectionmark{\small 参考文献}
-\bibliographystyle{GBT7714-2005NLang-UTF8}
+\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
 \renewcommand{\refname}{\huge 参考文献}
 \mbox{}
 \addcontentsline{toc}{section}{参考文献}

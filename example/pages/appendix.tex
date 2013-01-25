@@ -34,7 +34,7 @@ ws=1/gridUs2;
 sum=we+ww+wn+ws;
 h0=lam/(lam+sum);
 U(i,j)=(ww*V(i-1,j)+we*V(i+1,j)+wn*V(i,j+1)+
-        ws*V(i,j-1))/(lam+sum)+h0*T(i,j);
+		ws*V(i,j-1))/(lam+sum)+h0*T(i,j);
 V(i,j)=U(i,j);
 end
 end
@@ -45,3 +45,6 @@ V=U;
 figure;
 imshow(uint8(V));
 \end{lstlisting}
+
+
+

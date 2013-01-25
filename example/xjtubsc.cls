@@ -29,7 +29,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 %\LoadClass[cs4size, fancyhdr, hyperref, twoside]{ctexart}
-\LoadClass[cs4size, hyperref, twoside]{ctexart}
+\LoadClass[cs4size, hyperref, twoside,UTF8]{ctexart}
 %\def\newblock{\hskip .11em plus .33em minus .07em}
 
 % Comments by hy_haoyun
@@ -52,8 +52,18 @@
 \RequirePackage{ifxetex}
 \RequirePackage[numbers,sort&compress]{natbib}
 \RequirePackage{hypernat}
-%\RequirePackage{url}
-%\RequirePackage{cite}
+\ifxetex
+	\usepackage{xeCJKfntef}
+\else
+	\usepackage{CJKfntef}
+\fi
+
+%====== Command ======%
+
+% 这个命令得改改名字，谁有空改一下。
+\newcommand\myunderline[2][6]{\hskip1pt\underline{\hb@xt@ #1\ccwd{\hss#2\hss}}\hskip3pt}
+
+
 %=====color=========%
 \hypersetup{%
   bookmarksnumbered=true,
@@ -437,7 +447,17 @@
 
 
 %=================脚注==================sh
-\renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize \arabic{footnote}}}}} 
+%\renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize\arabic{footnote}}}}} 
+
+% Comment by hy_haoyun
+%	原来的实现在 pdflatex 报错，具体原因不明，下面参考了 Neals 的做法，
+%	见 http://blog.sina.com.cn/s/blog_5e16f1770100moqv.html
+
+\usepackage{pifont}
+\usepackage[perpage,symbol*]{footmisc}
+\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
+{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
+\setfnsymbol{circled}
 
 %====== Acknowledgement ======%
 \newcommand{\mythanksname}{致 \quad 谢}

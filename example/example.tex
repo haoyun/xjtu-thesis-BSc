@@ -17,19 +17,168 @@
 	xleftmargin=0pt,
 	xrightmargin=6pt,%
 	language=matlab,
-	commentstyle=\sffamily\itshape\color{SeaGreen4},
-	emphstyle=\bfseries\color{RoyalBlue3},escapechar={`'},
-	emphstyle={[2]{\bfseries\color{Sienna2}}},
 }
 \graphicspath{{figures/}}
+
+
+%\RequirePackage{textcomp}% 如果是pdftex编译的话，upquote需要。
+%\includeonly{}
+
+
 \begin{document}
 \frontmatter
-\include{pages/chabstract}
-\include{pages/enabstract}
+
+
+
+%================================= 
+% 以下内容请合并
+%=================================
+
+
+%修改某些距离
+\parindent=0pt
+%\setlength\parskip{1ex}
+\renewcommand{\baselinestretch}{1.6}\selectfont
+%注意这里必须加上\selectfont 使得行距设置生效，放在cls里面就不用这个命令了。
+
+% 这里缺少题头，利用minipage结合表格来制作。
+
+\begin{center}\bfseries\huge % 具体的字号我不清楚，需要改一下
+毕业设计(论文)任务书 % 这里不是宋体，但是应该没人管。我希望改的不依赖于xetex，暂时先这样。不是核心问题。加到bug里面，或者谁改一下？
+\vspace{1em}
+
+\end{center}
+
+\par\myunderline{数学与统计}~院~\myunderline{数学}~系~\myunderline{理科数学91}~班\hspace{\ccwd}学生\CJKunderline{\hfill 撸自身\hfill}
+
+\par 毕业设计(论文)课题\hspace{1ex}\CJKunderline{\hfill 这里是题目啊 \hfill}
+
+% 这里还少一行，谁来补一下！
+
+\par 毕业设计(论文)进行地点\hspace{1ex}\CJKunderline{\hfill 我大渣交 \hfill}
+
+% 上面的这些东西可以通过设定参数 c l 等来决定居中还是左对齐，还可以通过字距\ziju来设定分散开来。这个可以先不实现。不是非常必要的。
+
+% 把上面所有的空设置成像 \title一些样的命令，自动带进去。这个鸿鑫解决如何？
+
+
+
+
+
+% 下面的东西的通过通过定义环境来实现：
+
+% 环境有如下的参数
+% #1 预定的行数，即\ifnum\hangshu<5 中的 5 这个值。给个默认值5或者 6
+% #2 题头，如 课题的背景、意义及培养目标
+% 环境开始从为
+%	\par #2 \par\CJKunderline*{%\hskip2\ccwd
+% 环境结束为
+%	\hfill}
+%	\par\ifnum\prevgraf<#1 
+%	\newcount\hangshu 
+%	\hangshu=\prevgraf
+%	\loop
+%		\par\noindent\CJKunderline{\hfill}
+%		\advance\hangshu 1 
+%	\ifnum\hangshu<#1
+%	\repeat
+%	\fi
+% 注意保留上面的\hfill}，不要\hskip2\ccwd，但是在调用环境的时候在内容前加上\hskip2\ccwd(比如这一份表格的情况)，或者不加（比如下个表格的情况）
+
+
+\par课题的背景、意义及培养目标
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<5 % 这里应该修改一下，如果超过5行应予以警告，另外注意这个东西不能分段。否则应去掉\par
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<5 \repeat
+\fi
+
+\par设计(论文)的原始数据与资料
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<5
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<6 \repeat
+\fi
+
+
+\par课题的主要任务
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<5 
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<7 \repeat
+\fi
+
+\par课题的基本要求(工程设计类题应有技术经济分析要求)
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<7
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<7 \repeat
+\fi
+
+\par完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<6 
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<6 \repeat
+\fi
+
+
+\par主要参考文献
+\par\CJKunderline*{\hskip2\ccwd第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统\hfill}
+\par\ifnum\prevgraf<6 % 这里应该修改一下，如果超过5行应予以警告，另外注意这个东西不能分段。否则应去掉\par
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<6 \repeat
+\fi
+
+% 这一部分的内容也可以用minipage来实现，或者用没有框的表格也行。谁来做一下。
+
+
+
+\newpage
+\parindent=2\ccwd
+
+\begin{center}
+\huge\bfseries
+毕业设计(论文)考核评议书
+\vspace{\ccwd}
+\end{center}
+
+\par\noindent\myunderline[10]{数学与统计}~院~\myunderline[10]{数学}~系(专业)~\myunderline[10]{理科数学91}~班
+\vspace{2\ccwd}
+
+指导教师对学生\myunderline[10]{王鸿鑫}所完成课题为~\CJKunderline*{\LaTeX{}模板设计}~的毕业设计(论文)进行的情况，完成的质量及评分的意见：\CJKunderline*{\hfill}
+\par\ifnum\prevgraf<7 % 
+\newcount\hangshu
+\hangshu=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\hangshu 1 \ifnum\hangshu<7 \repeat
+\fi
+
+% 前面说了：
+% 注意保留上面的\hfill}，不要\hskip2\ccwd，但是在调用环境的时候在内容前加上\hskip2\ccwd(比如这一份表格的情况)，或者不加（比如下个表格的情况）
+% 就是指这里，不要开始两个字的缩进。
+
+% 恢复命令
+\renewcommand{\baselinestretch}{1.6}\selectfont
+\newpage
+
+
+
+%================================= 
+% 以上内容请合并
+%=================================
+
+
+
+%\include{pages/chabstract}
+%\include{pages/enabstract}
 \tableofcontents
 
-% Comment by hy_haoyun:
-%	1. 目录的页码应该是罗马的。
 
 \mainmatter
 \include{./pages/first}
@@ -39,6 +188,8 @@
 \latermatter
 \mybibliography{ref/refs.bib}
 \include{pages/appendix}
+%如果用 pdflatex编译，代码38行报错。应该是分页导致的，
+%这个问题急需解决。根本原因应该在于T1的字体编码。
 \include{pages/appendix1}
 \include{pages/denotation}
 \include{pages/thanks}

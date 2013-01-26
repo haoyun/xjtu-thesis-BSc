@@ -1,10 +1,12 @@
-﻿Template for Bachelor of Science Thesis in XJTU
+Template for Bachelor of Science Thesis in XJTU
 ======
 
 Description
 ------
 
 This project is aiming at making a \LaTeX{} template for the B.Sc. thesis in Xi'an Jiaotong University. The format is based on the 《2013届本科毕业设计（论文）工作手册》.
+
+基本实现所有的功能，正在调试阶段。期待正式版本发布！
 
 Authors
 ------
@@ -51,3 +53,6 @@ Todo List
 * 在 pdflatex 下，代码的分页有问题，可能与times字体编码T1有关。
 * SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。（需要加载带参数的xcolor，with option x11names）
 * 脚注的加圈编号进行了改写，但是需要依赖两个符号宏包。这个不是很理想，需要改进。原始实现方法在pdflatex下无法编译。原因未知。
+* 完善文档选项，例如 screen/print, winfonts/nofonts 等。可以参考daiweisi的xjtuthesis（垃圾产品）以及其他学校的模板。
+* 规范命令名称。
+* 版权信息补全。

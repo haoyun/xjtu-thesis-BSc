@@ -8,11 +8,11 @@ This project is aiming at making a \LaTeX{} template for the B.Sc. thesis in Xi'
 
 Authors
 ------
-[Wang Hongxin](https://github.com/wanghongxin)
+**Wang Hongxin** [@github](https://github.com/wanghongxin)
 
-[Qin Yuguo](https://bitbucket.org/FireUponSky)
+**Qin Yuguo** [@github](https://bitbucket.org/FireUponSKy), [@bitbucket](https://bitbucket.org/FireUponSky)
 
-[Hao Yun](https://bitbucket.org/haoyun)
+**Hao Yun** [@github](https://github.com/haoyun), [@bitbucket](https://bitbucket.org/haoyun)
 
 License
 ------
@@ -22,10 +22,10 @@ For Authors
 ------
 To get started, run:
 
-    git clone https://YourUserame@bitbucket.org/FireUponSky/xjtu-thesis-bsc.git XXXXX/
-    cd XXXXX/
+    git clone https://github.com/haoyun/xjtu-thesis-bsc.git xjtu-thesis-bsc/
+    cd xjtu-thesis-bsc/
 
-in the shell, where XXXXX is your working directory with arbitary name.
+in the shell, where xjtu-thesis-bsc/ is your working directory with arbitary name.
 
 Remember to **pull** the newest version in the github repo to merge differences and then **push** your contributions.
 
@@ -47,7 +47,7 @@ Todo List
 * 清理没用的注释。
 * 编写空模板，替代example文件夹中的文件。模板参考清华TEXMF-DIST/doc/latex/thuthesis/example.main。
 * 在pdflatex进行测试。
-
-Bugs
-------
-1)SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。（需要加载带参数的xcolor，with option x11names）
+* 为了绘制前面的两个表格，添加了对下划线宏包 CJKfntef 和 xeCJKfntef 的依赖，分别对应于 pdftex 和 xetex，但第二个宏包较新，很可能需要升级发行版。
+* 在 pdflatex 下，代码的分页有问题，可能与times字体编码T1有关。
+* SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。（需要加载带参数的xcolor，with option x11names）
+* 脚注的加圈编号进行了改写，但是需要依赖两个符号宏包。这个不是很理想，需要改进。原始实现方法在pdflatex下无法编译。原因未知。

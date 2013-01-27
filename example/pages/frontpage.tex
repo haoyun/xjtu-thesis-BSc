@@ -1,0 +1,227 @@
+%============================%
+\college{数学与统计}
+\department{数学}
+\class{理科数学91}
+\student{疯狂的}
+\yourtitle{交大毕设模板}
+\place{我大渣交}
+\beginyear{2012}
+\beginmonth{1}
+\begindate{1}
+\endyear{2013}
+\endmonth{12}
+\enddate{30}
+
+
+
+%==================毕业设计(论文)任务书  ===================%
+
+
+
+%修改某些距离
+\parindent=0pt
+%\setlength\parskip{1ex}
+\renewcommand{\baselinestretch}{1.6}\selectfont
+%注意这里必须加上\selectfont 使得行距设置生效，放在cls里面就不用这个命令了。
+
+% 这里缺少题头，利用minipage结合表格来制作。
+%字距得调一下
+\begin{minipage}[t]{1\linewidth} 
+\hskip 2cm
+\begin{tabular*}{0.3\linewidth}{lp{1cm}}
+{\bf \LARGE 西安交通大学 }
+\end{tabular*}
+\hskip 2.5cm
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+系（所） &\\
+系（所）主任&\\
+批准日期 & \\ 
+\end{tabular*}
+ \end{minipage}
+\vspace{1em}
+
+
+\begin{center}\bfseries\huge % 具体的字号我不清楚，需要改一下
+毕业设计(论文)任务书   
+ % 这里不是宋体，但是应该没人管。我希望改的不依赖于xetex，暂时先这样。不是核心问题。加到bug里面，或者谁改一下？
+\vspace{1em}
+\end{center}
+\sectionmark{\small 毕业设计(论文)任务书}
+\par\myunderline{\@college}~院~\myunderline{\@department}~系~\myunderline{\@class}~班\hspace{\ccwd}学生\CJKunderline{\hfill \@student \hfill}
+
+\par 毕业设计(论文)课题\hspace{1ex}\CJKunderline{\hfill \@yourtitle \hfill}
+
+% 这里还少一行，谁来补一下！
+% hongxin:已补
+\par 毕业设计(论文)工作自~\myunderline[3]{\@beginyear}~年~\myunderline[2]{\@beginmonth}~月~\myunderline[1.5]{\@begindate}~日起至\myunderline[3]{\@endyear}~年~\myunderline[2]{\@endmonth}~月~\myunderline[1.5]{\@enddate}~日止
+
+\par 毕业设计(论文)进行地点\hspace{1ex}\CJKunderline{\hfill \@place \hfill}
+
+% 上面的这些东西可以通过设定参数 c l 等来决定居中还是左对齐，还可以通过字距\ziju来设定分散开来。这个可以先不实现。不是非常必要的。
+
+% 把上面所有的空设置成像 \title一些样的命令，自动带进去。这个鸿鑫解决如何？
+% hongxin:已解决
+
+
+
+
+
+% 下面的东西的通过通过定义环境来实现：
+
+% 环境有如下的参数
+% #1 预定的行数，即\ifnum\hangshu<5 中的 5 这个值。给个默认值5或者 6
+% #2 题头，如 课题的背景、意义及培养目标
+% 环境开始从为
+%	\par #2 \par\CJKunderline*{%\hskip2\ccwd
+% 环境结束为
+%	\hfill}
+%	\par\ifnum\prevgraf<#1 
+%	\newcount\hangshu 
+%	\hangshu=\prevgraf
+%	\loop
+%		\par\noindent\CJKunderline{\hfill}
+%		\advance\hangshu 1 
+%	\ifnum\hangshu<#1
+%	\repeat
+%	\fi
+% 注意保留上面的\hfill}，不要\hskip2\ccwd，但是在调用环境的时候在内容前加上\hskip2\ccwd(比如这一份表格的情况)，或者不加（比如下个表格的情况）
+\begin{ulfield2}[5]{课题的背景、意义及培养目标}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+\begin{ulfield2}[6]{设计(论文)的原始数据与资料}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+\begin{ulfield2}[7]{课题的主要任务}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+\begin{ulfield2}[7]{课题的基本要求(工程设计类题应有技术经济分析要求)}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+\begin{ulfield2}[6]{完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+\begin{ulfield2}[6]{主要参考文献}
+第一部分，机器学习的底层理论：机器学习的底层理论有一些，比如推理与规划、近似可计算理论、正则化、提升理论、核方法、当然还有大名鼎鼎的统
+\end{ulfield2}
+
+
+\vspace{2.5em}
+\begin{minipage}[t]{1\linewidth} 
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+（注：由指导教师填写）
+\end{tabular*}
+\hskip 5cm
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+指导教师&\\
+接受设计（论文）任务日期&\\
+学生签名 &\\ 
+\end{tabular*}
+ \end{minipage}
+ 
+ 
+ 
+%============毕业设计(论文)考核评议书、毕业设计(论文)评审意见书==============%
+ 
+ 
+% 这一部分的内容也可以用minipage来实现，或者用没有框的表格也行。谁来做一下。
+
+ 
+
+
+\newpage
+
+\parindent=2\ccwd
+\begin{center}
+\bfseries \LARGE西安交通大学
+\end{center}
+
+\begin{center}
+\huge\bfseries
+毕业设计(论文)考核评议书
+\vspace{\ccwd}
+\end{center}
+\sectionmark{\small 毕业设计(论文)考核评议书}
+\par\noindent\myunderline[10]{\@college}~院~\myunderline[10]{\@department}~系(专业)~\myunderline[8]{\@class}~班
+\vspace{2\ccwd}
+
+指导教师对学生\myunderline[10]{\@student}所完成课题为~\CJKunderline*{\@yourtitle}~的毕业设计(论文)进行的情况，
+\begin{ulfield1}[5]{完成的质量及评分的意见：}
+可以使用
+\end{ulfield1}
+
+
+\begin{minipage}[t]{1\linewidth} 
+\hskip 11cm
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+指导教师&\\
+\quad 年  \quad 月 \quad 日\\
+\end{tabular*}
+ \end{minipage}
+
+
+
+\begin{center}
+\huge\bfseries
+毕业设计(论文)评审意见书
+\vspace{\ccwd}
+\end{center}
+
+
+\begin{ulfield1}[7]{评审意见：}
+当你整理一个大型文档时，LATEX 的一些专门功能，例如自动生成索引、管理参
+考文献等等，会给你以很大的帮助。详细的关于LATEX 专业功能以及增强功能的
+描述可以在LATEX Manual
+\end{ulfield1}
+
+
+\begin{minipage}[t]{1\linewidth} 
+\hskip 8cm
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+评阅人            &   职称  \\
+\quad 年  \quad 月 \quad 日\\
+\end{tabular*}
+ \end{minipage}
+ 
+% 前面说了：
+% 注意保留上面的\hfill}，不要\hskip2\ccwd，但是在调用环境的时候在内容前加上\hskip2\ccwd(比如这一份表格的情况)，或者不加（比如下个表格的情况）
+% 就是指这里，不要开始两个字的缩进。
+
+ 
+   
+%===============毕业设计(论文)答辩结果==============%
+\newpage
+\parindent=2\ccwd
+\begin{center}
+\vspace{\ccwd}
+{\huge\bfseries   毕业设计(论文)答辩结果 } \\
+{ \bfseries  \LARGE    \myunderline[5]{}    院          \\                      
+                                 \myunderline[5]{}   系(专业)   \\}
+
+\vspace{\ccwd}
+\end{center}
+\sectionmark{\small 毕业设计(论文)答辩结果}
+\par\noindent\myunderline[10]{\@college}~院~\myunderline[10]{\@department}~系(专业)~\myunderline[8]{\@class}~班
+\vspace{2\ccwd}
+
+毕业设计(论文)答辩组对学生\myunderline[10]{\@student}所完成课题为~\CJKunderline*{\@yourtitle}~的毕业设计(论文)经过答辩,其意见为
+\begin{ulfield1}[7]{评审意见：}
+当你整理一个大型文档时，LATEX 的一些专门功能，例如自动生成索引、管理参
+考文献等等，会给你以很大的帮助。详细的关于LATEX 专业功能以及增强功能的
+描述可以在LATEX Manual
+\end{ulfield1}
+\newline 并确定成绩为~\CJKunderline*{\hfill}
+
+
+\begin{minipage}[t]{1\linewidth} 
+\hskip 8cm
+\begin{tabular*}{0.2\linewidth}{lp{2cm}}
+毕业设计(论文)答辩组负责人\\
+答辩组成员:  \\
+\quad 年  \quad 月 \quad 日\\
+\end{tabular*}
+ \end{minipage}

@@ -52,6 +52,7 @@
 \RequirePackage{ifxetex}
 \RequirePackage[numbers,sort&compress]{natbib}
 \RequirePackage{hypernat}
+\RequirePackage{environ}
 \ifxetex
 	\usepackage{xeCJKfntef}
 \else
@@ -62,6 +63,46 @@
 
 % 这个命令得改改名字，谁有空改一下。
 \newcommand\myunderline[2][6]{\hskip1pt\underline{\hb@xt@ #1\ccwd{\hss#2\hss}}\hskip3pt}
+
+%========definition========%
+\def\college#1{\gdef\@college{#1}}
+\def\@college{\@latex@warning@no@line{No \noexpand\college given}}
+
+\def\department#1{\gdef\@department{#1}}
+\def\@department{\@latex@warning@no@line{No \noexpand\department given}}
+
+\def\class#1{\gdef\@class{#1}}
+\def\@class{\@latex@warning@no@line{No \noexpand\class given}}
+
+\def\student#1{\gdef\@student{#1}}
+\def\@student{\@latex@warning@no@line{No \noexpand\student given}}
+
+\def\yourtitle#1{\gdef\@yourtitle{#1}}
+\def\@yourtitle{\@latex@warning@no@line{No \noexpand\yourtitle given}}
+
+\def\place#1{\gdef\@place{#1}}
+\def\@place{\@latex@warning@no@line{No \noexpand\place given}}
+
+\def\beginyear#1{\gdef\@beginyear{#1}}
+\def\@beginyear{\@latex@warning@no@line{No \noexpand\beginyear given}}
+
+\def\beginmonth#1{\gdef\@beginmonth{#1}}
+\def\@beginmonth{\@latex@warning@no@line{No \noexpand\beginmonth given}}
+
+\def\begindate#1{\gdef\@begindate{#1}}
+\def\@begindate{\@latex@warning@no@line{No \noexpand\begindate given}}
+
+\def\endyear#1{\gdef\@endyear{#1}}
+\def\@endyear{\@latex@warning@no@line{No \noexpand\endyear given}}
+
+\def\endmonth#1{\gdef\@endmonth{#1}}
+\def\@endmonth{\@latex@warning@no@line{No \noexpand\endmonth given}}
+
+\def\enddate#1{\gdef\@enddate{#1}}
+\def\@enddate{\@latex@warning@no@line{No \noexpand\enddate given}}
+
+
+
 
 
 %=====color=========%
@@ -200,12 +241,12 @@
 %	\pagestyle{document}
 %
 %== frontmatter ==%
-\def\frontmatter{%
-		\cleardoublepage
-	\pagestyle{document}\pagenumbering{roman}}
-	\def\mainmatter{%
-		\cleardoublepage
-		\pagestyle{document}\pagenumbering{arabic}}	
+%\def\frontmatter{%
+	%	\cleardoublepage
+	%\pagestyle{document}\pagenumbering{roman}}
+	%\def\mainmatter{%
+		%\cleardoublepage
+		%\pagestyle{document}\pagenumbering{arabic}}	
 	
 
 %设置行距
@@ -319,8 +360,19 @@
 
 
 %==============封面及任务书===========%
+\NewEnviron{ulfield1}[2][5]{#2 \CJKunderline*{\BODY\hfill}
+\par\ifnum\prevgraf<#1
+\newcount\numberoflines
+\numberoflines=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\numberoflines 1 \ifnum\numberoflines<#1 \repeat
+\fi}
 
-%这个嘛，到时再处理
+\NewEnviron{ulfield2}[2][5]{#2 \par\CJKunderline*{\BODY\hfill}
+\par\ifnum\prevgraf<#1
+\newcount\numberoflines
+\numberoflines=\prevgraf
+\loop \par\noindent\CJKunderline{\hfill}\advance\numberoflines 1 \ifnum\numberoflines<#1 \repeat
+\fi}
 
 %====== Abstract ======%
 

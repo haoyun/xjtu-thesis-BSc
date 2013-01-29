@@ -26,19 +26,20 @@
 
 % 这里缺少题头，利用minipage结合表格来制作。
 %字距得调一下
-\begin{minipage}[t]{1\linewidth} 
+\begin{minipage}[b]{1\linewidth} 
 \hskip 2cm
-\begin{tabular*}{0.3\linewidth}{lp{1cm}}
-{\bf \LARGE 西安交通大学 }
+\begin{tabular*}{0.3\linewidth}{lp{5cm}}
+{\ziju{0.5}{\bfseries \LARGE 西安交通大学 }}
 \end{tabular*}
-\hskip 2.5cm
-\begin{tabular*}{0.2\linewidth}{lp{2cm}}
-系（所） &\\
-系（所）主任&\\
-批准日期 & \\ 
+\hskip 2cm
+\begin{tabular*}{0.5\linewidth}{lp{6cm}}
+{\ziju{2.2}系（所）}\myunderline{  \hfill}\\
+系（所）主任\myunderline{ \hfill}\\
+{\ziju{0.7}批准日期 }\myunderline{ \hfill}\\ 
 \end{tabular*}
  \end{minipage}
-\vspace{1em}
+ 
+\vspace{0.9em}
 
 
 \begin{center}\bfseries\huge % 具体的字号我不清楚，需要改一下
@@ -111,15 +112,17 @@
 
 
 \vspace{2.5em}
-\begin{minipage}[t]{1\linewidth} 
+\begin{minipage}[b]{1\linewidth} 
 \begin{tabular*}{0.2\linewidth}{lp{2cm}}
-（注：由指导教师填写）
+\quad  \\
+\quad \\
+（注：由指导教师填写）\\
 \end{tabular*}
-\hskip 5cm
-\begin{tabular*}{0.2\linewidth}{lp{2cm}}
-指导教师&\\
-接受设计（论文）任务日期&\\
-学生签名 &\\ 
+\hskip 3cm
+\begin{tabular*}{0.5\linewidth}{lp{6cm}}
+指导教师\myunderline[18]{}\hfill\\
+接受设计（论文）任务日期\myunderline[10]{}\hfill\\
+\hskip 8\ccwd 学生签名 \myunderline[10]{}\hfill\\ 
 \end{tabular*}
  \end{minipage}
  
@@ -136,8 +139,10 @@
 \newpage
 
 \parindent=2\ccwd
+
 \begin{center}
-\bfseries \LARGE西安交通大学
+{\ziju{1.5}\bfseries \LARGE西安交通大学}
+\vspace{-\ccwd}
 \end{center}
 
 \begin{center}
@@ -150,16 +155,16 @@
 \vspace{2\ccwd}
 
 指导教师对学生\myunderline[10]{\@student}所完成课题为~\CJKunderline*{\@yourtitle}~的毕业设计(论文)进行的情况，
-\begin{ulfield1}[5]{完成的质量及评分的意见：}
-可以使用
+\begin{ulfield1}[7]{完成的质量及评分的意见：}
+
 \end{ulfield1}
 
-
+\vspace{\ccwd}
 \begin{minipage}[t]{1\linewidth} 
-\hskip 11cm
-\begin{tabular*}{0.2\linewidth}{lp{2cm}}
-指导教师&\\
-\quad 年  \quad 月 \quad 日\\
+\hskip 8.3cm
+\begin{tabular*}{0.5\linewidth}{lp{5cm}}
+指导教师\myunderline[11]{}\\
+\hskip 2cm \quad 年 \quad 月 \quad 日\\
 \end{tabular*}
  \end{minipage}
 
@@ -172,18 +177,16 @@
 \end{center}
 
 
-\begin{ulfield1}[7]{评审意见：}
-当你整理一个大型文档时，LATEX 的一些专门功能，例如自动生成索引、管理参
-考文献等等，会给你以很大的帮助。详细的关于LATEX 专业功能以及增强功能的
-描述可以在LATEX Manual
+\begin{ulfield1}[6]{评审意见：}
+
 \end{ulfield1}
 
-
+\vspace{\ccwd}
 \begin{minipage}[t]{1\linewidth} 
-\hskip 8cm
-\begin{tabular*}{0.2\linewidth}{lp{2cm}}
-评阅人            &   职称  \\
-\quad 年  \quad 月 \quad 日\\
+\hskip 6cm
+\begin{tabular*}{0.2\linewidth}{lp{6cm}}
+评阅人\myunderline[8.5]{}& 职称\myunderline[6]{}  \\
+ &  年  \quad 月 \quad 日\\
 \end{tabular*}
  \end{minipage}
  
@@ -196,32 +199,36 @@
 %===============毕业设计(论文)答辩结果==============%
 \newpage
 \parindent=2\ccwd
+
 \begin{center}
-\vspace{\ccwd}
+  \quad  \\
+  \quad    \\
 {\huge\bfseries   毕业设计(论文)答辩结果 } \\
-{ \bfseries  \LARGE    \myunderline[5]{}    院          \\                      
-                                 \myunderline[5]{}   系(专业)   \\}
-
 \vspace{\ccwd}
+{ \bfseries  \LARGE    \myunderline[8]{}    院        }  \\                      
+\hskip 3.5\ccwd{ \bfseries  \LARGE    \myunderline[8]{}    系(专业)   }\\
 \end{center}
-\sectionmark{\small 毕业设计(论文)答辩结果}
-\par\noindent\myunderline[10]{\@college}~院~\myunderline[10]{\@department}~系(专业)~\myunderline[8]{\@class}~班
-\vspace{2\ccwd}
 
-毕业设计(论文)答辩组对学生\myunderline[10]{\@student}所完成课题为~\CJKunderline*{\@yourtitle}~的毕业设计(论文)经过答辩,其意见为
-\begin{ulfield1}[7]{评审意见：}
-当你整理一个大型文档时，LATEX 的一些专门功能，例如自动生成索引、管理参
-考文献等等，会给你以很大的帮助。详细的关于LATEX 专业功能以及增强功能的
-描述可以在LATEX Manual
+
+\sectionmark{\small 毕业设计(论文)答辩结果}
+
+毕业设计(论文)答辩组对学生\myunderline[10]{}所完成
+\begin{ulfield1}[3]{课题为}
+\end{ulfield1}
+\newline 的毕业设计(论文)经过答辩,
+\begin{ulfield1}[7]{其意见为：}
 \end{ulfield1}
 \newline 并确定成绩为~\CJKunderline*{\hfill}
 
-
+\vspace{6\ccwd}
 \begin{minipage}[t]{1\linewidth} 
-\hskip 8cm
-\begin{tabular*}{0.2\linewidth}{lp{2cm}}
-毕业设计(论文)答辩组负责人\\
-答辩组成员:  \\
-\quad 年  \quad 月 \quad 日\\
+\hskip 5cm
+\begin{tabular*}{0.2\linewidth}{lp{6cm}}
+毕业设计(论文)答辩组负责人\myunderline[10]{}\\
+答辩组成员:            \myunderline[8]{} \quad  \myunderline[8]{} \\
+
+\hskip 5.8\ccwd     \myunderline[8]{}   \quad    \myunderline[8]{}  \\
+\hskip 5.8\ccwd     \myunderline[8]{}   \quad    \myunderline[8]{}  \\
+ \hskip 12\ccwd    年  \quad 月 \quad 日\\
 \end{tabular*}
  \end{minipage}

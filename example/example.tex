@@ -1,4 +1,13 @@
-\documentclass{xjtubsc}
+\documentclass[truetimes, print]{xjtubsc}
+% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用tex发行版的times字体，几乎没有区别，除了专业人士看不出差别。开启 truetiems 选项须使用 XeLaTeX 编译。
+
+% print 选项会去除超链接的颜色。以供打印。
+\usepackage{blindtext}
+\usepackage{tikz-cd}
+\DeclareMathOperator{\coker}{coker}
+\usetikzlibrary{matrix, calc, arrows}
+
+
 \usepackage{graphicx}
 \usepackage{subfigure} 
 % Comments by hy_haoyun
@@ -22,47 +31,245 @@
 
 
 %\RequirePackage{textcomp}% 如果是pdftex编译的话，upquote需要。
-%\includeonly{}
+
+% 已知问题：
+%	1. 关键词与摘要之间的间距不太合适。
+%	2. 	页眉距定端距离有问题
+
 
 
 \begin{document}
-\makeatletter
 
+
+%================================================
+%	下面填写基本信息
+%================================================
+
+
+% 以下三项是必须的。
+\author{小和尚}{xiao he shang}	%	作者{中文}{英文}
+\title{小和尚犯色戒之检讨}{I'm sorry}	%	题目{中文}{英文}
+\advisor{老和尚}{lao he shang}	%	导师{中文}{英文}
+
+% 如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，下面的信息可以不填。
+
+\college{神学}	%	学院
+\department{佛学}	%	专业（系）
+\class{禅 91}	%	班级
+\place{大渣交}	%	毕设地点
+\beginyear{2012}	%	开始年
+\beginmonth{12}	%	开始月
+\begindate{20}	%	开始日
+\endyear{2012}	%	结束年
+\endmonth{12}	%	结束月
+\enddate{21}	%	结束日
+
+\begin{INFObackground} % 课题的背景、意义及培养目标 
+世人都晓神仙好,惟有功名忘不了!
+古今将相在何方?荒冢一堆草没了.
+世人都晓神仙好,只有金银忘不了!
+终朝只恨聚无多,及到多时眼闭了.
+世人都晓神仙好,只有姣妻忘不了!
+君生日日说恩情,君死又随人去了.
+世人都晓神仙好,只有儿孙忘不了!
+痴心父母古来多,孝顺儿孙谁见了?
+\end{INFObackground}
+
+\begin{INFOdata} % 设计(论文)的原始数据与资料
+陋室空堂,当年笏满床,衰草枯杨,曾为歌舞场.
+蛛丝儿结满雕梁,绿纱今又糊在蓬窗上.
+说什么脂正浓,粉正香,如何两鬓又成霜?
+昨日黄土陇头送白骨,今宵红灯帐底卧鸳鸯.
+金满箱,银满箱,展眼乞丐人皆谤.
+正叹他人命不长,那知自己归来丧!
+训有方,保不定日后作强梁.
+择膏粱,谁承望流落在烟花巷!
+因嫌纱帽小,致使锁枷杠,昨怜破袄寒,今嫌紫蟒长:
+乱烘烘你方唱罢我登场,反认他乡是故乡.
+甚荒唐,
+到头来都是为他人作嫁衣裳!
+\end{INFOdata}
+
+\begin{INFOtask} % 课题的主要任务
+无故寻愁觅恨,有时似傻如狂.
+纵然生得好皮囊,腹内原来草莽.
+潦倒不通世务,愚顽怕读文章.
+行为偏僻性乖张,那管世人诽谤!
+
+富贵不知乐业, 贫穷难耐凄凉.
+可怜辜负好韶光,于国于家无望.
+天下无能第一,古今不肖无双.
+寄言纨绔与膏粱:莫效此儿形状!
+\end{INFOtask}
+
+\begin{INFOrequirement} % 课题的主要任务
+斜阳寒草带重门,苔翠盈铺雨后盆.
+玉是精神难比洁,雪为肌骨易销魂.
+芳心一点娇无力,倩影三更月有痕.
+莫谓缟仙能羽化,多情伴我咏黄昏.
+\end{INFOrequirement}
+
+\begin{INFOsubmit} % 课题的主要任务
+半卷湘帘半掩门,碾冰为土玉为盆.
+偷来梨蕊三分白,借得梅花一缕魂.
+月窟仙人缝缟袂,秋闺怨女拭啼痕.
+娇羞默默同谁诉,倦倚西风夜已昏.
+\end{INFOsubmit}
+
+\begin{INFOreference} % 课题的主要任务
+珍重芳姿昼掩门,自携手瓮灌苔盆.
+胭脂洗出秋阶影,冰雪招来露砌魂.
+淡极始知花更艳,愁多焉得玉无痕.
+欲偿白帝凭清洁,不语婷婷日又昏.
+\end{INFOreference}
+
+%================================================
+%	正文前
+%================================================
 \frontmatter
-%================================= 
-% 以下内容请合并
-%=================================
 
-\include{pages/frontpage}
-% 恢复命令
-\renewcommand{\baselinestretch}{1.6}\selectfont
-\newpage
+\extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
 
-%================================= 
-% 以上内容请合并
-%=================================
+\begin{abstractcn} % 中文摘要
+桃花帘外东风软,桃花帘内晨妆懒.
+帘外桃花帘内人,人与桃花隔不远.
+东风有意揭帘栊,花欲窥人帘不卷.
+桃花帘外开仍旧,帘中人比桃花瘦.
+花解怜人花也愁,隔帘消息风吹透.
+风透湘帘花满庭,庭前春色倍伤情.
+闲苔院落门空掩,斜日栏杆人自凭.
+凭栏人向东风泣,茜裙偷傍桃花立.
+桃花桃叶乱纷纷,花绽新红叶凝碧.
+雾裹烟封一万株,烘楼照壁红模糊.
+天机烧破鸳鸯锦,春酣欲醒移珊枕.
+侍女金盆进水来,香泉影蘸胭脂冷.
+胭脂鲜艳何相类,花之颜色人之泪,
+若将人泪比桃花,泪自长流花自媚.
+泪眼观花泪易干,泪干春尽花憔悴.
+憔悴花遮憔悴人,花飞人倦易黄昏.
+一声杜宇春归尽,寂寞帘栊空月痕!
+\end{abstractcn}
+
+\keywordscn{中文；摘要；关键词} % 中文关键词
+
+\begin{abstracten} % 中文英文
+\Blindtext[2][1] % 测试文字
+\end{abstracten}
+
+\keywordsen{English; Abstract; Key Words; XJTU} % 英文关键词
+
+\tableofcontents % 生成目录
 
 
-
-\include{pages/chabstract}
-\include{pages/enabstract}
-\tableofcontents
-
-
+%================================================
+%	正文
+%================================================
 \mainmatter
-\include{./pages/first}
-\include{./pages/second}
-\include{pages/third}
-\include{pages/fourth}
-\latermatter
+
+\section{绪论}
+这是绪论。绪，绪，绪论的绪，论，论，绪论的论。
+\subsection{二级标题一}
+\blindtext % 测试文字
+\subsection{二级标题二}
+\blinditemize % 测试文字
+\subsubsection{三级标题}
+三级哦，亲！
+
+\section{公式测试}
+这是公式测试。公，公，公式的公，式，式，公式的式。
+\newcommand\abs[1]{\left\lvert#1\right\rvert}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\begin{align}
+\begin{split}\abs{I_1} &= \left\lvert \int_\Omega gRu\diff\Omega\right\rvert\\
+  & \le C_3\left[\int_\Omega\left(\int_{a}^x g(\xi,t)\diff\xi\right)^2\diff\Omega\right]^{1/2}
+       \times\left[\int_\Omega\left\{u^2_x+\frac{1}{k}
+    \left(\int_{a}^x cu_t\diff\xi\right)^2\right\}\diff\Omega\right]^{1/2}\\
+  & \le C_4\left\lvert \left\lvert f\left\lvert \widetilde{S}^{-1,0}_{a,-}W_2(\Omega,\Gamma_l)
+    \right\rvert\right\rvert\left\lvert \abs{u}\overset{\circ}\to W_2^{\widetilde{A}}
+    (\Omega;\Gamma_r,T)\right\rvert\right\rvert.
+\end{split}\\
+\begin{split}\abs{I_2} &= \left\lvert \int_{0}^T \psi(t)\left\{u(a,t)
+  -\int_{\gamma(t)}^a\frac{\diff\theta}{k(\theta,t)}
+  \int_{a}^\theta c(\xi)u_t(\xi,t)\diff\xi\right\}\diff t\right\rvert\\
+  & \le C_6\left\lvert \left\lvert f\int_\Omega\left\lvert \widetilde{S}^{-1,0}_{a,-}
+    W_2(\Omega,\Gamma_l)\right\rvert\right\rvert\left\lvert \abs{u}\overset{\circ}
+    \to W_2^{\widetilde{A}}(\Omega;\Gamma_r,T)\right\rvert\right\rvert.
+\end{split}\tag{\theequation$'$}
+\end{align}
+
+\begin{tikzpicture}[>=triangle 60]
+  \matrix[matrix of math nodes,column sep={60pt,between origins},row
+    sep={60pt,between origins},nodes={asymmetrical rectangle}] (s)
+  {
+    &|[name=ka]| \ker f &|[name=kb]| \ker g &|[name=kc]| \ker h \\
+    %
+    &|[name=A]| A' &|[name=B]| B' &|[name=C]| C' &|[name=01]| 0 \\
+    %
+    |[name=02]| 0 &|[name=A']| A &|[name=B']| B &|[name=C']| C \\
+    %
+    &|[name=ca]| \coker f &|[name=cb]| \coker g &|[name=cc]| \coker h \\
+  };
+  \draw[->] (ka) edge (A)
+            (kb) edge (B)
+            (kc) edge (C)
+            (A) edge (B)
+            (B) edge node[auto] {\(p\)} (C)
+            (C) edge (01)
+            (A) edge node[auto] {\(f\)} (A')
+            (B) edge node[auto] {\(g\)} (B')
+            (C) edge node[auto] {\(h\)} (C')
+            (02) edge (A')
+            (A') edge node[auto] {\(i\)} (B')
+            (B') edge (C')
+            (A') edge (ca)
+            (B') edge (cb)
+            (C') edge (cc)
+  ;
+  \draw[->,gray] (ka) edge (kb)
+                 (kb) edge (kc)
+                 (ca) edge (cb)
+                 (cb) edge (cc)
+  ;
+  \draw[->,gray,rounded corners] (kc) -| node[auto,text=black,pos=.7]
+    {\(\partial\)} ($(01.east)+(.5,0)$) |- ($(B)!.35!(B')$) -|
+    ($(02.west)+(-.5,0)$) |- (ca);
+\end{tikzpicture}
+
+
+\section{图表测试}
+这是图表测试。图，图，图表的图，表，表，图表的表。
+\subsection{二级标题1}
+\subsection{二级标题2}
+\subsubsection{三级标题}
+三级哦，亲！
+
+
+
+%================================================
+%	正文后
+%================================================
+\backmatter
+
+
 \mybibliography{ref/refs}
-\include{pages/appendix}
+
+
+
+\appendixs{易筋经}
+
+
+\appendixs{易筋经}
+
+
+
 %如果用 pdflatex编译，代码38行报错。应该是分页导致的，
 %这个问题急需解决。根本原因应该在于T1的字体编码。
-\include{pages/appendix1}
-\include{pages/denotation}
-\include{pages/thanks}
 
+\include{pages/denotation}
+
+\begin{acknowledgment}
+感谢党，感谢国家，感谢蛤蛤。
+\end{acknowledgment}
 
 
 

@@ -287,7 +287,7 @@
 \def\sectionname{}
 \titleformat{\section} 
 	[hang]
-	{\vspace*{2ex}\filcenter\LARGE\bfseries} % 一级标题三号\LARGE
+	{\filcenter\LARGE\bfseries} % 一级标题三号\LARGE
 	{\sectionname\thesection}
 	{1em}{}[] 
 \titleformat{\subsection}
@@ -302,17 +302,17 @@
 	{1em}{}[]
 \titlespacing{\section}
 	{0pt}
-	{3\baselineskip plus 1ex minus .2ex}
+	{2.2\ccwd plus 1ex minus .2ex}
 	{2\baselineskip plus .2ex}
 \titlespacing{\subsection}
 	{0pt}
-	{9.4mm}%1\baselineskip plus 1ex minus .2ex}
+	{9.4mm plus 1ex minus .2ex}%1\baselineskip plus 1ex minus .2ex}
 	{.5\baselineskip plus .2ex}
 \titlespacing{\subsubsection}
 	{0pt}
 	{.5\baselineskip plus 1ex minus .2ex}
 	{0pt plus .2ex}
-\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\sectionbreak}{\clearpage\vspace*{0pt}}
 
 %====== captions ======%
 

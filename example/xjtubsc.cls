@@ -287,7 +287,7 @@
 \def\sectionname{}
 \titleformat{\section} 
 	[hang]
-	{\filcenter\LARGE\bfseries} % 一级标题三号\LARGE
+	{\vspace*{2ex}\filcenter\LARGE\bfseries} % 一级标题三号\LARGE
 	{\sectionname\thesection}
 	{1em}{}[] 
 \titleformat{\subsection}
@@ -306,7 +306,7 @@
 	{2\baselineskip plus .2ex}
 \titlespacing{\subsection}
 	{0pt}
-	{1\baselineskip plus 1ex minus .2ex}
+	{9.4mm}%1\baselineskip plus 1ex minus .2ex}
 	{.5\baselineskip plus .2ex}
 \titlespacing{\subsubsection}
 	{0pt}
@@ -471,9 +471,9 @@
 {
 \sectionmark{\small 参考文献}
 \bibliographystyle{GBT7714-2005NLang-UTF8-mod}
-\renewcommand{\refname}{\huge 参考文献}
 \mbox{}
 \addcontentsline{toc}{section}{参考文献}
+%\renewcommand{\refname}{\small 参考文献}
 \bibliography{#1}
 }
 

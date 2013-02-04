@@ -44,7 +44,7 @@
 \RequirePackage[fleqn]{mathtools} % advanced than amsmath
 %\usepackage[title,titletoc]{appendix}
 \RequirePackage{titlesec, titleps}
-\RequirePackage{ifxetex}
+\RequirePackage{ifxetex, ifpdf}
 \RequirePackage{caption}
 \RequirePackage[numbers,sort&compress]{natbib}
 \RequirePackage{hypernat}
@@ -138,6 +138,11 @@
 	}
 \fi
 
+%====== microtype ======%
+\ifpdf
+\usepackage{microtype}
+\fi
+
 %====== English Font =====%
 \ifXJTU@times
 	\RequireXeTeX
@@ -145,6 +150,7 @@
 \else
 	\usepackage[scaled=.93]{newtxtext}
 	\RequirePackage{newtxmath}
+	\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
 \fi
 % Comments by hy_haoyun
 %	Times New Roman MT Std or Times New Roman

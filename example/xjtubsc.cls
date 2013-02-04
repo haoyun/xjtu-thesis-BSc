@@ -1,20 +1,31 @@
 % !Mode:: "TeX:UTF-8"
-%%
-%%
-%%  MCMTHESIS.cls  CopyLeft 2011/8/24 by
-%%  wanghongxin <>
-%%  hugo <>
-%%  hy_haoyun <haoyun_tex@163.com>
-%%
-%%  Department of mathematics, School of science, Xi'an JIaotong University
-%%  No.28, Xianning West Road, Xi'an, Shaanxi, 710049, P.R. China
-%%
-%% This program is (description HERE!)
-%%
-%% This program is free software: 
-%% 
-%% LPPL license HERE!
-%%
+%
+%
+%  MCMTHESIS.cls  CopyLeft 2011/8/24 by
+%  wanghongxin <>
+%  hugo <>
+%  hy_haoyun <haoyun_tex@163.com>
+%
+%  Department of mathematics, School of science, Xi'an JIaotong University
+%  No.28, Xianning West Road, Xi'an, Shaanxi, 710049, P.R. China
+%
+% This program is (description HERE!)
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is M. Y. Name.
+%
+% This work consists of the files pig.dtx and pig.ins
+% and the derived file pig.sty.
+
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{xjtubsc}[2012/12/20 xjtuthesis Ver 1.0]

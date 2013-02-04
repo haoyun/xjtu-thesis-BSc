@@ -12,7 +12,7 @@ Authors
 ------
 **Wang Hongxin** [@github](https://github.com/wanghongxin)
 
-**Qin Yuguo** [@github](https://bitbucket.org/FireUponSKy), [@bitbucket](https://bitbucket.org/FireUponSky)
+**Qin Yuguo** [@github](https://github.com/FireUponSKy), [@bitbucket](https://bitbucket.org/FireUponSky)
 
 **Hao Yun** [@github](https://github.com/haoyun), [@bitbucket](https://bitbucket.org/haoyun)
 
@@ -41,9 +41,9 @@ Todo List
 * 第三级标题的"左起空两字符"实现的很ugly。且其中要求"段前空三行，段后空两行",不知是什么?
 * 且问题在于图像出现得位置，pdf中第12页以后的图像，出现大幅度的空白，是否应调整图像大小。
 * 页眉和页脚：页眉距边界2.0cm，页脚距边界1.75cm。脚注：全文的脚注一律采用五号。
-* 设置参数 print 及 screen，分别对应黑白的和彩色的（超链接、目录等）。
+* ~~设置参数 print 及 screen，分别对应黑白的和彩色的（超链接、目录等）。~~
 * 格式为页眉的文字内容之下划两条横线，线粗1/2磅，线长与页面齐宽。但是磅可能是 bg，即大点，所以页眉线可能有问题。
-* 把任务表书内容整合。
+* ~~把任务表书内容整合。~~
 * 编写完整的文档。
 * 编写常宏包文件，类似thutils.sty(清华的)，内含各种包的加载，配置等。供初级用户使用。
 * 清理没用的注释。

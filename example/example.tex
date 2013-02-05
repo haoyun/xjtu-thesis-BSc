@@ -1,12 +1,18 @@
-\documentclass[print]{xjtubsc}
-% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用tex发行版的times字体，几乎没有区别，除了专业人士看不出差别。开启 truetiems 选项须使用 XeLaTeX 编译。
+\documentclass[truetimes,
+               print, 
+               timesmath
+              ]{xjtubsc}
 
-% print 选项会去除超链接的颜色。以供打印。
+% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用tex发行版的times字体，几乎没有区别，除了专业人士看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则请删除truetiems。推荐开启。
+
+% print 选项会去除超链接的颜色。以供打印。根据需求开启。
+
+% timesmath 将会使用times风格的数学字体，以使与正文的times英文字体更加搭配。根据需求开启。
+
 \usepackage{blindtext}
 \usepackage{tikz-cd}
 \DeclareMathOperator{\coker}{coker}
 \usetikzlibrary{matrix, calc, arrows}
-
 
 \usepackage{graphicx}
 \usepackage{subfigure} 
@@ -28,9 +34,6 @@
 	language=matlab,
 }
 \graphicspath{{figures/}}
-
-
-%\RequirePackage{textcomp}% 如果是pdftex编译的话，upquote需要。
 
 % 已知问题：
 %	1. 关键词与摘要之间的间距不太合适。
@@ -236,6 +239,8 @@
 \end{tikzpicture}
 
 
+äöüßÄÖÜ
+
 \section{图表测试}
 这是图表测试。图，图，图表的图，表，表，图表的表。
 \subsection{二级标题1}
@@ -254,10 +259,12 @@
 \mybibliography{ref/refs}
 
 
+\begin{lstlisting}
+\end{lstlisting}
 
 \appendixs{易筋经}
-
-
+\blindmathpaper
+\blindmathpaper
 \appendixs{易筋经}
 
 

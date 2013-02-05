@@ -35,9 +35,11 @@
 
 \newif\ifXJTU@print \XJTU@printfalse
 \newif\ifXJTU@times \XJTU@timesfalse
+\newif\ifXJTU@timesmath \XJTU@timesmathfalse
 
 \DeclareOption{print}{\XJTU@printtrue}
 \DeclareOption{truetimes}{\XJTU@timestrue}
+\DeclareOption{timesmath}{\XJTU@timesmathtrue}
 \DeclareOption{c5size}{\OptionNotUsed}
 \DeclareOption{twocolumn}{\OptionNotUsed}
 
@@ -151,7 +153,7 @@
 
 %====== microtype ======%
 \ifpdf
-\usepackage{microtype}
+	\usepackage{microtype}
 \fi
 
 %====== English Font =====%
@@ -159,29 +161,31 @@
 	\RequireXeTeX
 	\setmainfont{Times New Roman}
 \else
-	\usepackage[scaled=.93]{newtxtext}
-	\RequirePackage{newtxmath}
-	\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+	\ifxetex
+		\setmainfont{TeX Gyre Termes}
+	\else
+		\usepackage[scaled=.93]{newtxtext}
+		\RequirePackage{textcomp}	
+		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+	\fi
 \fi
+
+\ifXJTU@timesmath
+	\ifxetex
+		\RequirePackage{unicode-math}
+		\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TG Termes Math}
+	\else
+		\RequirePackage{newtxmath}
+	\fi
+\fi
+
 % Comments by hy_haoyun
-%	Times New Roman MT Std or Times New Roman
-%	I use Windows 7, the fontname is Times New Roman.
-%	It's dilivered with Win7 and provied by Monotype.
-%	Is Times New Roman MT Std Adobe's font?
-%	There are many alternatives for Times-like font.
-%	Option 1:
-%		\RequirePackage[scaled=.93]{newtxtext}
-%		\RequirePackage{newtxmath}  % I think we can add an option for set mathfont in Times.
-%			%or \RequirePackage{mathptmx}  
-%		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ } % for XeTeX only.
-%	Option 2:
-%		\RequirePackage{times}
-%	Option 3:
-%		\setmainfont{TeX Gyre Termes}
-%	Option 4:
-%		\usepackage{unicode-math}
-%		\setmainfont{XITS}
-%		\setmathfont{XITS Math}
+% 	Other options about times font:
+%	mathptmx (package)
+%	times (package)
+%	TeX Gyre Termes (font)
+%	TeX Gyre Termes math (font)
+
 
 %====== 字体属性 ======%
 

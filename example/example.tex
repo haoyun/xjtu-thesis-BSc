@@ -1,28 +1,24 @@
-\documentclass[truetimes,
+\documentclass[%truetimes,
                print, 
                timesmath
               ]{xjtubsc}
 
-% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用tex发行版的times字体，几乎没有区别，除了专业人士看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则请删除truetiems。推荐开启。
+% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用tex发行版的times字体，几乎没有区别，除了专业人士看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则请删除truetiems。推荐开启。且推荐使用 XeLaTeX。
 
 % print 选项会去除超链接的颜色。以供打印。根据需求开启。
 
 % timesmath 将会使用times风格的数学字体，以使与正文的times英文字体更加搭配。根据需求开启。
 
 \usepackage{blindtext}
+\usepackage[x11names]{xcolor}
 \usepackage{tikz-cd}
 \DeclareMathOperator{\coker}{coker}
 \usetikzlibrary{matrix, calc, arrows}
 
 \usepackage{graphicx}
-\usepackage{subfigure} 
-% Comments by hy_haoyun
-% Note the subfigure is old-fashioned.
-% We'd better use subfig instead.
-% But I don't have enough time to modify the example.
+\usepackage{subfig}
 \usepackage{booktabs}
 \usepackage{listings}
-\usepackage{xcolor}
 \lstset{upquote,
 	keepspaces=true,
 	columns=spaceflexible,
@@ -33,6 +29,11 @@
 	xrightmargin=6pt,%
 	language=matlab,
 }
+\lstset{extendedchars=false}
+% 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
+% 参考 http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
+
+
 \graphicspath{{figures/}}
 
 % 已知问题：
@@ -259,7 +260,70 @@
 \mybibliography{ref/refs}
 
 
+
 \begin{lstlisting}
+close all;
+clc;
+clear all;
+lam=10/20^2;
+eps=0.00001;
+p=1/2;
+I=imread('001.bmp');
+J=I;
+MASK=J;
+[width,height] = size(MASK);
+U=double(J);
+V=double(J);
+T=double(J);
+n=1;
+IterTimes=100;
+p=1/2;
+I=imread('001.bmp');
+J=I;
+MASK=J;
+[width,height] = size(MASK);
+U=double(J);
+V=double(J);
+T=double(J);
+n=1;
+IterTimes=100;p=1/2;
+I=imread('001.bmp');
+J=I;
+MASK=J;
+[width,height] = size(MASK);
+U=double(J);
+V=double(J);
+T=double(J);
+n=1;
+IterTimes=100;
+while n<=IterTimes
+for i=2:(width-1)
+for j=2:(height-1)
+gridUe2=(eps^2+(V(i+1,j)-V(i,j))^2+
+         (1.0/4)*(V(i+1,j+1)-V(i+1,j-1))^2)^((2-p)/2);
+gridUw2=(eps^2+(V(i,j)-V(i-1,j))^2+
+         (1.0/4)*(V(i-1,j+1)-V(i-1,j-1))^2)^((2-p)/2);
+gridUn2=(eps^2+(V(i,j)-V(i,j+1))^2+
+         (1.0/4)*(V(i+1,j+1)-V(i-1,j+1))^2)^((2-p)/2);
+gridUs2=(eps^2+(V(i,j)-V(i,j-1))^2+
+         (1.0/4)*(V(i+1,j-1)-V(i-1,j-1))^2)^((2-p)/2);
+we=1/gridUe2;
+ww=1/gridUw2;
+wn=1/gridUn2;
+ws=1/gridUs2;
+sum=we+ww+wn+ws;
+h0=lam/(lam+sum);
+U(i,j)=(ww*V(i-1,j)+we*V(i+1,j)+wn*V(i,j+1)+
+		ws*V(i,j-1))/(lam+sum)+h0*T(i,j);
+V(i,j)=U(i,j);
+end
+end
+n=n+1;
+V=U;
+end
+V=U;
+figure;
+imshow(uint8(V));
 \end{lstlisting}
 
 \appendixs{易筋经}
@@ -267,17 +331,11 @@
 \blindmathpaper
 \appendixs{易筋经}
 
-
-
-%如果用 pdflatex编译，代码38行报错。应该是分页导致的，
-%这个问题急需解决。根本原因应该在于T1的字体编码。
-
 \include{pages/denotation}
 
 \begin{acknowledgment}
 感谢党，感谢国家，感谢蛤蛤。
 \end{acknowledgment}
-
 
 
 \end{document} 

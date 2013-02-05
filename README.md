@@ -49,8 +49,8 @@ Todo List
 * 编写空模板，替代example文件夹中的文件。模板参考清华TEXMF-DIST/doc/latex/thuthesis/example.main。
 * 在pdflatex进行测试。
 * 决定是否依赖 xeCJKfntef.
-* 在 pdflatex 下，代码的分页有问题，可能与times字体编码T1有关。
-* SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。（需要加载带参数的xcolor，with option x11names）
+* ~~在 pdflatex 下，代码的分页有问题，可能与times字体编码T1有关。~~
+* ~~SeaGreen4那个颜色在lstlisting环境出现注释的时候提示无法找到。（需要加载带参数的xcolor，with option x11names）~~
 * 脚注的加圈编号进行了改写，但是需要依赖两个符号宏包。需要改进。原始实现方法在pdflatex下无法编译。原因未知。
 * 完善文档选项，例如 ~~screen/print~~, winfonts/nofonts 等。可以参考 daiweisi的xjtuthesis（垃圾产品） 以及其他学校的模板。
 * ~~规范命令名称。~~

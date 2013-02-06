@@ -78,18 +78,18 @@
 \def\XJTU@class{\@latex@warning@no@line{No \noexpand\class given}}
 \def\place#1{\gdef\XJTU@place{#1}} % 地点
 \def\XJTU@place{\@latex@warning@no@line{No \noexpand\place given}}
-\def\beginyear#1{\gdef\XJTU@beginyear{#1}} % 开始年
-\def\XJTU@beginyear{\@latex@warning@no@line{No \noexpand\beginyear given}}
-\def\beginmonth#1{\gdef\XJTU@beginmonth{#1}} % 开始月
-\def\XJTU@beginmonth{\@latex@warning@no@line{No \noexpand\beginmonth given}}
-\def\begindate#1{\gdef\XJTU@begindate{#1}} % 开始日
-\def\XJTU@begindate{\@latex@warning@no@line{No \noexpand\begindate given}}
-\def\endyear#1{\gdef\XJTU@endyear{#1}} % 结束年
-\def\XJTU@@endyear{\@latex@warning@no@line{No \noexpand\endyear given}}
-\def\endmonth#1{\gdef\XJTU@endmonth{#1}} % 结束月
-\def\XJTU@endmonth{\@latex@warning@no@line{No \noexpand\endmonth given}}
-\def\enddate#1{\gdef\XJTU@enddate{#1}} % 解释日
-\def\XJTU@enddate{\@latex@warning@no@line{No \noexpand\enddate given}}
+
+% 以下参考资料 http://tex.stackexchange.com/questions/41996/how-do-i-split-a-date
+\def\XJTU@begindate#1/#2/#3.{\gdef\XJTU@byear{#1}\gdef\XJTU@bmonth{#2}\gdef\XJTU@bday{#3}}
+\def\bdate#1{{\edef\XJTU@tempbdate{#1}\expandafter\XJTU@begindate\XJTU@tempbdate.}}
+\def\XJTU@enddate#1/#2/#3.{\gdef\XJTU@eyear{#1}\gdef\XJTU@emonth{#2}\gdef\XJTU@eday{#3}}
+\def\edate#1{{\edef\XJTU@tempedate{#1}\expandafter\XJTU@enddate\XJTU@tempedate.}}
+\def\XJTU@byear{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@bmonth{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@bday{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@eyear{\@latex@warning@no@line{No \noexpand\edate given}}
+\def\XJTU@emonth{\@latex@warning@no@line{No \noexpand\edate given}}
+\def\XJTU@eday{\@latex@warning@no@line{No \noexpand\edate given}}
 
 % Comment by hy_haoyun
 %	The following interface is not perfect.
@@ -121,7 +121,7 @@
 \loop \par\noindent\CJKunderline{\hfill}\advance\numberoflines 1 \ifnum\numberoflines<#1 \repeat
 \fi}
 
-% 如下参考 http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
+% 以下参考 http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
 \NewEnviron{INFObackground}{\global\let\XJTU@field@background\BODY} % background significance goal
 \def\XJTU@field@background{\@latex@warning@no@line{No \noexpand\XJTU@field@background given}}
 \NewEnviron{INFOdata}{\global\let\XJTU@field@data\BODY} % data
@@ -367,12 +367,10 @@
 }
 \begin{center}
 	{\XJTU@abstract@cn\vspace{-.5em}\vspace {\z@}}
-\end{center} \par
+\end{center}\par
 }{\par}
 
-% Comment by hy_haoyun:
-%	我想知道下面的这些距离是从哪里抄来的？
-\newcommand{\keywordscn}[1]{\hskip-0.92cm{\vspace{1ex} \small {\bfseries 关键词：}#1}\relax}
+\newcommand{\keywordscn}[1]{\vspace{\baselineskip}\par\noindent \small {\bfseries 关键词：}#1}
 
 %=== English ===%
 \newcommand{\XJTU@abstract@en}{\LARGE ABSTRACT}
@@ -393,9 +391,7 @@
 \setlength\parindent{2\ccwd} % 恢复段首缩进
 \par}
 
-% Comment by hy_haoyun:
-%	我想知道下面的这些距离是从哪里抄来的？
-\newcommand{\keywordsen}[1]{\hskip -0.88cm{\vspace{1ex}\small {\bfseries KEY WORDS ：}#1}\relax}
+\newcommand{\keywordsen}[1]{\vspace{\baselineskip}\par\noindent \small {\bfseries KEY WORDS ：}#1}
 
 %====== Table of Contents ======%
 
@@ -527,8 +523,181 @@
 
 \ifXJTU@front
 	\newcommand{\extrapages}{%
-	\frontmatter\makeatletter
-	\input{frontpage.cfg}
+	\frontmatter
+	\makeatletter
+	
+%===========================================
+%	开始 extrapages
+%===========================================
+
+%===========================================
+%	毕业设计(论文)任务书
+%===========================================
+
+\parindent=0pt
+%\setlength\parskip{1ex}
+\renewcommand{\baselinestretch}{1.6}\selectfont
+\sectionmark{\small 毕业设计(论文)任务书}
+
+\begin{center}
+\begin{minipage}[c]{.55\textwidth}\centering
+	{\ziju{0.5}{\bfseries\songti\huge 西安交通大学}}
+\end{minipage}%
+\begin{minipage}[c]{.35\textwidth}
+	\begin{tabular}{rl}
+		系\hfill(\hfil所\hfil)&\XJTU@uline{}\\
+		系\hfil(所)\hfil主\hfil任&\XJTU@uline{}\\
+		批\hfil准\hfil日\hfil期&\XJTU@uline{}
+	\end{tabular}
+\end{minipage}
+\end{center}
+
+\vspace{\baselineskip}
+
+\begin{center}
+	{\songti\bfseries\huge 毕业设计(论文)任务书} % 字号可能需要修改一下
+	\vspace{\baselineskip}
+\end{center}
+
+
+\XJTU@uline{\XJTU@college}~院~\XJTU@uline{\XJTU@department}~系~\XJTU@uline{\XJTU@class}~班\hspace{\ccwd}学生\CJKunderline{\hfill \XJTU@author@cn \hfill}
+
+毕业设计(论文)课题\hspace{1ex}\CJKunderline{\hfill \XJTU@title@cn \hfill}
+
+毕业设计(论文)工作自~\XJTU@uline[3]{\XJTU@byear}~年~\XJTU@uline[2]{\XJTU@bmonth}~月~\XJTU@uline[1.5]{\XJTU@bday}~日起至\XJTU@uline[3]{\XJTU@eyear}~年~\XJTU@uline[2]{\XJTU@emonth}~月~\XJTU@uline[1.5]{\XJTU@eday}~日止
+
+毕业设计(论文)进行地点\hspace{1ex}\CJKunderline{\hfill \XJTU@place \hfill}
+
+\begin{fieldbreak}[5]{课题的背景、意义及培养目标}
+	\XJTU@field@background
+\end{fieldbreak}
+
+\begin{fieldbreak}[6]{设计(论文)的原始数据与资料}
+	\XJTU@field@data
+\end{fieldbreak}
+
+\begin{fieldbreak}[7]{课题的主要任务}
+	\XJTU@field@task
+\end{fieldbreak}
+
+\begin{fieldbreak}[7]{课题的基本要求(工程设计类题应有技术经济分析要求)}
+	\XJTU@field@requirement
+\end{fieldbreak}
+
+\begin{fieldbreak}[6]{完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)}
+	\XJTU@field@submit
+\end{fieldbreak}
+
+\begin{fieldbreak}[6]{主要参考文献}
+	\XJTU@field@reference
+\end{fieldbreak}
+
+\vspace{\baselineskip}
+
+\begin{center}
+\begin{minipage}[b]{.4\textwidth}\centering
+\relax\vfill
+（注：由指导教师填写）
+\end{minipage}%
+\begin{minipage}[b]{.6\textwidth}
+	\begin{flushright}
+		指导教师\XJTU@uline[18]{}
+
+		接受设计（论文）任务日期\XJTU@uline[10]{}
+
+		学生签名 \XJTU@uline[10]{}
+	\end{flushright}
+\end{minipage}%
+\end{center}
+ 
+%===========================================
+%	毕业设计(论文)考核评议书、毕业设计(论文)评审意见书
+%===========================================
+
+\newpage\vspace*{0pt}
+\parindent=2\ccwd
+\sectionmark{\small 毕业设计(论文)考核评议书}
+
+\begin{center}
+	{\ziju{1.5}\bfseries\songti\LARGE 西安交通大学}
+	
+	\vspace{.5\baselineskip}
+	{\huge\bfseries\songti 毕业设计(论文)考核评议书}
+\end{center}
+
+\noindent\XJTU@uline[10]{\XJTU@college}~院~\XJTU@uline[10]{\XJTU@department}~系(专业)~\XJTU@uline[8]{\XJTU@class}~班级
+
+\vspace{\baselineskip}
+
+指导教师对学生\XJTU@uline[10]{\XJTU@author@cn}所完成课题为
+\begin{fieldinline}[2]{}\XJTU@title@cn\end{fieldinline}
+\par\noindent 的毕业设计(论文)进行的情况，完成的质量及评分的意见：
+\begin{fieldinline}[7]{}\end{fieldinline}
+
+\begin{flushright}
+指导教师\XJTU@uline[13]{}
+
+{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+\begin{center}
+	{\huge\bfseries\songti 毕业设计(论文)评审意见书}
+	\vspace{\baselineskip}
+\end{center}
+
+\begin{fieldinline}[6]{评审意见：}\end{fieldinline}
+
+\begin{flushright}
+评阅人\XJTU@uline[9]{} 职称\XJTU@uline[7]{}
+
+{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+%===========================================
+%	毕业设计(论文)答辩结果
+%===========================================
+
+\newpage\vspace*{\baselineskip}
+\sectionmark{\small 毕业设计(论文)答辩结果}
+% The \vspace command adds the vertical space length, i.e., a rubber length. length can be negative or positive. Ordinarily, LaTeX removes vertical space added by \vspace at the top or bottom of a page. With the optional * argument, the space is not removed.
+
+\begin{center}
+	{\huge\bfseries\songti 毕业设计(论文)答辩结果 }
+
+	\bigskip
+	\begin{tabular}{rl}
+		\XJTU@uline[8]{\XJTU@college} & {\large\bfseries\songti 院} \\                      
+		\XJTU@uline[8]{\XJTU@department} & \large\bfseries\songti{系(专业)}
+	\end{tabular}
+\end{center}
+
+\vspace{\baselineskip}
+
+毕业设计(论文)答辩组对学生\XJTU@uline[10]{\XJTU@author@cn}所完成课题为
+\begin{fieldinline}[3]{}\XJTU@title@cn\end{fieldinline}
+\par\noindent 的毕业设计(论文)经过答辩，其意见为：
+\begin{fieldinline}[7]{}\end{fieldinline}
+
+\vspace{\baselineskip}\noindent 并确定成绩为~\CJKunderline*{\hfill}
+
+\vspace{4\baselineskip}
+\begin{flushright}
+毕业设计(论文)答辩组负责人\XJTU@uline[10]{}
+
+答辩组成员: \XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
+
+\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
+
+\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
+
+{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+\renewcommand{\baselinestretch}{1.2}\selectfont
+%===========================================
+%	结束 extrapages
+%===========================================
+
 	\makeatother
 	\XJTU@frontfalse
 }

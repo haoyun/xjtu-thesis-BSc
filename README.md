@@ -55,3 +55,4 @@ Todo List
 * 完善文档选项，例如 ~~screen/print~~, winfonts/nofonts 等。可以参考 daiweisi的xjtuthesis（垃圾产品） 以及其他学校的模板。
 * ~~规范命令名称。~~
 * 版权信息补全。
+* ~~毕设开始结束日期可以用更简洁的方式实现，而不使用六个命令来实现~~

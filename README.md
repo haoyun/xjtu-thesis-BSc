@@ -57,3 +57,6 @@ Todo List
 * 版权信息补全。
 * ~~毕设开始结束日期可以用更简洁的方式实现，而不使用六个命令来实现~~
 * 在没有使用 \extrapages 时通过 pdfpages 插入word->pdf生成的任务书等。
+* pdflatex 下任务书个别地方对齐有问题。通过使用tabular来修改。
+* 三级标题的缩不准确。
+* pdflatex 下目录颜色设置有问题。print 选项开启时仍为红色。

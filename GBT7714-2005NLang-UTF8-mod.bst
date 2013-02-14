@@ -2254,6 +2254,7 @@ FUNCTION {incollection}                                     %wk
   format.incollection.title output  
   crossref missing$                                         %  Chapter and/or
     {
+      before.all 'output.state :=
     format.in.ed.booktitle output                         %  page numbers can
       format.edition output                                 %  come out via this         %wk  edition->cedition
       new.block
@@ -2337,6 +2338,7 @@ FUNCTION {inproceedings}                                    %wk 改自incollecti
   format.inproceedings.title output  
   crossref missing$                                         %  Chapter and/or
     {
+      before.all 'output.state :=
     format.in.ed.booktitle output                         %  page numbers can
       format.edition output                                 %  come out via this         %wk  edition->cedition
       new.block

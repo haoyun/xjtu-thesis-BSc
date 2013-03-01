@@ -241,8 +241,8 @@
 \setfoot[\thepage][][] % even
 {}{}{\thepage}              % odd
 \renewcommand{\makeheadrule}{%
-\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
-\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
+\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
 } 
 
 \newpagestyle{document}{
@@ -251,8 +251,8 @@
 \setfoot[\thepage][][] % even
 {}{}{\thepage}              % odd
 \renewcommand{\makeheadrule}{%
-\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
-\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
+\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
 } 
 
 

@@ -17,29 +17,15 @@
 %	加载宏包、配置宏包选项、自定义命令等
 %================================================
 
-\usepackage{blindtext}
-\usepackage[x11names]{xcolor}
-\usepackage{tikz-cd}
+
+\usepackage{xjtupackages} % 这是对常用宏包的一个打包，供初级用户使用。如需在此基础上载入其他宏包，请先阅读 xjtupackages.sty 文件，以免造成冲突。
+
+\graphicspath{{figures/},{figs/}} % 仿照此格式设置图片路径，需要graphicx支持（xjtupackages中已载入）
+
 \DeclareMathOperator{\coker}{coker}
-\usetikzlibrary{matrix, calc, arrows}
-\usepackage{graphicx}
-\graphicspath{{figures/}}
-\usepackage{subfig}
-\usepackage{booktabs}
-\usepackage{listings}
-\lstset{upquote,
-	keepspaces=true,
-	columns=spaceflexible,
-	basicstyle=\ttfamily\footnotesize,%
-	breaklines=true,
-	breakindent=0pt,
-	xleftmargin=0pt,
-	xrightmargin=6pt,%
-	language=matlab,
-}
-\lstset{extendedchars=false}
-% 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
-% 参考 http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
+\newcommand\abs[1]{\left\lvert#1\right\rvert}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
 
 \begin{document}
 %================================================
@@ -97,9 +83,9 @@
 \extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
 
 \begin{abstractcn} % 中文摘要
-这是 \emph{西安交通大学理学学士毕业论文 \LaTeX{} 模板} 的示例文件。推荐有 \LaTeX{} 经验的童鞋使用。如果毫无 \LaTeX{} 使用经验，可以先学习 24 小时入门教程再使用。此模板可以减轻排版的痛苦但如果使用不但，亦会增加痛苦。
+这是 \emph{西安交通大学理学学士毕业论文 \LaTeX{} 模板} 的示例文件。推荐有 \LaTeX{} 经验的童鞋使用。如果毫无 \LaTeX{} 使用经验，可以先学习入门教程~24~小时后再使用。此模板可以减轻排版的痛苦，但如果使用不当亦会增加痛苦。
 
-如有任何问题，向作者咨询，但不一定能即使得到答复。如果需要 24 小时之内答复，可向作者支付 \emph{五毛} 人民币每次。
+如有任何问题，向作者咨询，但不一定能及时得到答复。如果需要 24 小时之内答复，可向作者支付 \emph{五毛} 人民币每次（此技术支持对西安交通大学数学拔尖班同学免费）。
 
 \end{abstractcn}
 
@@ -129,10 +115,36 @@
 \subsubsection{三级标题}
 三级哦，亲！
 
+\section{准备工作}
+
+为了正常使用此模板，并避免不必要的麻烦，请完全安装 miktex 套装（或相应的 ctex 套装）或 texlive 套装的最新版，并在线升级\footnote{至少升级 xeCJK 宏包至最新版，如开启timesmath 选项，请确保有 tex-gyre-math 宏包。}。专业用户可不受此约束。
+
+工作目录结构如下:
+\begin{verbatim}
+    Working Dir.:
+    |  GBT7714-2005NLang-UTF8-mod.bst
+    |  main.tex
+    |  make.bat
+    |  xjtubsc.cls
+    |
+    |─figures
+    |     |─some figures
+    |
+    |─pages
+    |     |─the files
+    |
+    |─ref
+          |─the refs
+\end{verbatim}
+其中二级目录不是必须的，而且目录名可以根据自己的喜好任选。
+
+
+
 \section{公式测试}
 这是公式测试。公，公，公式的公，式，式，公式的式。
-\newcommand\abs[1]{\left\lvert#1\right\rvert}
-\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+\blindtext
+
 \begin{align}
 \begin{split}\abs{I_1} &= \left\lvert \int_\Omega gRu\diff\Omega\right\rvert\\
   & \le C_3\left[\int_\Omega\left(\int_{a}^x g(\xi,t)\diff\xi\right)^2\diff\Omega\right]^{1/2}
@@ -151,6 +163,7 @@
 \end{split}\tag{\theequation$'$}
 \end{align}
 
+\[
 \begin{tikzpicture}[>=triangle 60]
   \matrix[matrix of math nodes,column sep={60pt,between origins},row
     sep={60pt,between origins},nodes={asymmetrical rectangle}] (s)
@@ -187,8 +200,8 @@
   \draw[->,gray,rounded corners] (kc) -| node[auto,text=black,pos=.7]
     {\(\partial\)} ($(01.east)+(.5,0)$) |- ($(B)!.35!(B')$) -|
     ($(02.west)+(-.5,0)$) |- (ca);
-\end{tikzpicture}
-
+\end{tikzpicture}\]
+\blindtext
 
 äöüßÄÖÜ
 

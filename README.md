@@ -59,8 +59,8 @@ Todo List
   * `[ ]` 编写空模板，替代example文件夹中的文件。模板参考清华TEXMF-DIST/doc/latex/thuthesis/example.main。
   * `[ ]` 在没有使用 \extrapages 时通过 pdfpages 插入word->pdf生成的任务书等。
 * 在pdflatex下进行测试。
-  * `[ ]` pdflatex 下目录颜色设置有问题。print 选项开启时仍为红色。
-  * `[ ]` pdflatex 下任务书个别地方对齐有问题。通过使用tabular来修改。
+  * `[✓]` ~~pdflatex 下目录颜色设置有问题。print 选项开启时仍为红色。~~
+  * `[✓]` ~~pdflatex 下任务书个别地方对齐有问题。通过使用tabular来修改。~~
   * `[✓]` ~~在 pdflatex 下，代码的分页有问题，可能与times字体编码T1有关。~~
   * `[ ]` 脚注的加圈编号进行了改写，但是需要依赖两个符号宏包。需要改进。原始实现方法在pdflatex下无法编译。原因未知。
 

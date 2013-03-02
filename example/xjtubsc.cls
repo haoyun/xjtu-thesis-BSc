@@ -147,7 +147,7 @@
 		colorlinks=false,
 		plainpages=false,
 		pdfpagelabels,
-		pdfborder=0 0 0
+		pdfborder={0 0 0},
 	}
 \fi
 
@@ -680,17 +680,19 @@
 
 \vspace{\baselineskip}\noindent 并确定成绩为~\CJKunderline*{\hfill}
 
+\newlength\templength
+\settowidth{\templength}{答辩组成员 }
+
 \vspace{4\baselineskip}
 \begin{flushright}
-毕业设计(论文)答辩组负责人\XJTU@uline[10]{}
+\begin{tabular}{c}
+毕业设计(论文)答辩组负责人 \CJKunderline{\hfill}\\
+答辩组成员 \XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}\\
+\hspace{\templength}\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}\\
+\hspace{\templength}\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
+\end{tabular}
 
-答辩组成员: \XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
-
-\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
-
-\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
-
-{\ziju{3}年月日}\hspace*{2em}
+\vspace{1ex}{\ziju{3}年月日}\hspace*{2em}
 \end{flushright}
 
 \renewcommand{\baselinestretch}{1.2}\selectfont

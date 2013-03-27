@@ -156,6 +156,21 @@ This template has no authorization from the dean's office. If you have any quest
 \end{verbatim}
 其中二级目录不是必须的，而且目录名可以根据自己的喜好任选。
 
+文档的基本结构为
+\begin{verbatim}
+    \documentclass{xjtubsc}
+        <导言部分>
+    \begin{document}
+        <设置基本信息>
+        \frontmatter  
+            <任务书等、摘要、目录>
+        \mainmatter
+            <正文部分>
+        \backmatter
+            <附录、致谢部分>
+\end{verbatim}
+
+UTF8 编码！！！
 \subsection{文档类及文档类选项}
 
 truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
@@ -169,8 +184,70 @@ xjtupackages.sty
 
 \subsection{填写基本信息，生成任务书等内容}
 
-\subsection{其他}
+首先必须填写作者信息、导师信息的内容\footnote{这部分内容可以位于 \verb+\begin{document}+ 之前，也可以位于其后。}。命令格式为 \verb|\command{中文}{英文}|，如下所示：
+\begin{verbatim}
+\author{作者}{Author}
+\title{题目}{Title}
+\advisor{导师}{Advisor}
+\end{verbatim}
+
+如果需要由 \LaTeX{} 生成 \emph{毕业设计（论文）任务书}，\emph{毕业设计（论文）考核评议书}，\emph{毕业设计（论文）评审意见书} 以及 \emph{毕业设计（论文）答辩结果} 四个表单页面，那么需要 \verb|\college|、\verb|\department|、\verb|\class|、\verb|\place|、\verb|\bdate|、\verb|\edate| 命令来定义基本信息，并通过 \verb|INFObackground|、\verb|INFOdata|、\verb|INFOtask|、\verb|INFOrequirement|、\verb|INFOsubmit| 以及 \verb|INFOsummit| 环境来填写任务书表单。然后使用 \verb|\extrapages| 命令来生成页面。一个简单的例子如下：
+
+\begin{verbatim}
+    \college{数学与统计}	%	学院
+    \department{数学}	%	专业（系）
+    \class{理科数学 91}	%	班级
+    \place{西安交通大学}	%	毕设地点
+    \bdate{2012/12/21}	% 开始时间，格式为：年/月/日
+    \edate{2013/2/15}	% 结束时间，格式为：年/月/日
+    
+    \begin{INFObackground} % 课题的背景、意义及培养目标 
+        这里输入内容
+    \end{INFObackground}
+    ……
+    
+    \frontmatter % 设置为正文前格式
+    \extrapages % 用输出任务书、评议书、意见书、答辩结果。
+\end{verbatim}
+特别需要注意的是开始时间和结束时间的格式，另外，上述内容的任何一项均可不写（当然此时相应表单处空白不填）。
+
+在定义完 \verb|\author|、\verb|\title|、\verb|\advisor| 三项内容之后，开始输入中英文摘要及关键词并生成目录。示例如下：
+\begin{verbatim}
+    \frontmatter % 设置为正文前格式，如果已经设置则无需此命令。
+    \begin{abstractcn} % 中文摘要
+        中文摘要
+    \end{abstractcn}
+    
+    \keywordscn{中文；摘要；关键词} % 中文关键词
+    
+    \begin{abstracten} % 英文摘要
+        English Abstract.
+    \end{abstracten}
+    
+    \keywordsen{English; Abstract; Key Words} % 英文关键词
+    
+    \tableofcontents % 生成目录
+\end{verbatim}
+注意为了正确生成目录，需要至少两次编译。
+
+至此完成 frontmatter 部分。
+
+\subsection{正文部分}
+
+正文部分首先以 \verb|\mainmatter| 开始，以设置为正文部分的格式。
+
+文件结构使用 \verb|\section{}|、\verb|\subsection{}|、\verb|\subsubsection{}| 来控制。不支持 \verb|\part{}| 和 \verb|\chapter{}|。
+
+为了便于编写，推荐将每个 \verb|\section{}| 单独的保存为一个 \verb|.tex| 文件，然后使用 \verb|\include{foobar.tex}| 命令来插入。
+
+其余使用方法同基本文档类完全相同。
+
+\subsection{参考文献}
+
+\subsection{附录}
+
 \subsection{高级部分}
+
 \subsubsection{自定义字体}
 \subsubsection{自定义宏包}
 something
@@ -255,11 +332,51 @@ something
 
 \subsection{化学排版}
 
+\definesubmol{a}{-P(=[::-90,0.75]O)(-[::90,0.75]HO)-}
+\chemfig{[:-54]*5((--[::60]O([::-60]!aO([::-60]!aO([::60]!aHO))))<(-OH)
+-[,,,,line width=2pt](-OH)>(-N*5(-=N-*6(-(-NH_2)=N-=N-)=_-))-O-)}
+
 \subsection{绘图}
 
 \subsection{代码、算法}
 
+下面是各种语言书写的 hello world。
 
+C 语言版本：
+\begin{minted}{c}
+#inlude<stdio.h>
+int main(void)	
+{
+    printf("Hello, World!);
+    return 0;
+}
+\end{minted}
+
+Java 版本
+\begin{minted}{java}
+public class HelloWorld {
+    public static void main(String [] args) {
+        System.out.println("Hello World!");
+    }
+}
+\end{minted}
+
+HTML 标记语言
+\begin{minted}{html}
+<!DOCTYPE html>
+<html>
+    <body>
+        Hello, world!
+    </body>
+</html>
+\end{minted}
+
+Scala  语言：
+\begin{minted}{scala}
+object HelloWorld extends App {
+  println("Hello, world!")
+}
+\end{minted}
 \section{版权声明}
 声明
 
@@ -275,75 +392,9 @@ something
 \mybibliography{ref/refs}
 
 
+\appendixs{LaTeX 发行版安装及升级指南}
 
-\begin{lstlisting}
-close all;
-clc;
-clear all;
-lam=10/20^2;
-eps=0.00001;
-p=1/2;
-I=imread('001.bmp');
-J=I;
-MASK=J;
-[width,height] = size(MASK);
-U=double(J);
-V=double(J);
-T=double(J);
-n=1;
-IterTimes=100;
-p=1/2;
-I=imread('001.bmp');
-J=I;
-MASK=J;
-[width,height] = size(MASK);
-U=double(J);
-V=double(J);
-T=double(J);
-n=1;
-IterTimes=100;p=1/2;
-I=imread('001.bmp');
-J=I;
-MASK=J;
-[width,height] = size(MASK);
-U=double(J);
-V=double(J);
-T=double(J);
-n=1;
-IterTimes=100;
-while n<=IterTimes
-for i=2:(width-1)
-for j=2:(height-1)
-gridUe2=(eps^2+(V(i+1,j)-V(i,j))^2+
-         (1.0/4)*(V(i+1,j+1)-V(i+1,j-1))^2)^((2-p)/2);
-gridUw2=(eps^2+(V(i,j)-V(i-1,j))^2+
-         (1.0/4)*(V(i-1,j+1)-V(i-1,j-1))^2)^((2-p)/2);
-gridUn2=(eps^2+(V(i,j)-V(i,j+1))^2+
-         (1.0/4)*(V(i+1,j+1)-V(i-1,j+1))^2)^((2-p)/2);
-gridUs2=(eps^2+(V(i,j)-V(i,j-1))^2+
-         (1.0/4)*(V(i+1,j-1)-V(i-1,j-1))^2)^((2-p)/2);
-we=1/gridUe2;
-ww=1/gridUw2;
-wn=1/gridUn2;
-ws=1/gridUs2;
-sum=we+ww+wn+ws;
-h0=lam/(lam+sum);
-U(i,j)=(ww*V(i-1,j)+we*V(i+1,j)+wn*V(i,j+1)+
-		ws*V(i,j-1))/(lam+sum)+h0*T(i,j);
-V(i,j)=U(i,j);
-end
-end
-n=n+1;
-V=U;
-end
-V=U;
-figure;
-imshow(uint8(V));
-\end{lstlisting}
-
-\appendixs{易筋经}
-\blindmathpaper
-\blindmathpaper
+something here
 \appendixs{易筋经}
 
 \include{pages/denotation}

@@ -52,8 +52,6 @@
 \LoadClass[cs4size, hyperref, twoside, UTF8]{ctexart}
 
 %======= packages ======%
-
-\RequirePackage{amssymb}
 \RequirePackage[fleqn]{mathtools} % advanced than amsmath
 %\usepackage[title,titletoc]{appendix}
 \RequirePackage{titlesec, titleps}

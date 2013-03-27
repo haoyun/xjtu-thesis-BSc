@@ -18,10 +18,10 @@ goto end
 
 :makepdf
 if not exist xjtubsc.cls goto clsmissing
-xelatex main.tex -synctex=1 -undump=xelatex
+xelatex main.tex -synctex=1 -undump=xelatex --shell-escape
 bibtex example.tex
-xelatex main.tex -synctex=1 -undump=xelatex
-xelatex main.tex -synctex=1 -undump=xelatex
+xelatex main.tex -synctex=1 -undump=xelatex --shell-escape
+xelatex main.tex -synctex=1 -undump=xelatex --shell-escape
 
 :help
 echo 有人卖拐请按1，有人卖车请按2, ......

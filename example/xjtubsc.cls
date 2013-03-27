@@ -177,7 +177,7 @@
 \ifXJTU@timesmath
 	\ifxetex
 		\RequirePackage{unicode-math}
-		\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TG Termes Math}
+		\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TeX Gyre Termes Math}
 	\else
 		\RequirePackage{newtxmath}
 	\fi

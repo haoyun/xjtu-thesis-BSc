@@ -1,4 +1,19 @@
+% amssymb 宏包可以说是必备宏包，但它与TexGyreTermes字体稍有冲突，如果二者同时使用，需要先载入amssymb宏包。
+% 尽管此宏包常用，但处于一些原因（如使用其他字体）的考虑，并没有把其写入文档类，
+% 所以只能后载入amssymb宏包，此时只能先修改一些命令的定义。
+% 一个好的解决方案应该是把其作为文档类选项写入cls，以避免不必要的冲突并可根据需要是否加载该宏包。
+	\ifXJTU@timesmath
+		\let\ulcorner\undefined
+		\let\urcorner\undefined
+		\let\llcorner\undefined
+		\let\lrcorner\undefined
+		\let\eth\undefined
+		\let\digamma\undefined
+		\let\backepsilon\undefined
+	\fi
 \RequirePackage{amssymb}
+
+
 \RequirePackage{fancyvrb} 
 	\AtBeginDocument{\VerbatimFootnotes} % enable \verb in footnote.
 \RequirePackage{blindtext}

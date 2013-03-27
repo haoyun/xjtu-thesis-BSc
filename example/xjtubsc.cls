@@ -164,7 +164,13 @@
 	\ifxetex
 		\setmainfont{TeX Gyre Termes}
 	\else
-		\usepackage[scaled=.93]{newtxtext}
+% Comment by hy_haoyun:
+%	Even though *newtx* is a updated package, but it isn't compatible with
+%	*pifont* package; the latter package is used to produce the circled number
+%	for footnote. When newtx loaded, the circled number won't appear as a superscript.
+		%\usepackage[scaled=.93]{newtxtext}
+%	So here we use *txfonts* instead.
+		\usepackage{txfonts}
 		\RequirePackage{textcomp}	
 		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
 	\fi
@@ -503,10 +509,11 @@
 %	见 http://blog.sina.com.cn/s/blog_5e16f1770100moqv.html
 
 \usepackage{pifont}
-\usepackage[perpage,symbol*]{footmisc}
-\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
-{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
-\setfnsymbol{circled}
+%\usepackage[perpage,symbol*]{footmisc}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+%\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
+%{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
+%\setfnsymbol{circled}
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}

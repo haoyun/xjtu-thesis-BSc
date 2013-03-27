@@ -83,20 +83,25 @@
 \extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
 
 \begin{abstractcn} % 中文摘要
-这是 \emph{西安交通大学理学学士毕业论文 \LaTeX{} 模板} 的示例文件。推荐有 \LaTeX{} 经验的童鞋使用。如果毫无 \LaTeX{} 使用经验，可以先学习入门教程~24~小时后再使用。此模板可以减轻排版的痛苦，但如果使用不当亦会增加痛苦。
+这是 \emph{西安交通大学理学学士毕业论文 \LaTeX{} 模板} 的示例文件，目标使用者为有 \LaTeX{} 经验的同学。如果毫无 \LaTeX{} 使用经验，强烈建议认真学习入门教程\footnote{比如：？、？和？}~24~小时后再使用。使用 LaTeX 模板可减少很多排版上的烦恼，但如果使用不当亦会增加痛苦。
 
-如有任何问题，向作者咨询，但不一定能及时得到答复。如果需要 24 小时之内答复，可向作者支付 \emph{五毛} 人民币每次（此技术支持对西安交通大学数学拔尖班同学免费）。
+本模板尚未得到官方的认可，如有任何关于其是否被认可的问题，请咨询教务员。我们会尽我们最大的努力使得该模板被官方接受。
+
+如有任何关于模板使用的问题，可以向作者咨询，但不一定能及时得到答复。如果需要 24 小时之内答复，可向作者支付 \emph{五毛} 人民币每次（此技术支持对西安交通大学数学拔尖班同学免费）。
 
 \end{abstractcn}
 
-\keywordscn{五毛；摘要；关键词} % 中文关键词
+\keywordscn{中文；摘要；关键词} % 中文关键词
 
 \begin{abstracten} % 英文摘要
-\Blindtext[2][1] % 测试文字
+
+This is the \emph{\LaTeX{} template for Bachelor of Science Thesis in Xi'an Jiaotong University} with expected users who have some experience with \LaTeX{}. If you have no experience with \LaTeX{}, we SUGGEST that you learn a basic tutorial on \LaTeX{} for more than 24 hours before using the template. Proper use will free you from the worries of typography of your thesis, however, improper use will definitely increasing your pain.
+
+This template has no authorization from the dean's office. If you have any question with respect to the legality of the template, please consult the dean's office of your department or school.
 
 \end{abstracten}
 
-\keywordsen{English; Abstract; Key Words; XJTU} % 英文关键词
+\keywordsen{English; Abstract; Key Words} % 英文关键词
 
 \tableofcontents % 生成目录
 
@@ -106,19 +111,32 @@
 %================================================
 \mainmatter
 
-\section{绪论}
-这是绪论。绪，绪，绪论的绪，论，论，绪论的论。
-\subsection{二级标题一}
-\blindtext % 测试文字
-\subsection{二级标题二}
-\blinditemize % 测试文字
-\subsubsection{三级标题}
-三级哦，亲！
 
-\section{准备工作}
+\section{简介}
+这是模板。推荐使用 xelatex 编译，可以使用 pdftex 编译。
+
+可以再 windows、linux、Mac OS 正常编译。
+
+作者是。
+
+项目地址是。
+
+汇报bug。
+
+\section{使用指南}
+\subsection{准备工作}
+
+安装ctex or miktex，texlive，mactex。参见（附录）。
+
+更新宏包：特别是 xeCJK 及其相关依赖。配图说明更新方法。
+
+如果有特殊需求，安装 texgyremath 等宏包。 
 
 为了正常使用此模板，并避免不必要的麻烦，请完全安装 miktex 套装（或相应的 ctex 套装）或 texlive 套装的最新版，并在线升级\footnote{至少升级 xeCJK 宏包至最新版，如开启timesmath 选项，请确保有 tex-gyre-math 宏包。}。专业用户可不受此约束。
 
+
+
+\subsection{文档基本结构}
 工作目录结构如下:
 \begin{verbatim}
     Working Dir.:
@@ -138,9 +156,28 @@
 \end{verbatim}
 其中二级目录不是必须的，而且目录名可以根据自己的喜好任选。
 
+\subsection{文档类及文档类选项}
 
+truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
 
-\section{公式测试}
+print 选项会去除超链接的颜色。以供打印。根据需求开启。
+
+timesmath 将会使用 Times 风格的数学字体，以使与正文的 Times 英文字体更加搭配。根据需求开启。
+
+\subsection{加载宏包}
+xjtupackages.sty
+
+\subsection{填写基本信息，生成任务书等内容}
+
+\subsection{其他}
+\subsection{高级部分}
+\subsubsection{自定义字体}
+\subsubsection{自定义宏包}
+something
+
+\section{排版效果展示}
+
+\subsection{公式测试}
 这是公式测试。公，公，公式的公，式，式，公式的式。
 
 \blindtext
@@ -205,13 +242,28 @@
 
 äöüßÄÖÜ
 
-\section{图表测试}
+\subsection{插图、表格}
 这是图表测试。图，图，图表的图，表，表，图表的表。
-\subsection{二级标题1}
-\subsection{二级标题2}
+\subsubsection{三级标题}
+\subsubsection{三级标题}
 \subsubsection{三级标题}
 三级哦，亲！
 
+\subsection{定理、定义}
+
+\subsection{图文混排、高级排版}
+
+\subsection{化学排版}
+
+\subsection{绘图}
+
+\subsection{代码、算法}
+
+
+\section{版权声明}
+声明
+
+\section{免责声明}
 
 
 %================================================

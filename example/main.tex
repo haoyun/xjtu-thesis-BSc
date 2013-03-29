@@ -2,7 +2,7 @@
 %	载入文档类，配置文档类选项
 %================================================
 
-\documentclass[truetimes,
+\documentclass[%truetimes,
                print, 
                timesmath
               ]{xjtubsc}
@@ -191,8 +191,7 @@ xjtupackages.sty
 \advisor{导师}{Advisor}
 \end{verbatim}
 
-如果需要由 \LaTeX{} 生成 \emph{毕业设计（论文）任务书}，\emph{毕业设计（论文）考核评议书}，\emph{毕业设计（论文）评审意见书} 以及 \emph{毕业设计（论文）答辩结果} 四个表单页面，那么需要 \verb|\college|、\verb|\department|、\verb|\class|、\verb|\place|、\verb|\bdate|、\verb|\edate| 命令来定义基本信息，并通过 \verb|INFObackground|、\verb|INFOdata|、\verb|INFOtask|、\verb|INFOrequirement|、\verb|INFOsubmit| 以及 \verb|INFOsummit| 环境来填写任务书表单。然后使用 \verb|\extrapages| 命令来生成页面。一个简单的例子如下：
-
+如果需要由 \LaTeX{} 生成 \emph{毕业设计（论文）任务书}，\emph{毕业设计（论文）考核评议书}，\emph{毕业设计（论文）评审意见书} 以及 \emph{毕业设计（论文）答辩结果} 四个表单页面，那么需要 \verb|\college|、\verb|\department|、\verb|\class|、\verb|\place|、\verb|\bdate|、\verb|\edate| 命令来定义基本信息\footnote{同样，这部分内容可以位于 \verb+\begin{document}+ 之前，也可以位于其后。}，并通过 \verb|INFObackground|、\verb|INFOdata|、\verb|INFOtask|、\verb|INFOrequirement|、\verb|INFOsubmit| 以及 \verb|INFOsummit| 环境来填写任务书表单。然后使用 \verb|\extrapages| 命令来生成页面。一个简单的例子如下：
 \begin{verbatim}
     \college{数学与统计}	%	学院
     \department{数学}	%	专业（系）
@@ -377,19 +376,24 @@ object HelloWorld extends App {
   println("Hello, world!")
 }
 \end{minted}
+
+\subsection{bib}
+
+this is some test\cite{IEEE-1363,Krasnogor2004e}
 \section{版权声明}
 声明
 
 \section{免责声明}
-
+声明
 
 %================================================
 %	正文后
 %================================================
 \backmatter
 
-
-\mybibliography{ref/refs}
+\nocite{*}
+\bibliographystyle{GBT7714-2005NLang-UTF8-mod} % plain
+\bibliography{ref/refs}
 
 
 \appendixs{LaTeX 发行版安装及升级指南}

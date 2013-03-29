@@ -57,14 +57,21 @@
 \RequirePackage{titlesec, titleps}
 \RequirePackage{ifxetex, ifpdf}
 \RequirePackage{caption}
-\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage[super,sort&compress]{natbib}
+\setcitestyle{square,comma}
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
 	\usepackage{xeCJKfntef}
 \else
 	\usepackage{CJKfntef}
+	\normalem % set \emph{} to be the original one, i.e., in italic font.
 \fi
+\ifpdf
+	% If I redefine the \thefootnote command, it will cause error with microtype package.
+	%\usepackage{microtype}
+\fi
+
 
 %====== Command ======%
 
@@ -147,11 +154,6 @@
 		pdfpagelabels,
 		pdfborder={0 0 0},
 	}
-\fi
-
-%====== microtype ======%
-\ifpdf
-	\usepackage{microtype}
 \fi
 
 %====== English Font =====%
@@ -488,14 +490,21 @@
 
 %\def\newblock{\hskip .11em plus .33em minus .07em}
 
-\def\mybibliography#1
-{
+%	\def\mybibliography#1
+%	{
+%	\sectionmark{\small 参考文献}
+%	\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
+%	\mbox{}
+%	\addcontentsline{toc}{section}{参考文献}
+%	%\renewcommand{\refname}{\small 参考文献}
+%	\bibliography{#1}
+%	}
+
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{
 \sectionmark{\small 参考文献}
-\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
-\mbox{}
 \addcontentsline{toc}{section}{参考文献}
-%\renewcommand{\refname}{\small 参考文献}
-\bibliography{#1}
+\oldbibliography{#1}
 }
 
 

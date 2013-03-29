@@ -1,17 +1,19 @@
-% amssymb ºê°ü¿ÉÒÔËµÊÇ±Ø±¸ºê°ü£¬µ«ËüÓëTexGyreTermes×ÖÌåÉÔÓĞ³åÍ»£¬Èç¹û¶şÕßÍ¬Ê±Ê¹ÓÃ£¬ĞèÒªÏÈÔØÈëamssymbºê°ü¡£
-% ¾¡¹Ü´Ëºê°ü³£ÓÃ£¬µ«´¦ÓÚÒ»Ğ©Ô­Òò£¨ÈçÊ¹ÓÃÆäËû×ÖÌå£©µÄ¿¼ÂÇ£¬²¢Ã»ÓĞ°ÑÆäĞ´ÈëÎÄµµÀà£¬
-% ËùÒÔÖ»ÄÜºóÔØÈëamssymbºê°ü£¬´ËÊ±Ö»ÄÜÏÈĞŞ¸ÄÒ»Ğ©ÃüÁîµÄ¶¨Òå¡£
-% Ò»¸öºÃµÄ½â¾ö·½°¸Ó¦¸ÃÊÇ°ÑÆä×÷ÎªÎÄµµÀàÑ¡ÏîĞ´Èëcls£¬ÒÔ±ÜÃâ²»±ØÒªµÄ³åÍ»²¢¿É¸ù¾İĞèÒªÊÇ·ñ¼ÓÔØ¸Ãºê°ü¡£
-	\ifXJTU@timesmath
-		\let\ulcorner\undefined
-		\let\urcorner\undefined
-		\let\llcorner\undefined
-		\let\lrcorner\undefined
-		\let\eth\undefined
-		\let\digamma\undefined
-		\let\backepsilon\undefined
-	\fi
-\RequirePackage{amssymb}
+%amssymb å®åŒ…å¯ä»¥è¯´æ˜¯å¿…å¤‡å®åŒ…ï¼Œä½†å®ƒä¸TexGyreTermeså­—ä½“ç¨æœ‰å†²çªï¼Œå¦‚æœäºŒè€…åŒæ—¶ä½¿ç”¨ï¼Œéœ€è¦å…ˆè½½å…¥amssymbå®åŒ…ã€‚
+%å°½ç®¡æ­¤å®åŒ…å¸¸ç”¨ï¼Œä½†å¤„äºä¸€äº›åŸå› ï¼ˆå¦‚ä½¿ç”¨å…¶ä»–å­—ä½“ï¼‰çš„è€ƒè™‘ï¼Œå¹¶æ²¡æœ‰æŠŠå…¶å†™å…¥æ–‡æ¡£ç±»ï¼Œ
+%æ‰€ä»¥åªèƒ½åè½½å…¥amssymbå®åŒ…ï¼Œæ­¤æ—¶åªèƒ½å…ˆä¿®æ”¹ä¸€äº›å‘½ä»¤çš„å®šä¹‰ã€‚
+%ä¸€ä¸ªå¥½çš„è§£å†³æ–¹æ¡ˆåº”è¯¥æ˜¯æŠŠå…¶ä½œä¸ºæ–‡æ¡£ç±»é€‰é¡¹å†™å…¥clsï¼Œä»¥é¿å…ä¸å¿…è¦çš„å†²çªå¹¶å¯æ ¹æ®éœ€è¦æ˜¯å¦åŠ è½½è¯¥å®åŒ…ã€‚
+\ifXJTU@timesmath
+	%\let\ulcorner\undefined
+	%\let\urcorner\undefined
+	%\let\llcorner\undefined
+	%\let\lrcorner\undefined
+	%\let\eth\undefined
+	%\let\digamma\undefined
+	%\let\backepsilon\undefined
+\else
+	\RequirePackage{amssymb}
+\fi
+
 
 
 \RequirePackage{fancyvrb} 
@@ -35,8 +37,8 @@
 %		language=matlab,
 	}
 \lstset{extendedchars=false}
-% ÕâÒ»¾ä¶ÔÓÚ pdf ±àÒëÌØ±ğÖØÒª£¬·ñÔòÈç¹ûÓĞ´úÂëÓĞ·ÖÒ³ÇÒ\section{}ÖĞÓĞÖĞÎÄ£¬Ôò»á±¨´í¡£
-% ²Î¿¼ http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
+% è¿™ä¸€å¥å¯¹äº pdf ç¼–è¯‘ç‰¹åˆ«é‡è¦ï¼Œå¦åˆ™å¦‚æœæœ‰ä»£ç æœ‰åˆ†é¡µä¸”\section{}ä¸­æœ‰ä¸­æ–‡ï¼Œåˆ™ä¼šæŠ¥é”™ã€‚
+% å‚è€ƒ http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
 
 \RequirePackage{minted}
 \RequirePackage{chemfig}

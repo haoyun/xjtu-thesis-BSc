@@ -33,9 +33,9 @@
 %================================================
 
 % 以下三项是必须的。
-\author{作者}{Author}	%	作者{中文}{英文}
+\author{王鸿鑫、秦雨果、郝运}{Hongxin WANG, Yuguo QIN, Yun HAO}	%	作者{中文}{英文}
 \title{西安交通大学理学学士毕业论文 \LaTeX{} 模板示例文件}{Example of \LaTeX{} Template for Bachelor of Science Thesis in XJTU}	%	题目{中文}{英文}
-\advisor{导师}{Advisor}	%	导师{中文}{英文}
+\advisor{王鸿鑫、秦雨果、郝运}{Hongxin WANG, Yuguo QIN, Yun HAO}	%	导师{中文}{英文}
 
 % 如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，下面的信息可以不填。
 \college{数学与统计}	%	学院
@@ -80,7 +80,7 @@
 %================================================
 \frontmatter
 
-\extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
+%\extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
 
 \begin{abstractcn} % 中文摘要
 这是 \emph{西安交通大学理学学士毕业论文 \LaTeX{} 模板} 的示例文件，目标使用者为有 \LaTeX{} 经验的同学。如果毫无 \LaTeX{} 使用经验，强烈建议认真学习入门教程\footnote{比如：？、？和？}~24~小时后再使用。使用 LaTeX 模板可减少很多排版上的烦恼，但如果使用不当亦会增加痛苦。
@@ -184,12 +184,13 @@ xjtupackages.sty
 
 \subsection{填写基本信息，生成任务书等内容}
 
-首先必须填写作者信息、导师信息的内容\footnote{这部分内容可以位于 \verb+\begin{document}+ 之前，也可以位于其后。}。命令格式为 \verb|\command{中文}{英文}|，如下所示：
+首先必须\footnote{此处“必须”是指：是为了得到完整的摘要页面（以及可选的任务书等页面），这三项内容是必须的，如果不定义此三项内容，本模板依然正常编译，只会给出警告（Warning），而不会报错（Error）而停止编译，输出结果中保持相应位置处空白。}填写作者信息、导师信息的内容\footnote{这部分内容可以位于 \verb+\begin{document}+ 之前，也可以位于其后。}。命令格式为 \verb|\command{中文}{英文}|，如下所示：
 \begin{verbatim}
-\author{作者}{Author}
-\title{题目}{Title}
-\advisor{导师}{Advisor}
+    \author{作者}{Author}
+    \title{题目}{Title}
+    \advisor{导师}{Advisor}
 \end{verbatim}
+
 
 如果需要由 \LaTeX{} 生成 \emph{毕业设计（论文）任务书}，\emph{毕业设计（论文）考核评议书}，\emph{毕业设计（论文）评审意见书} 以及 \emph{毕业设计（论文）答辩结果} 四个表单页面，那么需要 \verb|\college|、\verb|\department|、\verb|\class|、\verb|\place|、\verb|\bdate|、\verb|\edate| 命令来定义基本信息\footnote{同样，这部分内容可以位于 \verb+\begin{document}+ 之前，也可以位于其后。}，并通过 \verb|INFObackground|、\verb|INFOdata|、\verb|INFOtask|、\verb|INFOrequirement|、\verb|INFOsubmit| 以及 \verb|INFOsummit| 环境来填写任务书表单。然后使用 \verb|\extrapages| 命令来生成页面。一个简单的例子如下：
 \begin{verbatim}
@@ -208,9 +209,9 @@ xjtupackages.sty
     \frontmatter % 设置为正文前格式
     \extrapages % 用输出任务书、评议书、意见书、答辩结果。
 \end{verbatim}
-特别需要注意的是开始时间和结束时间的格式，另外，上述内容的任何一项均可不写（当然此时相应表单处空白不填）。
+特别需要注意的是开始时间和结束时间的格式，另外，上述内容的任何一项均可不写（当然此时相应表单处空白不填）。还需要注意的是，即使不使用 \verb|\extrapages| 来排版任务书等，摘要页面的页码依然从 V \footnote{罗马数字 5。从正文开始采用阿拉伯数字页码，从 1 开始编号.}开始编号。
 
-在定义完 \verb|\author|、\verb|\title|、\verb|\advisor| 三项内容之后，开始输入中英文摘要及关键词并生成目录。示例如下：
+在定义完\verb|\author|、\verb|\title|、\verb|\advisor| 三项内容之后，开始输入中英文摘要及关键词并生成目录。示例如下：
 \begin{verbatim}
     \frontmatter % 设置为正文前格式，如果已经设置则无需此命令。
     \begin{abstractcn} % 中文摘要
@@ -229,13 +230,13 @@ xjtupackages.sty
 \end{verbatim}
 注意为了正确生成目录，需要至少两次编译。
 
-至此完成 frontmatter 部分。
+至此完成正文之前的部分。
 
 \subsection{正文部分}
 
 正文部分首先以 \verb|\mainmatter| 开始，以设置为正文部分的格式。
 
-文件结构使用 \verb|\section{}|、\verb|\subsection{}|、\verb|\subsubsection{}| 来控制。不支持 \verb|\part{}| 和 \verb|\chapter{}|。
+文件结构使用 \verb|\section{}|、\verb|\subsection{}|、\verb|\subsubsection{}| 来控制。而且仅支持此三层结构\footnote{当然支持 \verb|\paragraph{}|，但此很少使用，如果需要添加更深层次结构的支持，请自行 hack。模板作者建议合理安排文档结构，只有在非常罕见的情况下，四级、五级结构才是必须的。}，不支持 \verb|\part{}| 和 \verb|\chapter{}|。
 
 为了便于编写，推荐将每个 \verb|\section{}| 单独的保存为一个 \verb|.tex| 文件，然后使用 \verb|\include{foobar.tex}| 命令来插入。
 
@@ -243,6 +244,27 @@ xjtupackages.sty
 
 \subsection{参考文献}
 
+正文完成后首先使用 \verb|\backmatter| 切换至正文后的排版格式。然后使用相应的命令来实现参考文献的排版。推荐使用 \hologo{BibTeX} 排版参考文献。一个例子如下：
+\begin{verbatim}
+    \backmatter % 切换至正文后版式。
+
+    \nocite{*} % 显示未明显引用的所有文献
+    \bibliographystyle{GBT7714-2005NLang-UTF8-mod} 
+    % 使用 GB/T7714-2005 标准的文献格式。
+    \bibliography{ref/refs} % bib 文件的为 /ref/refs.bib
+\end{verbatim}
+注意上面使用了 \verb|GBT7714-2005NLang-UTF8-mod.bst|，请确保工作目录下有此文件。如果想使用其他的格式（注意教务处要求），可以根据自己的喜好替换。
+
+当然也可以使用 thebibliography 环境手工排版参考文献，一个示例如下：
+\begin{verbatim}
+    \begin{thebibliography}{5}
+    \bibitem {}
+    \end{thebibliography}
+\end{verbatim}
+
+可以用相应的工具生成符合格式的 \verb|.bib| 文件，或相应的 thebibliography 环境代码。网上有很多相应的工具，数据库一般情况下可以导出 \verb|.bib| 文件（Export Citation）。
+
+还有一种较新的实现方式是还用 \textsc{Bib}\LaTeX{}/biber，不推荐初级用户使用。
 \subsection{附录}
 
 \subsection{高级部分}

@@ -376,7 +376,7 @@
 \end{center}\par
 }{\par}
 
-\newcommand{\keywordscn}[1]{\vspace{\baselineskip}\par\noindent \small {\bfseries 关键词：}#1}
+\newcommand{\keywordscn}[1]{\vspace{\baselineskip}\par\noindent {\small {\bfseries 关键词：}#1}}
 
 %=== English ===%
 \newcommand{\XJTU@abstract@en}{\LARGE ABSTRACT}
@@ -397,7 +397,7 @@
 \setlength\parindent{2\ccwd} % 恢复段首缩进
 \par}
 
-\newcommand{\keywordsen}[1]{\vspace{\baselineskip}\par\noindent \small {\bfseries KEY WORDS ：}#1}
+\newcommand{\keywordsen}[1]{\vspace{\baselineskip}\par\noindent {\small {\bfseries KEY WORDS ：}#1}}
 
 %====== Table of Contents ======%
 

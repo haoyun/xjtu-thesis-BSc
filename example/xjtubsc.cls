@@ -241,7 +241,7 @@
 %====== Page Layout ======%
 \RequirePackage[hmargin = 2.6 true cm, %
 	top = 3.0 true cm, %
-	bottom = 2.5 true cm, %
+	bottom = 3.3 true cm, %
 	a4paper,]%
 {geometry}
 
@@ -262,6 +262,7 @@
 \renewcommand{\baselinestretch}{1.2} % 1.2为1.5倍行距，1.6为2倍行距
 
 \newpagestyle{main}{
+\setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
 \sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
 		{}{\sectiontitle}{}	% odd
 \setfoot[\thepage][][]	% even
@@ -272,8 +273,9 @@
 } 
 
 \newpagestyle{document}{
+\setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
 \sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
-		{}{\thesection \quad \sectiontitle}{}	% odd
+		{}{\small \thesection \quad \sectiontitle}{}	% odd
 \setfoot[\thepage][][] % even
 		{}{}{\thepage}	% odd
 \renewcommand{\makeheadrule}{%

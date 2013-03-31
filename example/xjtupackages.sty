@@ -27,25 +27,3 @@
 \RequirePackage{minted}
 \RequirePackage{chemfig}
 \RequirePackage{hologo}
-
-\RequirePackage{amsthm, thmtools}
-%以下是对定理，定义，引理的配置。由于手册中对这部分没有任何说明，因此只好按一般情况对待
-\RequirePackage{amsthm,thmtools}
-\declaretheoremstyle[
-spaceabove=6pt, spacebelow=6pt,
-headfont=\normalfont\bfseries,
-notefont=\mdseries, notebraces={(}{)},
-bodyfont=\normalfont,
-postheadspace=1em,
-headindent=2\ccwd
-]{theoremstyle}
-
-\declaretheorem[name=公理,numberwithin=section,style=theoremstyle]{axiom}
-\declaretheorem[name=定理,numberwithin=section,style=theoremstyle]{theorem}
-\declaretheorem[name=定义,numberwithin=section,style=theoremstyle]{definition}
-\declaretheorem[name=命题,numberwithin=section,style=theoremstyle]{proposition}
-\declaretheorem[name=引理,numberwithin=section,style=theoremstyle]{lemma}
-\declaretheorem[name=推论,numberwithin=section,style=theoremstyle]{corollary}
-\declaretheorem[name=假设,numberwithin=section,style=theoremstyle]{assumption}
-\declaretheorem[name=问题,numberwithin=section,style=theoremstyle]{problem}
-\declaretheorem[name=猜想,numberwithin=section,style=theoremstyle]{conjecture}

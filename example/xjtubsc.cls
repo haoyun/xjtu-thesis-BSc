@@ -36,10 +36,12 @@
 \newif\ifXJTU@print \XJTU@printfalse
 \newif\ifXJTU@times \XJTU@timesfalse
 \newif\ifXJTU@timesmath \XJTU@timesmathfalse
+\newif\ifXJTU@amsthm \XJTU@amsthmtrue
 
 \DeclareOption{print}{\XJTU@printtrue}
 \DeclareOption{truetimes}{\XJTU@timestrue}
 \DeclareOption{timesmath}{\XJTU@timesmathtrue}
+\DeclareOption{amsthm}{\XJTU@amsthmtrue}
 \DeclareOption{c5size}{\OptionNotUsed}
 \DeclareOption{twocolumn}{\OptionNotUsed}
 
@@ -62,7 +64,6 @@
 \RequirePackage{caption}
 \RequirePackage[super,sort&compress]{natbib}
 \setcitestyle{square,comma}
-\RequirePackage{amsthm}
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
@@ -404,18 +405,38 @@
 
 %==========proof========%
 
-\renewcommand{\proofname}{\normalfont\bfseries 证明}
-\renewenvironment{proof}[1][\hskip 2\ccwd \proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \itshape
-    #1\@addpunct{}]\ignorespaces
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-
+\ifXJTU@amsthm
+	\RequirePackage{amsthm,thmtools}
+	
+	\renewcommand{\proofname}{\normalfont\bfseries 证明}
+	\renewenvironment{proof}[1][\hskip 2\ccwd \proofname]{\par
+		\pushQED{\qed}%
+		\normalfont \topsep6\p@\@plus6\p@\relax
+		\trivlist
+			\item[\hskip\labelsep\itshape#1\@addpunct{}]\ignorespaces
+	}{%
+		\popQED\endtrivlist\@endpefalse
+	}
+	
+	\declaretheoremstyle[
+	spaceabove=6pt, spacebelow=6pt,
+	headfont=\normalfont\bfseries,
+	notefont=\mdseries, notebraces={(}{)},
+	bodyfont=\normalfont,
+	postheadspace=1em,
+	headindent=2\ccwd
+	]{theoremstyle}
+	
+	\declaretheorem[name=公理,numberwithin=section,style=theoremstyle]{axiom}
+	\declaretheorem[name=定理,numberwithin=section,style=theoremstyle]{theorem}
+	\declaretheorem[name=定义,numberwithin=section,style=theoremstyle]{definition}
+	\declaretheorem[name=命题,numberwithin=section,style=theoremstyle]{proposition}
+	\declaretheorem[name=引理,numberwithin=section,style=theoremstyle]{lemma}
+	\declaretheorem[name=推论,numberwithin=section,style=theoremstyle]{corollary}
+	\declaretheorem[name=假设,numberwithin=section,style=theoremstyle]{assumption}
+	\declaretheorem[name=问题,numberwithin=section,style=theoremstyle]{problem}
+	\declaretheorem[name=猜想,numberwithin=section,style=theoremstyle]{conjecture}
+\fi
 
 %====== Table of Contents ======%
 

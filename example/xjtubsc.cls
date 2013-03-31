@@ -62,6 +62,7 @@
 \RequirePackage{caption}
 \RequirePackage[super,sort&compress]{natbib}
 \setcitestyle{square,comma}
+\RequirePackage{amsthm}
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
@@ -401,12 +402,27 @@
 
 \newcommand{\keywordsen}[1]{\vspace{\baselineskip}\par\noindent {\small {\bfseries KEY WORDS ：}#1}}
 
+%==========proof========%
+
+\renewcommand{\proofname}{\normalfont\bfseries 证明}
+\renewenvironment{proof}[1][\hskip 2\ccwd \proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+
+
 %====== Table of Contents ======%
 
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
 	\clearpage
-	\sectionmark{ 目录}
+	\sectionmark{目录}
 	\oldtableofcontents
 }
 %\titlecontents{section}
@@ -471,7 +487,7 @@
 %	我感觉这个东西没有必要。
 
 \newenvironment{denotation}{\section*{主要符号表}
-\sectionmark{ 主要符号表}
+\sectionmark{主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
 \renewcommand{\makelabel}[1]{##1\hfil}
@@ -494,7 +510,7 @@
 
 %	\def\mybibliography#1
 %	{
-%	\sectionmark{ 参考文献}
+%	\sectionmark{参考文献}
 %	\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
 %	\mbox{}
 %	\addcontentsline{toc}{section}{参考文献}
@@ -504,7 +520,7 @@
 
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{
-\sectionmark{ 参考文献}
+\sectionmark{参考文献}
 \addcontentsline{toc}{section}{参考文献}
 \oldbibliography{#1}
 }
@@ -531,7 +547,7 @@
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
 \newenvironment{acknowledgment}{
        \section*{\XJTU@acknowledgment} 
-		\sectionmark{ 致谢}
+		\sectionmark{致谢}
 \addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}
 
@@ -556,7 +572,7 @@
 \parindent=0pt
 %\setlength\parskip{1ex}
 \renewcommand{\baselinestretch}{1.6}\selectfont
-\sectionmark{ 毕业设计(论文)任务书}
+\sectionmark{毕业设计(论文)任务书}
 
 \begin{center}
 \begin{minipage}[c]{.55\textwidth}\centering
@@ -635,7 +651,7 @@
 
 \newpage\vspace*{0pt}
 \parindent=2\ccwd
-\sectionmark{ 毕业设计(论文)考核评议书}
+\sectionmark{毕业设计(论文)考核评议书}
 
 \begin{center}
 	{\ziju{1.5}\bfseries\songti\LARGE 西安交通大学}
@@ -677,7 +693,7 @@
 %===========================================
 
 \newpage\vspace*{\baselineskip}
-\sectionmark{ 毕业设计(论文)答辩结果}
+\sectionmark{毕业设计(论文)答辩结果}
 % The \vspace command adds the vertical space length, i.e., a rubber length. length can be negative or positive. Ordinarily, LaTeX removes vertical space added by \vspace at the top or bottom of a page. With the optional * argument, the space is not removed.
 
 \begin{center}

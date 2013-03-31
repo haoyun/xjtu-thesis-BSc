@@ -43,7 +43,6 @@
 \DeclareOption{c5size}{\OptionNotUsed}
 \DeclareOption{twocolumn}{\OptionNotUsed}
 
-
 \ProcessOptions\relax
 
 %======= base calss ======%
@@ -52,6 +51,10 @@
 \LoadClass[cs4size, hyperref, twoside, UTF8]{ctexart}
 
 %======= packages ======%
+\RequirePackage{amssymb}
+% Comment by hy_Haoyun:
+%    `amssymb` is very useful when no special designed math fonts is loaded.
+%    For this cls file,  it must be loaded before TeX Gyre Termes Math.
 \RequirePackage[fleqn]{mathtools} % advanced than amsmath
 %\usepackage[title,titletoc]{appendix}
 \RequirePackage{titlesec, titleps}
@@ -67,6 +70,7 @@
 	\usepackage{CJKfntef}
 	\normalem % set \emph{} to be the original one, i.e., in italic font.
 \fi
+\RequirePackage{perpage}
 \ifpdf
 	% If I redefine the \thefootnote command, it will cause error with microtype package.
 	%\usepackage{microtype}
@@ -84,7 +88,7 @@
 \def\place#1{\gdef\XJTU@place{#1}} % 地点
 \def\XJTU@place{\@latex@warning@no@line{No \noexpand\place given}}
 
-% 以下参考资料 http://tex.stackexchange.com/questions/41996/how-do-i-split-a-date
+% Reference: http://tex.stackexchange.com/questions/41996/how-do-i-split-a-dat
 \def\XJTU@begindate#1/#2/#3.{\gdef\XJTU@byear{#1}\gdef\XJTU@bmonth{#2}\gdef\XJTU@bday{#3}}
 \def\bdate#1{{\edef\XJTU@tempbdate{#1}\expandafter\XJTU@begindate\XJTU@tempbdate.}}
 \def\XJTU@enddate#1/#2/#3.{\gdef\XJTU@eyear{#1}\gdef\XJTU@emonth{#2}\gdef\XJTU@eday{#3}}
@@ -95,10 +99,6 @@
 \def\XJTU@eyear{\@latex@warning@no@line{No \noexpand\edate given}}
 \def\XJTU@emonth{\@latex@warning@no@line{No \noexpand\edate given}}
 \def\XJTU@eday{\@latex@warning@no@line{No \noexpand\edate given}}
-
-% Comment by hy_haoyun
-%	The following interface is not perfect.
-%	it should be modified to be more user friendly.
 
 \def\title#1#2{\gdef\XJTU@title@cn{#1}\gdef\XJTU@title@en{#2}} % 题目
 \def\XJTU@title@cn{\@latex@warning@no@line{No \noexpand\title for cn given}}
@@ -126,7 +126,7 @@
 \loop \par\noindent\CJKunderline{\hfill}\advance\numberoflines 1 \ifnum\numberoflines<#1 \repeat
 \fi}
 
-% 以下参考 http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
+% Reference: http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
 \NewEnviron{INFObackground}{\global\let\XJTU@field@background\BODY} % background significance goal
 \def\XJTU@field@background{\@latex@warning@no@line{No \noexpand\XJTU@field@background given}}
 \NewEnviron{INFOdata}{\global\let\XJTU@field@data\BODY} % data
@@ -263,8 +263,8 @@
 
 \newpagestyle{main}{
 \setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
-\sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
-		{}{\sectiontitle}{}	% odd
+\sethead[][\small 西安交通大学本科毕业设计（论文）][]	% even
+		{}{\small \sectiontitle}{}	% odd
 \setfoot[\thepage][][]	% even
 		{}{}{\thepage}	% odd
 \renewcommand{\makeheadrule}{%
@@ -274,7 +274,7 @@
 
 \newpagestyle{document}{
 \setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
-\sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
+\sethead[][\small 西安交通大学本科毕业设计（论文）][]	% even
 		{}{\small \thesection \quad \sectiontitle}{}	% odd
 \setfoot[\thepage][][] % even
 		{}{}{\thepage}	% odd
@@ -364,7 +364,7 @@
 %=== Chinese === %
 \newcommand\XJTU@abstract@cn{\LARGE 摘\hspace{2\ccwd}要}
 \newenvironment{abstractcn}{\clearpage
-\sectionmark{\small 摘要}
+\sectionmark{ 摘要}
 \ifXJTU@front
 	\setcounter{page}{5}
 \fi
@@ -383,7 +383,7 @@
 %=== English ===%
 \newcommand{\XJTU@abstract@en}{\LARGE ABSTRACT}
 \newenvironment{abstracten}{\clearpage
-\sectionmark{\small ABSTRACT}
+\sectionmark{ ABSTRACT}
 {\bfseries
 	\noindent Title：\XJTU@title@en \par
 	\noindent Name：\XJTU@author@en \par
@@ -406,7 +406,7 @@
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
 	\clearpage
-	\sectionmark{\small 目录}
+	\sectionmark{ 目录}
 	\oldtableofcontents
 }
 %\titlecontents{section}
@@ -447,7 +447,7 @@
 \setcounter{appends}{1} % 初始化为1
 \setcounter{appendshead}{0} % 初始化为0
 \newcommand{\appendixs}[1]{\clearpage
-\sectionmark{\small 附录\arabic{appends}  \hspace{0.15cm}#1}
+\sectionmark{ 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
 \addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
 \addtocounter{appends}{1} 
@@ -471,7 +471,7 @@
 %	我感觉这个东西没有必要。
 
 \newenvironment{denotation}{\section*{主要符号表}
-\sectionmark{\small 主要符号表}
+\sectionmark{ 主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
 \renewcommand{\makelabel}[1]{##1\hfil}
@@ -494,7 +494,7 @@
 
 %	\def\mybibliography#1
 %	{
-%	\sectionmark{\small 参考文献}
+%	\sectionmark{ 参考文献}
 %	\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
 %	\mbox{}
 %	\addcontentsline{toc}{section}{参考文献}
@@ -504,7 +504,7 @@
 
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{
-\sectionmark{\small 参考文献}
+\sectionmark{ 参考文献}
 \addcontentsline{toc}{section}{参考文献}
 \oldbibliography{#1}
 }
@@ -516,20 +516,23 @@
 % Comment by hy_haoyun
 %	原来的实现在 pdflatex 报错，具体原因不明，下面参考了 Neals 的做法，
 %	见 http://blog.sina.com.cn/s/blog_5e16f1770100moqv.html
-
-\usepackage{pifont}
 %\usepackage[perpage,symbol*]{footmisc}
-\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
 %\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
 %{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
 %\setfnsymbol{circled}
+
+\usepackage{pifont}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+\MakePerPage{footnote} % Package `perpage` is needed.
+
+
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
 \newenvironment{acknowledgment}{
        \section*{\XJTU@acknowledgment} 
-		\sectionmark{\small 致谢}
-\addcontentsline{toc}{section}{致谢}%使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
+		\sectionmark{ 致谢}
+\addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}
 
 
@@ -553,7 +556,7 @@
 \parindent=0pt
 %\setlength\parskip{1ex}
 \renewcommand{\baselinestretch}{1.6}\selectfont
-\sectionmark{\small 毕业设计(论文)任务书}
+\sectionmark{ 毕业设计(论文)任务书}
 
 \begin{center}
 \begin{minipage}[c]{.55\textwidth}\centering
@@ -632,7 +635,7 @@
 
 \newpage\vspace*{0pt}
 \parindent=2\ccwd
-\sectionmark{\small 毕业设计(论文)考核评议书}
+\sectionmark{ 毕业设计(论文)考核评议书}
 
 \begin{center}
 	{\ziju{1.5}\bfseries\songti\LARGE 西安交通大学}
@@ -674,7 +677,7 @@
 %===========================================
 
 \newpage\vspace*{\baselineskip}
-\sectionmark{\small 毕业设计(论文)答辩结果}
+\sectionmark{ 毕业设计(论文)答辩结果}
 % The \vspace command adds the vertical space length, i.e., a rubber length. length can be negative or positive. Ordinarily, LaTeX removes vertical space added by \vspace at the top or bottom of a page. With the optional * argument, the space is not removed.
 
 \begin{center}

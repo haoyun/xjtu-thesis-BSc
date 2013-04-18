@@ -61,7 +61,7 @@ Todo List
   * `[ ]` 编写完整的文档。
   * `[ ]` 编写常宏包文件，类似 `thutils.sty` (清华的)，内含各种包的加载，配置等。供初级用户使用。
   * `[✓]` ~~ `xcolor`，with option x11names~~
-  * `[ ]` 完善文档选项，例如 ~~screen/print~~, winfonts/nofonts 等。可以参考 daiweisi的xjtuthesis（垃圾产品） 以及其他学校的模板。
+  * `[ ]` 完善文档选项，例如 ~~screen/print~~, winfonts/nofonts 等。可以参考 daiweisi的xjtuthesis以及其他学校的模板。
   * `[✓]` ~~毕设开始结束日期可以用更简洁的方式实现，而不使用六个命令来实现~~
   * `[ ]` 编写空模板，替代example文件夹中的文件。模板参考清华TEXMF-DIST/doc/latex/thuthesis/example.main。
   * `[ ]` 在没有使用 \extrapages 时通过 pdfpages 插入word->pdf生成的任务书等。

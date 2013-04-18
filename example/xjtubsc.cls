@@ -2,7 +2,7 @@
 %
 %
 %  MCMTHESIS.cls  CopyLeft 2011/8/24 by
-%  wanghongxin <>
+%  wanghongxin <hongxin_w@163.com>
 %  hugo <>
 %  hy_haoyun <haoyun_tex@163.com>
 %
@@ -351,8 +351,9 @@
 %	The followings should be improved.
 
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
-\captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
-\captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
+
 
 \numberwithin{figure}{section}
 \numberwithin{table}{section}

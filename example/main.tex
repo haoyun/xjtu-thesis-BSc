@@ -556,9 +556,31 @@ this is some test\cite{IEEE-1363,Krasnogor2004e}
 
 
 \appendixs{LaTeX 发行版安装及升级指南}
+对于初级 Windows 用户，推荐发行版本为 C\TeX{} 套装\footnote{\today 最新版本号为 2.9.2.164，}，下载地址为
+\begin{center}
+\url{http://www.ctex.org/CTeXDownload}
+\end{center}
+初级用户强烈建议下载完整安装版。注意：为了避免潜在的错误，不建议把ctex安装至例如“\verb|D:\Program Files\ctex\|”的路径下\footnote{这样的文件路径中含有空格。}，也不建议安装在诸如 “\verb|D:\学习工具\ctex\|”这样的路径下\footnote{这样的文件路径中含有中文。}，建议安装至类似“\verb|D:\ctex\|”这样的地方。
 
-something here
-\appendixs{易筋经}
+由于本模板需要利用到一些较新的宏包，所以使用前需要对 LaTeX 进行升级，对于初级的 Windows 用户，可以通过
+\begin{center}
+开始 -- 所有程序 -- ctex -- MikTeX -- Maintenance(Admin) -- Update(Admin)
+\end{center}
+来升级，如图 \ref{fig:update} 所示。
+\begin{figure}[h]
+\centering
+\subfloat[第一步]{\includegraphics[width=.46\textwidth]{update1.jpg}}\quad
+\subfloat[第二步]{\includegraphics[width=.46\textwidth]{update2.jpg}}
+\caption{C\TeX{} 套装的升级}\label{fig:update}
+\end{figure}
+有时，需要重复两遍上述过程。
+
+{\color{red}\textbf{注意}}，由于 C\TeX{} 套装所基于的 MikTeX 套装的问题，截止\today，上述升级完毕后会出现一个严重的问题，请一定要参考 \href{http://tex.stackexchange.com/questions/96778/a-miktex-update-removed-amsmath-as-obsolete-can-i-use-another-package-or-get-i/96795#96795}{这里}（点击查看）
+修复该问题，亦即通过
+\begin{center}
+开始 -- 所有程序 -- ctex -- MikTeX -- Maintenance(Admin) -- Package Manager(Admin)
+\end{center}
+安装 \verb|amslatex-primer|、\verb|amsmath|、\verb|amscls| 三个宏包。另外对于希望使用 Times 风格的数学字体的用户，请同时安装 \verb|tex-gyre-math| 宏包。
 
 \include{pages/denotation}
 

@@ -3,9 +3,9 @@
 %================================================
 
 \documentclass[%truetimes,
-               print, 
+               %print, 
                %timesmath,
-			   amsthm,
+               amsthm,
               ]{xjtubsc}
 
 % truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
@@ -116,43 +116,48 @@ This template has no authorization from the dean's office. If you have any quest
 
 
 \section{简介}
-这是模板。推荐使用 xelatex 编译，可以使用 pdftex 编译。
+这是西安交通大学理学学士毕业论文 \LaTeX{} 模板。推荐使用 \hologo{XeLaTeX} 编译，可以使用 \hologo{pdfLaTeX} 编译。
+经测试可以在 Windows、GNU/linux、Mac OS 平台上利用 MikTeX、TeXLive、MacTeX 等发行版本正常编译\footnote{需要系统中安装有中易宋、黑、楷、仿宋四款字体，这在中文 Windows 下是默认安装的。如果需要自己配置字体，可以参考第~\ref{sec:customfont} 节的内容}。
 
-可以再 windows、linux、Mac OS 正常编译。
+项目地址是 \url{www.github.com/haoyun/xjtu-thesis-bsc/}。欢迎下载试用并反馈遇到的问题，如有任何建议及想法也请告诉我们。你可以发送邮件给作者，也可以到项目主页上提交 Issue。
 
-作者是。
-
-项目地址是。
-
-汇报bug。
+作者及联系方式为：
+\begin{center}
+\begin{tabular}{lp{1em}l}
+郝运&&\href{maito:haoyun_tex@163.com}{haoyun\_tex@163.com}\\ 秦雨果&&\\
+王鸿鑫&&\href{maito:hongxin_w@163.com}{hongxin\_w@163.com}
+\end{tabular}
+\end{center}
 
 \section{使用指南}
 \subsection{准备工作}
 
-安装ctex or miktex，texlive，mactex。参见（附录）。
+%首先你需要安装一个 \TeX{} 发行版，比如 C\TeX{} 套装、MikTeX 套装，TeXLive 2012，MacTex 等。Windows 用户可以参考附录~\ref{append:install}。
+%
+%在使用之前要更新宏包：特别是 xeCJK 及其相关依赖。Windows 用户可以参考附录~\ref{append:install}。
+%
+%如果有特殊需求，例如使用 Times 风格的数学字体，还需安装 texgyremath 宏包。 
 
-更新宏包：特别是 xeCJK 及其相关依赖。配图说明更新方法。
+为了正常使用此模板，并避免不必要的麻烦，请完全安装 MikTeX（或相应的 C\TeX 套装），TeXLive、MacTex 的最新版，并在线升级\footnote{至少升级 xeCJK 宏包至最新版，如开启 timesmath 选项，请确保有 tex-gyre-math 宏包。}。Windows 用户可以参考附录~\ref{append:install}。
 
-如果有特殊需求，安装 texgyremath 等宏包。 
-
-为了正常使用此模板，并避免不必要的麻烦，请完全安装 miktex 套装（或相应的 ctex 套装）或 texlive 套装的最新版，并在线升级\footnote{至少升级 xeCJK 宏包至最新版，如开启timesmath 选项，请确保有 tex-gyre-math 宏包。}。专业用户可不受此约束。
+{\color{red}注意}，为了得到更好的技术支持，强烈建议使用 \hologo{XeLaTeX} 编译。
 
 \subsection{文档基本结构}
-工作目录结构如下:
+一个建议的工作目录结构如下\footnote{正如 \verb|example| 文件夹的结构。}:
 \begin{verbatim}
     Working Dir.:
-    |  GBT7714-2005NLang-UTF8-mod.bst
-    |  main.tex
-    |  make.bat
-    |  xjtubsc.cls
+    |  GBT7714-2005NLang-UTF8-mod.bst   --- 参考文献格式
+    |  main.tex                         --- 主控文档
+    |  make.bat                         --- 批处理，未完成
+    |  xjtubsc.cls                      --- 模板 LaTeX 文档类文件
     |
-    |─figures
+    |─figures                          --- 存放插图的文件夹
     |     |─some figures
     |
-    |─pages
+    |─pages                            --- 存放论文内容的文件夹
     |     |─the files
     |
-    |─ref
+    |─ref                              --- 存放参考文献的文件夹
           |─the refs
 \end{verbatim}
 其中二级目录不是必须的，而且目录名可以根据自己的喜好任选。
@@ -174,11 +179,15 @@ This template has no authorization from the dean's office. If you have any quest
 UTF8 编码！！！
 \subsection{文档类及文档类选项}
 
-truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
+\begin{itemize}
+\item[truetimes] 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
 
-print 选项会去除超链接的颜色。以供打印。根据需求开启。
+\item[print] 选项会去除超链接的颜色。以供打印。根据需求开启。
 
-timesmath 将会使用 Times 风格的数学字体，以使与正文的 Times 英文字体更加搭配。根据需求开启。
+\item[timesmath] 将会使用 Times 风格的数学字体，以使与正文的 Times 英文字体更加搭配。根据需求开启。
+
+\item[amsthm] 选项会载入 amsthm 宏包，并配置好常用的定义定理环境。
+\end{itemize}
 
 \subsection{加载宏包}
 xjtupackages.sty
@@ -276,7 +285,7 @@ xjtupackages.sty
 
 \subsection{高级部分}
 
-\subsubsection{自定义字体}
+\subsubsection{自定义字体}\label{sec:customfont}
 \subsubsection{自定义宏包}
 something
 
@@ -555,7 +564,8 @@ this is some test\cite{IEEE-1363,Krasnogor2004e}
 \bibliography{ref/refs}
 
 
-\appendixs{LaTeX 发行版安装及升级指南}
+\appendixs{LaTeX 发行版安装及升级指南}\label{append:install}
+
 对于初级 Windows 用户，推荐发行版本为 C\TeX{} 套装\footnote{\today 最新版本号为 2.9.2.164，}，下载地址为
 \begin{center}
 \url{http://www.ctex.org/CTeXDownload}
@@ -581,6 +591,7 @@ this is some test\cite{IEEE-1363,Krasnogor2004e}
 开始 -- 所有程序 -- ctex -- MikTeX -- Maintenance(Admin) -- Package Manager(Admin)
 \end{center}
 安装 \verb|amslatex-primer|、\verb|amsmath|、\verb|amscls| 三个宏包。另外对于希望使用 Times 风格的数学字体的用户，请同时安装 \verb|tex-gyre-math| 宏包。
+
 
 \include{pages/denotation}
 

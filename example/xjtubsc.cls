@@ -36,7 +36,8 @@
 \newif\ifXJTU@print \XJTU@printfalse
 \newif\ifXJTU@times \XJTU@timesfalse
 \newif\ifXJTU@timesmath \XJTU@timesmathfalse
-\newif\ifXJTU@amsthm \XJTU@amsthmtrue
+\newif\ifXJTU@amsthm \XJTU@amsthmfalse
+\newif\ifXJTU@mtpro \XJTU@mtprofalse
 
 \DeclareOption{print}{\XJTU@printtrue}
 \DeclareOption{truetimes}{\XJTU@timestrue}
@@ -53,7 +54,12 @@
 \LoadClass[cs4size, hyperref, twoside, UTF8]{ctexart}
 
 %======= packages ======%
+
 \RequirePackage{amssymb}
+\ifXJTU@mtpro
+	\let\Bbbk\undefined
+	\usepackage[complete]{mtpro2}
+\fi
 % Comment by hy_Haoyun:
 %    `amssymb` is very useful when no special designed math fonts is loaded.
 %    For this cls file,  it must be loaded before TeX Gyre Termes Math.
@@ -63,7 +69,7 @@
 \RequirePackage{ifxetex, ifpdf}
 \RequirePackage{caption}
 \RequirePackage[super,sort&compress]{natbib}
-\setcitestyle{square,comma}
+	\setcitestyle{square,comma}
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
@@ -77,7 +83,12 @@
 	% If I redefine the \thefootnote command, it will cause error with microtype package.
 	%\usepackage{microtype}
 \fi
-
+\ifXJTU@amsthm
+% Comment by hy_haoyun:
+%	由于一些未知的原因，定理环境在 pdftex 下会出现问题。
+	\RequireXeTeX
+	\RequirePackage{amsthm, thmtools}
+\fi
 
 %====== Command ======%
 
@@ -147,6 +158,7 @@
 
 \ifXJTU@print
 	\hypersetup{%
+		breaklinks=true,
 		bookmarksnumbered=true,
 		bookmarksopen=true,
 		bookmarksopenlevel=1,
@@ -407,8 +419,6 @@
 %==========proof========%
 
 \ifXJTU@amsthm
-	\RequirePackage{amsthm,thmtools}
-	
 	\renewcommand{\proofname}{\normalfont\bfseries 证明}
 	\renewenvironment{proof}[1][\hskip 2\ccwd \proofname]{\par
 		\pushQED{\qed}%
@@ -425,11 +435,12 @@
 	notefont=\mdseries, notebraces={(}{)},
 	bodyfont=\normalfont,
 	postheadspace=1em,
-	headindent=2\ccwd
+	headindent=2\ccwd,
+	headpunct={},
 	]{theoremstyle}
 	
-	\declaretheorem[name=公理,numberwithin=section,style=theoremstyle]{axiom}
-	\declaretheorem[name=定理,numberwithin=section,style=theoremstyle]{theorem}
+	\declaretheorem[name={公理},numberwithin=section,style=theoremstyle]{axiom}
+	\declaretheorem[name={定理},numberwithin=section,style=theoremstyle]{theorem}
 	\declaretheorem[name=定义,numberwithin=section,style=theoremstyle]{definition}
 	\declaretheorem[name=命题,numberwithin=section,style=theoremstyle]{proposition}
 	\declaretheorem[name=引理,numberwithin=section,style=theoremstyle]{lemma}
@@ -616,40 +627,49 @@
 	\vspace{\baselineskip}
 \end{center}
 
-
+\small
 \XJTU@uline{\XJTU@college}~院~\XJTU@uline{\XJTU@department}~系~\XJTU@uline{\XJTU@class}~班\hspace{\ccwd}学生\CJKunderline{\hfill \XJTU@author@cn \hfill}
 
+\vspace{1ex}
 毕业设计(论文)课题\hspace{1ex}\CJKunderline{\hfill \XJTU@title@cn \hfill}
 
-毕业设计(论文)工作自~\XJTU@uline[3]{\XJTU@byear}~年~\XJTU@uline[2]{\XJTU@bmonth}~月~\XJTU@uline[1.5]{\XJTU@bday}~日起至\XJTU@uline[3]{\XJTU@eyear}~年~\XJTU@uline[2]{\XJTU@emonth}~月~\XJTU@uline[1.5]{\XJTU@eday}~日止
+\vspace{1ex}
+毕业设计(论文)工作自~\XJTU@uline[3]{\XJTU@byear}~年~\XJTU@uline[3]{\XJTU@bmonth}~月~\XJTU@uline[3]{\XJTU@bday}~日起至\XJTU@uline[3]{\XJTU@eyear}~年~\XJTU@uline[3]{\XJTU@emonth}~月~\XJTU@uline[3]{\XJTU@eday}~日止
 
+\vspace{1ex}
 毕业设计(论文)进行地点\hspace{1ex}\CJKunderline{\hfill \XJTU@place \hfill}
 
-\begin{fieldbreak}[5]{课题的背景、意义及培养目标}
+\vspace{1ex}
+\begin{fieldbreak}[5]{{\songti\bfseries 课题的背景、意义及培养目标}}
 	\XJTU@field@background
 \end{fieldbreak}
 
-\begin{fieldbreak}[6]{设计(论文)的原始数据与资料}
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 设计(论文)的原始数据与资料}}
 	\XJTU@field@data
 \end{fieldbreak}
 
-\begin{fieldbreak}[7]{课题的主要任务}
+\vspace{1ex}
+\begin{fieldbreak}[7]{{\songti\bfseries 课题的主要任务}}
 	\XJTU@field@task
 \end{fieldbreak}
 
-\begin{fieldbreak}[7]{课题的基本要求(工程设计类题应有技术经济分析要求)}
+\vspace{1ex}
+\begin{fieldbreak}[7]{{\songti\bfseries 课题的基本要求(工程设计类题应有技术经济分析要求)}}
 	\XJTU@field@requirement
 \end{fieldbreak}
 
-\begin{fieldbreak}[6]{完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)}
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)}}
 	\XJTU@field@submit
 \end{fieldbreak}
 
-\begin{fieldbreak}[6]{主要参考文献}
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 主要参考文献}}
 	\XJTU@field@reference
 \end{fieldbreak}
 
-\vspace{\baselineskip}
+\vspace{2\baselineskip}
 
 \begin{center}
 \begin{minipage}[b]{.4\textwidth}\centering
@@ -666,7 +686,7 @@
 	\end{flushright}
 \end{minipage}%
 \end{center}
- 
+\normalsize
 %===========================================
 %	毕业设计(论文)考核评议书、毕业设计(论文)评审意见书
 %===========================================
@@ -762,6 +782,5 @@
 }
 \fi
 
+
 \let\maketitle\undefined
-
-

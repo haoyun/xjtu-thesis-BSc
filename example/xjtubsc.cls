@@ -760,6 +760,7 @@
 	\makeatother
 	\XJTU@frontfalse
 }
+\fi
 
 \let\maketitle\undefined
 

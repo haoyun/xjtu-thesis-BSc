@@ -498,7 +498,7 @@
 \newcommand{\appendixs}[1]{\clearpage
 \sectionmark{ 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
-\refstepcounter{appendshead}
+\refstepcounter{appends}
 \addcontentsline{toc}{section}{附录\arabic{appendshead} \hspace{0.15cm} #1} 
 \addtocounter{appends}{1} 
 \addtocounter{appendshead}{1} 

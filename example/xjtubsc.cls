@@ -492,16 +492,15 @@
 %	附录的实现应该还有更"好"的方法。
 
 \newcounter{appends} % 附录计数器
-\newcounter{appendshead} % 附录页眉计数器
-\setcounter{appends}{1} % 初始化为1
-\setcounter{appendshead}{0} % 初始化为0
+%\newcounter{appendshead} % 附录页眉计数器
+\setcounter{appends}{0} % 初始化为1
+%\setcounter{appendshead}{0} % 初始化为0
 \newcommand{\appendixs}[1]{\clearpage
+\refstepcounter{appends}
 \sectionmark{ 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
-\refstepcounter{appends}
-\addcontentsline{toc}{section}{附录\arabic{appendshead} \hspace{0.15cm} #1} 
-\addtocounter{appends}{1} 
-\addtocounter{appendshead}{1} 
+\addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
+%\addtocounter{appendshead}{1} 
 }
 
 
@@ -520,9 +519,10 @@
 % Comment by hy_haoyun:
 %	我感觉这个东西没有必要。
 
-\newenvironment{denotation}{\section*{主要符号表}
-\sectionmark{主要符号表}
+\newenvironment{denotation}{
 \refstepcounter{section}
+\section*{主要符号表}
+\sectionmark{主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
 \renewcommand{\makelabel}[1]{##1\hfil}
@@ -555,8 +555,8 @@
 
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{
-\sectionmark{参考文献}
 \refstepcounter{section}%
+\sectionmark{参考文献}
 \addcontentsline{toc}{section}{参考文献}
 \oldbibliography{#1}
 }
@@ -581,10 +581,9 @@
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
-\newenvironment{acknowledgment}{
+\newenvironment{acknowledgment}{\refstepcounter{section}
        \section*{\XJTU@acknowledgment} 
 		\sectionmark{致谢}
-\refstepcounter{section}
 \addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}
 

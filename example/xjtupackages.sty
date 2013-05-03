@@ -18,20 +18,20 @@
 \RequirePackage{graphicx}
 \RequirePackage{subfig}
 \RequirePackage{booktabs}
-\RequirePackage{listings}
+%\RequirePackage{listings}
 \RequirePackage{multirow} 
 \RequirePackage{float}  
-	\lstset{upquote,
+%	\lstset{upquote,
 %		keepspaces=true,
-		columns=spaceflexible,
-		basicstyle=\ttfamily\footnotesize,%
-		breaklines=true,
-		breakindent=0pt,
-		xleftmargin=0pt,
-		xrightmargin=6pt,
+%		columns=spaceflexible,
+%		basicstyle=\ttfamily\footnotesize,%
+%		breaklines=true,
+%		breakindent=0pt,
+%		xleftmargin=0pt,
+%		xrightmargin=6pt,
 %		language=matlab,
-	}
-\lstset{extendedchars=false}
+%	}
+%\lstset{extendedchars=false}
 % 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
 % 参考 http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
 
@@ -41,7 +41,18 @@
 \else
 \RequirePackage{xcolor}
 \RequirePackage{listings}
-\lstset{breaklines=true,breakindent=0pt,xleftmargin=0pt,xrightmargin=6pt,numbers=left, numberstyle=\tiny,keywordstyle=\color{blue!70}, commentstyle=\color{red!50!green!50!blue!50}, frame=shadowbox, rulesepcolor=\color{red!20!green!20!blue!20}}
+\lstset{breaklines=true,
+        breakindent=0pt,
+        xleftmargin=0pt,
+        xrightmargin=6pt,
+        numbers=left, 
+        numberstyle=\tiny,
+        keywordstyle=\color{blue!70}, 
+        commentstyle=\color{red!50!green!50!blue!50}, 
+        frame=shadowbox,
+        rulesepcolor=\color{red!20!green!20!blue!20}}
+\lstset{extendedchars=false}
+% 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
 \fi
 \makeatother
 \RequirePackage{chemfig}

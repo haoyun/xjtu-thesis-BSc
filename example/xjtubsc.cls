@@ -124,6 +124,7 @@
 \def\XJTU@advisor@en{\@latex@warning@no@line{No \noexpand\advisor for en given}}
 
 \newcommand\XJTU@uline[2][6]{\hskip1pt\underline{\hb@xt@ #1\ccwd{\hss#2\hss}}\hskip3pt}
+\newcommand{\xjtunewline}{\hfill\ \\ \ }
 
 \NewEnviron{fieldinline}[2][5]{#2 \CJKunderline*{\BODY\hfill}
 \par\ifnum\prevgraf<#1

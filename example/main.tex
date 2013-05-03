@@ -40,7 +40,7 @@
 \title{西安交通大学理学学士毕业论文 \LaTeX{} 模板示例文件}{Example of \LaTeX{} Template for Bachelor of Science Thesis in XJTU}	%	题目{中文}{英文}
 \advisor{王鸿鑫、秦雨果、郝运}{Hongxin WANG, Yuguo QIN, Yun HAO}	%	导师{中文}{英文}
 
-% 如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，下面的信息可以不填。
+% 如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，下面的信息可以不填。这里内容换行请用\xjtunewline
 \college{数学与统计}	%	学院
 \department{数学}	%	专业（系）
 \class{理科数学 91}	%	班级
@@ -50,6 +50,9 @@
 
 \begin{INFObackground} % 课题的背景、意义及培养目标 
 
+在微分几何中，高斯-博内定理（亦称高斯-博内公式）是关于曲面的图形（由曲率表征）和拓扑（由欧拉示性数表征）间联系的一项重要表述。\xjtunewline
+它是以卡尔·弗里德里希·高斯和皮埃尔·奥西安·博内命名的，前者发现了定理的一个版本但从未发表，后者1848年发表了该定理的一个特例。\xjtunewline
+这里换行请用\textbackslash xjtunewline
 
 \end{INFObackground}
 
@@ -507,43 +510,54 @@ something
 
 \subsection{代码、算法}
 
-下面是各种语言书写的 hello world。
+你可以通过给main.tex导言区xjtupakcages宏包添加minted选项来选择是否使用minted宏包，默认使用listings宏包。下面是各种语言书写的 hello world 在listings宏包下的效果。
 
 C 语言版本：
-\begin{minted}{c}
+\begin{lstlisting}[language={[ANSI]C}]
 #inlude<stdio.h>
 int main(void)	
 {
     printf("Hello, World!);
     return 0;
 }
-\end{minted}
+\end{lstlisting}
+
+C++版本
+\begin{lstlisting}[language={[ANSI]C++}]
+#include <iostream>
+using namespace std;
+int main()
+{
+  cout<<''Hello World!\n'';
+  return 0;
+}
+\end{lstlisting}
 
 Java 版本
-\begin{minted}{java}
+\begin{lstlisting}[language={java}]
 public class HelloWorld {
     public static void main(String [] args) {
         System.out.println("Hello World!");
     }
 }
-\end{minted}
+\end{lstlisting}
 
 HTML 标记语言
-\begin{minted}{html}
+\begin{lstlisting}[language=html]
 <!DOCTYPE html>
 <html>
     <body>
         Hello, world!
     </body>
 </html>
-\end{minted}
+\end{lstlisting}
 
 Scala  语言：
-\begin{minted}{scala}
+\begin{lstlisting}%[language=scala]
 object HelloWorld extends App {
   println("Hello, world!")
 }
-\end{minted}
+\end{lstlisting}
 
 \subsection{bib}
 

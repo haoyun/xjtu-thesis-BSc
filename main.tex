@@ -1,0 +1,137 @@
+%================================================
+%	载入文档类，配置文档类选项
+%================================================
+
+\documentclass[%truetimes,
+               print, 
+               %timesmath,
+               amsthm,
+              ]{xjtubsc}
+
+% truetimes 选项会使用windows 自带的 Times New Roman 字体，否则使用 TeX 发行版的 Times 字体，几乎没有区别，肉眼凡胎看不出差别。开启 truetiems 选项必须使用 XeLaTeX 编译。否则关闭 truetiems。推荐开启。且推荐使用 XeLaTeX 编译。
+
+% print 选项会去除超链接的颜色。以供打印。根据需求开启。
+
+% timesmath 将会使用 Times 风格的数学字体，以使与正文的 Times 英文字体更加搭配。根据需求开启。
+
+% amsthm 将会调用 amsthm 宏包及 thmtool 宏包，而且配置好了常用的 定义、定理、证明等环境。推荐开启。
+
+%================================================
+%	加载宏包、配置宏包选项、自定义命令等
+%================================================
+
+
+\usepackage{xjtupackages} % 这是对常用宏包的一个打包，供初级用户使用。如需在此基础上载入其他宏包，请先阅读 xjtupackages.sty 文件，以免造成冲突。
+
+\graphicspath{{figures/},{figs/}} % 仿照此格式设置图片路径，需要graphicx支持（xjtupackages中已载入）
+
+\DeclareMathOperator{\coker}{coker}
+\newcommand\abs[1]{\left\lvert#1\right\rvert}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+
+\begin{document}
+%================================================
+%	下面填写基本信息
+%================================================
+
+% 以下三项是必须的。
+\author{}{}	%	作者{中文}{英文}
+\title{}{}	%	题目{中文}{英文}
+\advisor{}{}	%	导师{中文}{英文}
+
+% 如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，下面的信息可以不填。这里内容换行请用\xjtunewline
+\college{}	%	学院
+\department{}	%	专业（系）
+\class{}	%	班级
+\place{}	%	毕设地点
+\bdate{2012/6/6}	% 开始时间，格式为：年/月/日
+\edate{2013/6/6}	% 结束时间，格式为：年/月/日
+
+\begin{INFObackground} % 课题的背景、意义及培养目标 
+
+
+\end{INFObackground}
+
+\begin{INFOdata} % 设计(论文)的原始数据与资料
+
+
+\end{INFOdata}
+
+\begin{INFOtask} % 课题的主要任务
+
+
+\end{INFOtask}
+
+\begin{INFOrequirement} % 课题的主要任务
+
+
+\end{INFOrequirement}
+
+\begin{INFOsubmit} % 课题的主要任务
+
+
+\end{INFOsubmit}
+
+\begin{INFOreference} % 课题的主要任务
+
+
+\end{INFOreference}
+
+%================================================
+%	正文前
+%================================================
+\frontmatter
+
+\extrapages % 用于输出任务书、评议书、意见书、答辩结果。如果不希望 \LaTeX{} 生成任务书、评议书、意见书、答辩结果，可以注释掉此句。
+
+\begin{abstractcn} % 中文摘要
+
+
+
+\end{abstractcn}
+
+\keywordscn{} % 中文关键词
+
+\begin{abstracten} % 英文摘要
+
+
+
+\end{abstracten}
+
+\keywordsen{} % 英文关键词
+
+\tableofcontents % 生成目录
+
+
+%================================================
+%	正文
+%================================================
+\mainmatter
+
+
+\section{}
+\input{pages/section1.tex}%这里引入本章外部文件（假设在pages目录下section1.tex文件）
+
+%================================================
+%	正文后
+%================================================
+\backmatter
+
+\nocite{*}
+\bibliographystyle{GBT7714-2005NLang-UTF8-mod} % plain
+\bibliography{ref/refs.bib}%这里引入你的参考文献文件（假设是ref目录下refs.bib文件）
+
+
+\appendixs{}%附录
+
+\include{pages/denotation}%这里引入主要符号表文件（假设是pages目录下denotation.tex文件）
+
+\begin{acknowledgment}%致谢
+
+
+
+\end{acknowledgment}
+
+
+\end{document} 

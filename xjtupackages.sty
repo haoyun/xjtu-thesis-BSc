@@ -1,0 +1,79 @@
+%======= options =======%
+\makeatletter
+%minted宏包选项
+\newif\ifXJTU@minted \XJTU@mintedfalse
+
+\DeclareOption{minted}{\XJTU@mintedtrue}
+\makeatother
+%======= packages =======%
+\ProcessOptions\relax
+\RequirePackage{blindtext}
+
+\RequirePackage{fancyvrb} 
+	\AtBeginDocument{\VerbatimFootnotes} % enable \verb in footnote.
+
+\RequirePackage[x11names]{xcolor}
+\RequirePackage{tikz-cd}
+\usetikzlibrary{matrix, calc, arrows}
+\RequirePackage{graphicx}
+\RequirePackage{subfig}
+\RequirePackage{booktabs}
+%\RequirePackage{listings}
+\RequirePackage{multirow} 
+\RequirePackage{float}  
+%	\lstset{upquote,
+%		keepspaces=true,
+%		columns=spaceflexible,
+%		basicstyle=\ttfamily\footnotesize,%
+%		breaklines=true,
+%		breakindent=0pt,
+%		xleftmargin=0pt,
+%		xrightmargin=6pt,
+%		language=matlab,
+%	}
+%\lstset{extendedchars=false}
+% 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
+% 参考 http://bbs.ctex.org/forum.php?mod=viewthread&tid=43728
+
+\makeatletter
+\ifXJTU@minted
+\RequirePackage{minted}
+\else
+\RequirePackage{xcolor}
+\RequirePackage{listings}
+\lstset{xleftmargin=0pt,
+        xrightmargin=6pt,
+        numbers=left,
+		keepspaces=true,
+		columns=spaceflexible,		
+		basicstyle=\ttfamily,
+		breaklines=true,
+		breakindent=0pt,
+        numberstyle=\tiny,
+        keywordstyle=\color{blue!70}, 
+        commentstyle=\color{red!50!green!50!blue!50}, 
+        frame=shadowbox,
+        rulesepcolor=\color{red!20!green!20!blue!20}}
+\lstset{extendedchars=false}
+% 这一句对于 pdf 编译特别重要，否则如果有代码有分页且\section{}中有中文，则会报错。
+\fi
+\makeatother
+\RequirePackage{chemfig}
+\RequirePackage{hologo}
+
+%设置列表环境
+\RequirePackage[inline]{enumitem}
+\setlist[enumerate,1]{label=\bfseries(\arabic*),
+                      labelindent=\parindent}
+\setlist[enumerate,2]{label=\arabic*$^\circ$,
+                      leftmargin=\parindent,
+                      labelindent=2\parindent}
+\setlist[enumerate,3]{label=(\roman*),
+                      leftmargin=\parindent,
+                      labelindent=2\parindent
+                      }
+\setlist[enumerate,4]{label=\Alph*.,
+                      leftmargin=\parindent,
+                      labelindent=2\parindent
+                      }
+\setlist[]{wide,nosep}

@@ -2,7 +2,7 @@
 %
 %
 %  MCMTHESIS.cls  CopyLeft 2011/8/24 by
-%  wanghongxin <>
+%  wanghongxin <hongxin_w@163.com>
 %  hugo <>
 %  hy_haoyun <haoyun_tex@163.com>
 %
@@ -35,12 +35,16 @@
 
 \newif\ifXJTU@print \XJTU@printfalse
 \newif\ifXJTU@times \XJTU@timesfalse
+\newif\ifXJTU@timesmath \XJTU@timesmathfalse
+\newif\ifXJTU@amsthm \XJTU@amsthmfalse
+\newif\ifXJTU@mtpro \XJTU@mtprofalse
 
 \DeclareOption{print}{\XJTU@printtrue}
 \DeclareOption{truetimes}{\XJTU@timestrue}
+\DeclareOption{timesmath}{\XJTU@timesmathtrue}
+\DeclareOption{amsthm}{\XJTU@amsthmtrue}
 \DeclareOption{c5size}{\OptionNotUsed}
 \DeclareOption{twocolumn}{\OptionNotUsed}
-
 
 \ProcessOptions\relax
 
@@ -52,18 +56,38 @@
 %======= packages ======%
 
 \RequirePackage{amssymb}
+\ifXJTU@mtpro
+	\let\Bbbk\undefined
+	\usepackage[complete]{mtpro2}
+\fi
+% Comment by hy_Haoyun:
+%    `amssymb` is very useful when no special designed math fonts is loaded.
+%    For this cls file,  it must be loaded before TeX Gyre Termes Math.
 \RequirePackage[fleqn]{mathtools} % advanced than amsmath
 %\usepackage[title,titletoc]{appendix}
 \RequirePackage{titlesec, titleps}
 \RequirePackage{ifxetex, ifpdf}
 \RequirePackage{caption}
-\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage[super,sort&compress]{natbib}
+	\setcitestyle{square,comma}
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
 	\usepackage{xeCJKfntef}
 \else
 	\usepackage{CJKfntef}
+	\normalem % set \emph{} to be the original one, i.e., in italic font.
+\fi
+\RequirePackage{perpage}
+\ifpdf
+	% If I redefine the \thefootnote command, it will cause error with microtype package.
+	%\usepackage{microtype}
+\fi
+\ifXJTU@amsthm
+% Comment by hy_haoyun:
+%	由于一些未知的原因，定理环境在 pdftex 下会出现问题。
+	\RequireXeTeX
+	\RequirePackage{amsthm, thmtools}
 \fi
 
 %====== Command ======%
@@ -76,22 +100,18 @@
 \def\XJTU@class{\@latex@warning@no@line{No \noexpand\class given}}
 \def\place#1{\gdef\XJTU@place{#1}} % 地点
 \def\XJTU@place{\@latex@warning@no@line{No \noexpand\place given}}
-\def\beginyear#1{\gdef\XJTU@beginyear{#1}} % 开始年
-\def\XJTU@beginyear{\@latex@warning@no@line{No \noexpand\beginyear given}}
-\def\beginmonth#1{\gdef\XJTU@beginmonth{#1}} % 开始月
-\def\XJTU@beginmonth{\@latex@warning@no@line{No \noexpand\beginmonth given}}
-\def\begindate#1{\gdef\XJTU@begindate{#1}} % 开始日
-\def\XJTU@begindate{\@latex@warning@no@line{No \noexpand\begindate given}}
-\def\endyear#1{\gdef\XJTU@endyear{#1}} % 结束年
-\def\XJTU@@endyear{\@latex@warning@no@line{No \noexpand\endyear given}}
-\def\endmonth#1{\gdef\XJTU@endmonth{#1}} % 结束月
-\def\XJTU@endmonth{\@latex@warning@no@line{No \noexpand\endmonth given}}
-\def\enddate#1{\gdef\XJTU@enddate{#1}} % 解释日
-\def\XJTU@enddate{\@latex@warning@no@line{No \noexpand\enddate given}}
 
-% Comment by hy_haoyun
-%	The following interface is not perfect.
-%	it should be modified to be more user friendly.
+% Reference: http://tex.stackexchange.com/questions/41996/how-do-i-split-a-dat
+\def\XJTU@begindate#1/#2/#3.{\gdef\XJTU@byear{#1}\gdef\XJTU@bmonth{#2}\gdef\XJTU@bday{#3}}
+\def\bdate#1{{\edef\XJTU@tempbdate{#1}\expandafter\XJTU@begindate\XJTU@tempbdate.}}
+\def\XJTU@enddate#1/#2/#3.{\gdef\XJTU@eyear{#1}\gdef\XJTU@emonth{#2}\gdef\XJTU@eday{#3}}
+\def\edate#1{{\edef\XJTU@tempedate{#1}\expandafter\XJTU@enddate\XJTU@tempedate.}}
+\def\XJTU@byear{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@bmonth{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@bday{\@latex@warning@no@line{No \noexpand\bdate given}}
+\def\XJTU@eyear{\@latex@warning@no@line{No \noexpand\edate given}}
+\def\XJTU@emonth{\@latex@warning@no@line{No \noexpand\edate given}}
+\def\XJTU@eday{\@latex@warning@no@line{No \noexpand\edate given}}
 
 \def\title#1#2{\gdef\XJTU@title@cn{#1}\gdef\XJTU@title@en{#2}} % 题目
 \def\XJTU@title@cn{\@latex@warning@no@line{No \noexpand\title for cn given}}
@@ -104,6 +124,7 @@
 \def\XJTU@advisor@en{\@latex@warning@no@line{No \noexpand\advisor for en given}}
 
 \newcommand\XJTU@uline[2][6]{\hskip1pt\underline{\hb@xt@ #1\ccwd{\hss#2\hss}}\hskip3pt}
+\newcommand{\xjtunewline}{\hfill\ \\ \ }
 
 \NewEnviron{fieldinline}[2][5]{#2 \CJKunderline*{\BODY\hfill}
 \par\ifnum\prevgraf<#1
@@ -119,7 +140,7 @@
 \loop \par\noindent\CJKunderline{\hfill}\advance\numberoflines 1 \ifnum\numberoflines<#1 \repeat
 \fi}
 
-% 如下参考 http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
+% Reference: http://tex.stackexchange.com/questions/70016/ways-to-grab-and-store-larger-amount-of-text
 \NewEnviron{INFObackground}{\global\let\XJTU@field@background\BODY} % background significance goal
 \def\XJTU@field@background{\@latex@warning@no@line{No \noexpand\XJTU@field@background given}}
 \NewEnviron{INFOdata}{\global\let\XJTU@field@data\BODY} % data
@@ -138,6 +159,7 @@
 
 \ifXJTU@print
 	\hypersetup{%
+		breaklinks=true,
 		bookmarksnumbered=true,
 		bookmarksopen=true,
 		bookmarksopenlevel=1,
@@ -145,13 +167,8 @@
 		colorlinks=false,
 		plainpages=false,
 		pdfpagelabels,
-		pdfborder=0 0 0
+		pdfborder={0 0 0},
 	}
-\fi
-
-%====== microtype ======%
-\ifpdf
-\usepackage{microtype}
 \fi
 
 %====== English Font =====%
@@ -159,29 +176,37 @@
 	\RequireXeTeX
 	\setmainfont{Times New Roman}
 \else
-	\usepackage[scaled=.93]{newtxtext}
-	\RequirePackage{newtxmath}
-	\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+	\ifxetex
+		\setmainfont{TeX Gyre Termes}
+	\else
+% Comment by hy_haoyun:
+%	Even though *newtx* is a updated package, but it isn't compatible with
+%	*pifont* package; the latter package is used to produce the circled number
+%	for footnote. When newtx loaded, the circled number won't appear as a superscript.
+		%\usepackage[scaled=.93]{newtxtext}
+%	So here we use *txfonts* instead.
+		\usepackage{txfonts}
+		\RequirePackage{textcomp}	
+		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ }
+	\fi
 \fi
+
+\ifXJTU@timesmath
+	\ifxetex
+		\RequirePackage{unicode-math}
+		\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TeX Gyre Termes Math}
+	\else
+		\RequirePackage{newtxmath}
+	\fi
+\fi
+
 % Comments by hy_haoyun
-%	Times New Roman MT Std or Times New Roman
-%	I use Windows 7, the fontname is Times New Roman.
-%	It's dilivered with Win7 and provied by Monotype.
-%	Is Times New Roman MT Std Adobe's font?
-%	There are many alternatives for Times-like font.
-%	Option 1:
-%		\RequirePackage[scaled=.93]{newtxtext}
-%		\RequirePackage{newtxmath}  % I think we can add an option for set mathfont in Times.
-%			%or \RequirePackage{mathptmx}  
-%		\ProvideTextCommandDefault{\nobreakspace}{\leavevmode\nobreak\ } % for XeTeX only.
-%	Option 2:
-%		\RequirePackage{times}
-%	Option 3:
-%		\setmainfont{TeX Gyre Termes}
-%	Option 4:
-%		\usepackage{unicode-math}
-%		\setmainfont{XITS}
-%		\setmathfont{XITS Math}
+% 	Other options about times font:
+%	mathptmx (package)
+%	times (package)
+%	TeX Gyre Termes (font)
+%	TeX Gyre Termes math (font)
+
 
 %====== 字体属性 ======%
 
@@ -231,7 +256,7 @@
 %====== Page Layout ======%
 \RequirePackage[hmargin = 2.6 true cm, %
 	top = 3.0 true cm, %
-	bottom = 2.5 true cm, %
+	bottom = 3.3 true cm, %
 	a4paper,]%
 {geometry}
 
@@ -252,23 +277,25 @@
 \renewcommand{\baselinestretch}{1.2} % 1.2为1.5倍行距，1.6为2倍行距
 
 \newpagestyle{main}{
-\sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
-		{}{\sectiontitle}{}	% odd
+\setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
+\sethead[][\small 西安交通大学本科毕业设计（论文）][]	% even
+		{}{\small \sectiontitle}{}	% odd
 \setfoot[\thepage][][]	% even
 		{}{}{\thepage}	% odd
 \renewcommand{\makeheadrule}{%
-	\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
-	\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+	\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
+	\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
 } 
 
 \newpagestyle{document}{
-\sethead[][\small西安交通大学本科毕业设计（论文）][]	% even
-		{}{\thesection \quad \sectiontitle}{}	% odd
+\setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
+\sethead[][\small 西安交通大学本科毕业设计（论文）][]	% even
+		{}{\small \thesection \quad \sectiontitle}{}	% odd
 \setfoot[\thepage][][] % even
 		{}{}{\thepage}	% odd
 \renewcommand{\makeheadrule}{%
-		\makebox[0pt][l]{\rule[-0.2\baselineskip]{\linewidth}{0.5pt}}%
-		\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}
+		\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
+		\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
 } 
 
 \def\frontmatter{%
@@ -337,8 +364,9 @@
 %	The followings should be improved.
 
 \captionsetup{labelformat=simple,labelsep=quad,font=small}
-\captionsetup[table]{position=top,belowskip={1bp},aboveskip=-2bp}
-\captionsetup[figure]{position=bottom,belowskip={1bp},aboveskip=-2bp}
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
+
 
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
@@ -352,7 +380,7 @@
 %=== Chinese === %
 \newcommand\XJTU@abstract@cn{\LARGE 摘\hspace{2\ccwd}要}
 \newenvironment{abstractcn}{\clearpage
-\sectionmark{\small 摘要}
+\sectionmark{ 摘要}
 \ifXJTU@front
 	\setcounter{page}{5}
 \fi
@@ -363,17 +391,15 @@
 }
 \begin{center}
 	{\XJTU@abstract@cn\vspace{-.5em}\vspace {\z@}}
-\end{center} \par
+\end{center}\par
 }{\par}
 
-% Comment by hy_haoyun:
-%	我想知道下面的这些距离是从哪里抄来的？
-\newcommand{\keywordscn}[1]{\hskip-0.92cm{\vspace{1ex} \small {\bfseries 关键词：}#1}\relax}
+\newcommand{\keywordscn}[1]{\vspace{\baselineskip}\par\noindent {\small {\bfseries 关键词：}#1}}
 
 %=== English ===%
 \newcommand{\XJTU@abstract@en}{\LARGE ABSTRACT}
 \newenvironment{abstracten}{\clearpage
-\sectionmark{\small ABSTRACT}
+\sectionmark{ ABSTRACT}
 {\bfseries
 	\noindent Title：\XJTU@title@en \par
 	\noindent Name：\XJTU@author@en \par
@@ -389,16 +415,48 @@
 \setlength\parindent{2\ccwd} % 恢复段首缩进
 \par}
 
-% Comment by hy_haoyun:
-%	我想知道下面的这些距离是从哪里抄来的？
-\newcommand{\keywordsen}[1]{\hskip -0.88cm{\vspace{1ex}\small {\bfseries KEY WORDS ：}#1}\relax}
+\newcommand{\keywordsen}[1]{\vspace{\baselineskip}\par\noindent {\small {\bfseries KEY WORDS ：}#1}}
+
+%==========proof========%
+
+\ifXJTU@amsthm
+	\renewcommand{\proofname}{\normalfont\bfseries 证明}
+	\renewenvironment{proof}[1][\hskip 2\ccwd \proofname]{\par
+		\pushQED{\qed}%
+		\normalfont \topsep6\p@\@plus6\p@\relax
+		\trivlist
+			\item[\hskip\labelsep\itshape#1\@addpunct{}]\ignorespaces
+	}{%
+		\popQED\endtrivlist\@endpefalse
+	}
+	
+	\declaretheoremstyle[
+	spaceabove=6pt, spacebelow=6pt,
+	headfont=\normalfont\bfseries,
+	notefont=\mdseries, notebraces={(}{)},
+	bodyfont=\normalfont,
+	postheadspace=1em,
+	headindent=2\ccwd,
+	headpunct={},
+	]{theoremstyle}
+	
+	\declaretheorem[name={公理},numberwithin=section,style=theoremstyle]{axiom}
+	\declaretheorem[name={定理},numberwithin=section,style=theoremstyle]{theorem}
+	\declaretheorem[name=定义,numberwithin=section,style=theoremstyle]{definition}
+	\declaretheorem[name=命题,numberwithin=section,style=theoremstyle]{proposition}
+	\declaretheorem[name=引理,numberwithin=section,style=theoremstyle]{lemma}
+	\declaretheorem[name=推论,numberwithin=section,style=theoremstyle]{corollary}
+	\declaretheorem[name=假设,numberwithin=section,style=theoremstyle]{assumption}
+	\declaretheorem[name=问题,numberwithin=section,style=theoremstyle]{problem}
+	\declaretheorem[name=猜想,numberwithin=section,style=theoremstyle]{conjecture}
+\fi
 
 %====== Table of Contents ======%
 
 \let\oldtableofcontents\tableofcontents
 \renewcommand{\tableofcontents}{
 	\clearpage
-	\sectionmark{\small 目录}
+	\sectionmark{目录}
 	\oldtableofcontents
 }
 %\titlecontents{section}
@@ -435,15 +493,16 @@
 %	附录的实现应该还有更"好"的方法。
 
 \newcounter{appends} % 附录计数器
-\newcounter{appendshead} % 附录页眉计数器
-\setcounter{appends}{1} % 初始化为1
-\setcounter{appendshead}{0} % 初始化为0
+%\newcounter{appendshead} % 附录页眉计数器
+\setcounter{appends}{0} % 初始化为1
+%\setcounter{appendshead}{0} % 初始化为0
 \newcommand{\appendixs}[1]{\clearpage
-\sectionmark{\small 附录\arabic{appends}  \hspace{0.15cm}#1}
+\refstepcounter{appends}
+\stepcounter{section}
+\sectionmark{ 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
 \addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
-\addtocounter{appends}{1} 
-\addtocounter{appendshead}{1} 
+%\addtocounter{appendshead}{1} 
 }
 
 
@@ -462,8 +521,10 @@
 % Comment by hy_haoyun:
 %	我感觉这个东西没有必要。
 
-\newenvironment{denotation}{\section*{主要符号表}
-\sectionmark{\small 主要符号表}
+\newenvironment{denotation}{
+\refstepcounter{section}
+\section*{主要符号表}
+\sectionmark{主要符号表}
 \addcontentsline{toc}{section}{主要符号表}
 \begin{list}{}{
 \renewcommand{\makelabel}[1]{##1\hfil}
@@ -484,14 +545,22 @@
 
 %\def\newblock{\hskip .11em plus .33em minus .07em}
 
-\def\mybibliography#1
-{
-\sectionmark{\small 参考文献}
-\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
-\mbox{}
+%	\def\mybibliography#1
+%	{
+%	\sectionmark{参考文献}
+%	\bibliographystyle{GBT7714-2005NLang-UTF8-mod}
+%	\mbox{}
+%	\addcontentsline{toc}{section}{参考文献}
+%	%\renewcommand{\refname}{\small 参考文献}
+%	\bibliography{#1}
+%	}
+
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{
+\refstepcounter{section}%
+\sectionmark{参考文献}
 \addcontentsline{toc}{section}{参考文献}
-%\renewcommand{\refname}{\small 参考文献}
-\bibliography{#1}
+\oldbibliography{#1}
 }
 
 
@@ -501,19 +570,23 @@
 % Comment by hy_haoyun
 %	原来的实现在 pdflatex 报错，具体原因不明，下面参考了 Neals 的做法，
 %	见 http://blog.sina.com.cn/s/blog_5e16f1770100moqv.html
+%\usepackage[perpage,symbol*]{footmisc}
+%\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
+%{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
+%\setfnsymbol{circled}
 
 \usepackage{pifont}
-\usepackage[perpage,symbol*]{footmisc}
-\DefineFNsymbols{circled}{{\ding{192}}{\ding{193}}{\ding{194}}
-{\ding{195}}{\ding{196}}{\ding{197}}{\ding{198}}{\ding{199}}{\ding{200}}{\ding{201}}}
-\setfnsymbol{circled}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+\MakePerPage{footnote} % Package `perpage` is needed.
+
+
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
-\newenvironment{acknowledgment}{
+\newenvironment{acknowledgment}{\refstepcounter{section}
        \section*{\XJTU@acknowledgment} 
-		\sectionmark{\small 致谢}
-\addcontentsline{toc}{section}{致谢}%使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
+		\sectionmark{致谢}
+\addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}
 
 
@@ -523,12 +596,196 @@
 
 \ifXJTU@front
 	\newcommand{\extrapages}{%
-	\frontmatter\makeatletter
-	\input{frontpage.cfg}
+	\frontmatter
+	\makeatletter
+	
+%===========================================
+%	开始 extrapages
+%===========================================
+
+%===========================================
+%	毕业设计(论文)任务书
+%===========================================
+
+\parindent=0pt
+%\setlength\parskip{1ex}
+\renewcommand{\baselinestretch}{1.6}\selectfont
+\sectionmark{毕业设计(论文)任务书}
+
+\begin{center}
+\begin{minipage}[c]{.55\textwidth}\centering
+	{\ziju{0.5}{\bfseries\songti\huge 西安交通大学}}
+\end{minipage}%
+\begin{minipage}[c]{.35\textwidth}
+	\begin{tabular}{rl}
+		系\hfill(\hfil所\hfil)&\XJTU@uline{}\\
+		系\hfil(所)\hfil主\hfil任&\XJTU@uline{}\\
+		批\hfil准\hfil日\hfil期&\XJTU@uline{}
+	\end{tabular}
+\end{minipage}
+\end{center}
+
+\vspace{\baselineskip}
+
+\begin{center}
+	{\songti\bfseries\huge 毕业设计(论文)任务书} % 字号可能需要修改一下
+	\vspace{\baselineskip}
+\end{center}
+
+\small
+\XJTU@uline{\XJTU@college}~院~\XJTU@uline{\XJTU@department}~系~\XJTU@uline{\XJTU@class}~班\hspace{\ccwd}学生\CJKunderline{\hfill \XJTU@author@cn \hfill}
+
+\vspace{1ex}
+毕业设计(论文)课题\hspace{1ex}\CJKunderline{\hfill \XJTU@title@cn \hfill}
+
+\vspace{1ex}
+毕业设计(论文)工作自~\XJTU@uline[3]{\XJTU@byear}~年~\XJTU@uline[3]{\XJTU@bmonth}~月~\XJTU@uline[3]{\XJTU@bday}~日起至\XJTU@uline[3]{\XJTU@eyear}~年~\XJTU@uline[3]{\XJTU@emonth}~月~\XJTU@uline[3]{\XJTU@eday}~日止
+
+\vspace{1ex}
+毕业设计(论文)进行地点\hspace{1ex}\CJKunderline{\hfill \XJTU@place \hfill}
+
+\vspace{1ex}
+\begin{fieldbreak}[5]{{\songti\bfseries 课题的背景、意义及培养目标}}
+	\XJTU@field@background
+\end{fieldbreak}
+
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 设计(论文)的原始数据与资料}}
+	\XJTU@field@data
+\end{fieldbreak}
+
+\vspace{1ex}
+\begin{fieldbreak}[7]{{\songti\bfseries 课题的主要任务}}
+	\XJTU@field@task
+\end{fieldbreak}
+
+\vspace{1ex}
+\begin{fieldbreak}[7]{{\songti\bfseries 课题的基本要求(工程设计类题应有技术经济分析要求)}}
+	\XJTU@field@requirement
+\end{fieldbreak}
+
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 完成任务后提交的书面材料要求(图纸规格、数量，论文字数，外文翻译字数等)}}
+	\XJTU@field@submit
+\end{fieldbreak}
+
+\vspace{1ex}
+\begin{fieldbreak}[6]{{\songti\bfseries 主要参考文献}}
+	\XJTU@field@reference
+\end{fieldbreak}
+
+\vspace{2\baselineskip}
+
+\begin{center}
+\begin{minipage}[b]{.4\textwidth}\centering
+\relax\vfill
+（注：由指导教师填写）
+\end{minipage}%
+\begin{minipage}[b]{.6\textwidth}
+	\begin{flushright}
+		指导教师\XJTU@uline[18]{}
+
+		接受设计（论文）任务日期\XJTU@uline[10]{}
+
+		学生签名 \XJTU@uline[10]{}
+	\end{flushright}
+\end{minipage}%
+\end{center}
+\normalsize
+%===========================================
+%	毕业设计(论文)考核评议书、毕业设计(论文)评审意见书
+%===========================================
+
+\newpage\vspace*{0pt}
+\parindent=2\ccwd
+\sectionmark{毕业设计(论文)考核评议书}
+
+\begin{center}
+	{\ziju{1.5}\bfseries\songti\LARGE 西安交通大学}
+	
+	\vspace{.5\baselineskip}
+	{\huge\bfseries\songti 毕业设计(论文)考核评议书}
+\end{center}
+
+\noindent\XJTU@uline[10]{\XJTU@college}~院~\XJTU@uline[10]{\XJTU@department}~系(专业)~\XJTU@uline[8]{\XJTU@class}~班级
+
+\vspace{\baselineskip}
+
+指导教师对学生\XJTU@uline[10]{\XJTU@author@cn}所完成课题为
+\begin{fieldinline}[2]{}\XJTU@title@cn\end{fieldinline}
+\par\noindent 的毕业设计(论文)进行的情况，完成的质量及评分的意见：
+\begin{fieldinline}[7]{}\end{fieldinline}
+
+\begin{flushright}
+指导教师\XJTU@uline[13]{}
+
+{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+\begin{center}
+	{\huge\bfseries\songti 毕业设计(论文)评审意见书}
+	\vspace{\baselineskip}
+\end{center}
+
+\begin{fieldinline}[6]{评审意见：}\end{fieldinline}
+
+\begin{flushright}
+评阅人\XJTU@uline[9]{} 职称\XJTU@uline[7]{}
+
+{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+%===========================================
+%	毕业设计(论文)答辩结果
+%===========================================
+
+\newpage\vspace*{\baselineskip}
+\sectionmark{毕业设计(论文)答辩结果}
+% The \vspace command adds the vertical space length, i.e., a rubber length. length can be negative or positive. Ordinarily, LaTeX removes vertical space added by \vspace at the top or bottom of a page. With the optional * argument, the space is not removed.
+
+\begin{center}
+	{\huge\bfseries\songti 毕业设计(论文)答辩结果 }
+
+	\bigskip
+	\begin{tabular}{rl}
+		\XJTU@uline[8]{\XJTU@college} & {\large\bfseries\songti 院} \\                      
+		\XJTU@uline[8]{\XJTU@department} & \large\bfseries\songti{系(专业)}
+	\end{tabular}
+\end{center}
+
+\vspace{\baselineskip}
+
+毕业设计(论文)答辩组对学生\XJTU@uline[10]{\XJTU@author@cn}所完成课题为
+\begin{fieldinline}[3]{}\XJTU@title@cn\end{fieldinline}
+\par\noindent 的毕业设计(论文)经过答辩，其意见为：
+\begin{fieldinline}[7]{}\end{fieldinline}
+
+\vspace{\baselineskip}\noindent 并确定成绩为~\CJKunderline*{\hfill}
+
+\newlength\templength
+\settowidth{\templength}{答辩组成员 }
+
+\vspace{4\baselineskip}
+\begin{flushright}
+\begin{tabular}{c}
+毕业设计(论文)答辩组负责人 \CJKunderline{\hfill}\\
+答辩组成员 \XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}\\
+\hspace{\templength}\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}\\
+\hspace{\templength}\XJTU@uline[8]{}\hspace{.6ex}\XJTU@uline[9]{}
+\end{tabular}
+
+\vspace{1ex}{\ziju{3}年月日}\hspace*{2em}
+\end{flushright}
+
+\renewcommand{\baselinestretch}{1.2}\selectfont
+%===========================================
+%	结束 extrapages
+%===========================================
+
 	\makeatother
 	\XJTU@frontfalse
 }
+\fi
+
 
 \let\maketitle\undefined
-
-

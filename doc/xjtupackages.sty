@@ -1,10 +1,8 @@
 %======= options =======%
-\makeatletter
 %minted宏包选项
 \newif\ifXJTU@minted \XJTU@mintedfalse
 
 \DeclareOption{minted}{\XJTU@mintedtrue}
-\makeatother
 %======= packages =======%
 \ProcessOptions\relax
 \RequirePackage{blindtext}
@@ -16,6 +14,7 @@
 \RequirePackage{tikz-cd}
 \usetikzlibrary{matrix, calc, arrows}
 \RequirePackage{graphicx}
+\DeclareGraphicsExtensions{{.Jpg},{.Jpeg},{.Eps},{.Pdf},{.Png},{.JPG},{.JPEG},{.EPS},{.PDF},{.PNG}}
 \RequirePackage{subfig}
 \RequirePackage{booktabs}
 %\RequirePackage{listings}

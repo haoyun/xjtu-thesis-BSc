@@ -522,6 +522,7 @@
 %	我感觉这个东西没有必要。
 
 \newenvironment{denotation}{
+\clearpage
 \refstepcounter{section}
 \section*{主要符号表}
 \sectionmark{主要符号表}
@@ -557,6 +558,7 @@
 
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{
+\clearpage
 \refstepcounter{section}%
 \sectionmark{参考文献}
 \addcontentsline{toc}{section}{参考文献}
@@ -583,7 +585,7 @@
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
-\newenvironment{acknowledgment}{\refstepcounter{section}
+\newenvironment{acknowledgment}{\clearpage\refstepcounter{section}
        \section*{\XJTU@acknowledgment} 
 		\sectionmark{致谢}
 \addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.

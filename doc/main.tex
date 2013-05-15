@@ -270,10 +270,9 @@ xjtupackages.sty
     \nocite{*} % 显示未明显引用的所有文献
     \bibliographystyle{GBT7714-2005NLang-UTF8-mod} 
     % 使用 GB/T7714-2005 标准的文献格式。
-    \bibliography{ref/refs} % bib 文件的为 /ref/refs.bib
+    \bibliography{ref/refs} % bib 文件为 /ref/refs.bib
 \end{verbatim}
 注意上面使用了 \verb|GBT7714-2005NLang-UTF8-mod.bst|，请确保工作目录下有此文件。如果想使用其他的格式（注意教务处要求），可以根据自己的喜好替换。
-
 当然也可以使用 thebibliography 环境手工排版参考文献，一个示例如下：
 \begin{verbatim}
     \begin{thebibliography}{5}
@@ -609,7 +608,7 @@ this is some test\cite{IEEE-1363,Krasnogor2004e}
 \end{center}
 初级用户强烈建议下载完整安装版。注意：为了避免潜在的错误，不建议把ctex安装至例如“\verb|D:\Program Files\ctex\|”的路径下\footnote{这样的文件路径中含有空格。}，也不建议安装在诸如 “\verb|D:\学习工具\ctex\|”这样的路径下\footnote{这样的文件路径中含有中文。}，建议安装至类似“\verb|D:\ctex\|”这样的地方。
 
-由于本模板需要利用到一些较新的宏包，所以使用前需要对 LaTeX 进行升级，对于初级的 Windows 用户，可以通过
+由于本模板需要利用到一些较新的宏包，所以使用前需要对 LaTeX 进行升级，对于初级的 Windows 用户，可以通过运行模板目录下''ctexupdate.bat''进行自动升级，如果请求管理员权限请允许。也可以手动升级，操作如下：
 \begin{center}
 开始 -- 所有程序 -- ctex -- MikTeX -- Maintenance(Admin) -- Update(Admin)
 \end{center}

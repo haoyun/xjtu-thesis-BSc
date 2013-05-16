@@ -38,6 +38,7 @@
 \newif\ifXJTU@timesmath \XJTU@timesmathfalse
 \newif\ifXJTU@amsthm \XJTU@amsthmfalse
 \newif\ifXJTU@mtpro \XJTU@mtprofalse
+\newif\ifXJTU@xeCJKfntef \XJTU@xeCJKfnteffalse
 
 \DeclareOption{print}{\XJTU@printtrue}
 \DeclareOption{truetimes}{\XJTU@timestrue}
@@ -45,6 +46,7 @@
 \DeclareOption{amsthm}{\XJTU@amsthmtrue}
 \DeclareOption{c5size}{\OptionNotUsed}
 \DeclareOption{twocolumn}{\OptionNotUsed}
+\DeclareOption{xeCJKfntef}{\XJTU@xeCJKfnteftrue}
 
 \ProcessOptions\relax
 
@@ -73,7 +75,11 @@
 \RequirePackage{hypernat}
 \RequirePackage{environ}
 \ifxetex
+  \ifXJTU@xeCJKfntef
 	\usepackage{xeCJKfntef}
+  \else
+        \usepackage{CJKfntef}
+  \fi
 \else
 	\usepackage{CJKfntef}
 	\normalem % set \emph{} to be the original one, i.e., in italic font.

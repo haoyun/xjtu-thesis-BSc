@@ -8,6 +8,9 @@ This project is aiming at making a \LaTeX{} template for the B.Sc. thesis in Xi'
 
 基本实现所有的功能，正在调试阶段。期待正式版本发布！
 
+
+这个分支版本为旧的CTEX用户提供支持。
+
 Authors
 ------
 **Wang Hongxin** [@github](https://github.com/wanghongxin)

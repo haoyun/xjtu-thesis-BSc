@@ -9,8 +9,11 @@ This project is aiming at making a \LaTeX{} template for the B.Sc. thesis in Xi'
 基本实现所有的功能，正在调试阶段。期待正式版本发布！
 
 现在有两个分支：
+
 master:使用新宏包，CTeX或TeXLive更新后可以使用
+
 oldCtexSup:旧的CTeX系统就可以编译
+
 
 Authors
 ------

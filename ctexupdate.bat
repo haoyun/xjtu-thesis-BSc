@@ -23,8 +23,8 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"  
 ::--------------------------------------  
 set nStep=0
-set CtexPath=%CCHZPATH%\..\..\..
-set upDPro=%CtexPath%\MiKTeX\miktex\bin\internal\miktex-update_admin.exe
+CD /D %CCHZPATH%\..\..\..\MiKTeX\miktex\bin\internal
+::set upDPro=%CtexPath%\MiKTeX\miktex\bin\internal\miktex-update_admin.exe
 :cleanTemp
 dir %temp%\mik* /a /b > %temp%\dirlist.txt 2>nul
 for /f %%i in (%temp%\dirlist.txt) do rd /S /Q %temp%\%%i 2>nul
@@ -49,7 +49,7 @@ echo ----------------------------------------
 echo    请一直点“下一步”，完成第一次升级
 echo ----------------------------------------
 echo.
-start %upDPro%
+start miktex-update_admin.exe
 :isGuiUpdate1
 ping -n 5 127.0.0.1 1>nul 2>nul
 tasklist /nh | find /i "miktex-update_admin" 2>nul 1>nul
@@ -70,7 +70,7 @@ echo ----------------------------------------
 echo    请一直点“下一步”，完成第二次升级
 echo ----------------------------------------
 echo.
-start %upDPro%
+start miktex-update_admin.exe
 :isGuiUpdate2
 ping -n 5 127.0.0.1 1>nul 2>nul
 tasklist /nh | find /i "miktex-update_admin" 1>nul 2>nul

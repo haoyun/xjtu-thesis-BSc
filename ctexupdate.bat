@@ -23,6 +23,8 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"  
 ::--------------------------------------  
 set nStep=0
+set CtexPath=%CCHZPATH%\..\..\..
+set upDPro=%CtexPath%\MiKTeX\miktex\bin\internal\miktex-update_admin.exe
 :cleanTemp
 dir %temp%\mik* /a /b > %temp%\dirlist.txt 2>nul
 for /f %%i in (%temp%\dirlist.txt) do rd /S /Q %temp%\%%i 2>nul
@@ -42,24 +44,42 @@ echo.
 mpm --set-repository http://mirrors.ustc.edu.cn/CTAN/systems/win32/miktex/tm/packages/
 ::mpm --set-repository ftp://ftp.ctex.org/mirrors/CTAN/systems/win32/miktex/tm/packages/
 echo 源设置成功
-start miktex-update_admin
+echo.
+echo ----------------------------------------
+echo    请一直点“下一步”，完成第一次升级
+echo ----------------------------------------
+echo.
+start %upDPro%
 :isGuiUpdate1
 ping -n 5 127.0.0.1 1>nul 2>nul
 tasklist /nh | find /i "miktex-update_admin" 2>nul 1>nul
 if %ERRORLEVEL% EQU 0 goto isGuiUpdate1
-echo up1complete
+echo.
+echo ----------------------------------------
+echo            第一次升级完成！
+echo ----------------------------------------
+echo.
 set nStep=9
 goto cleanTemp
 
 
 :1stup
 ping -n 10 127.0.0.1 1>nul 2>nul
-start miktex-update_admin
+echo.
+echo ----------------------------------------
+echo    请一直点“下一步”，完成第二次升级
+echo ----------------------------------------
+echo.
+start %upDPro%
 :isGuiUpdate2
 ping -n 5 127.0.0.1 1>nul 2>nul
 tasklist /nh | find /i "miktex-update_admin" 1>nul 2>nul
 if %ERRORLEVEL% EQU 0 goto isGuiUpdate2
-echo up2complete
+echo.
+echo ----------------------------------------
+echo            第二次升级完成！
+echo ----------------------------------------
+echo.
 set nStep=1
 goto cleanTemp
 

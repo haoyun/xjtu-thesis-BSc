@@ -25,8 +25,9 @@ if '%errorlevel%' NEQ '0' (
 set nStep=0
 :cleanTemp
 dir %temp%\mik* /a /b > %temp%\dirlist.txt 2>nul
-for /f %%i in (%temp%\dirlist.txt) do rd /S /Q %temp%\%%i
+for /f %%i in (%temp%\dirlist.txt) do rd /S /Q %temp%\%%i 2>nul
 del %temp%\dirlist.txt
+if %nStep%==9 goto 1stup
 if %nStep%==1 goto 2edup
 if %nStep%==2 goto repairPack
 if %nStep%==3 goto DBRen
@@ -41,12 +42,29 @@ echo.
 mpm --set-repository http://mirrors.ustc.edu.cn/CTAN/systems/win32/miktex/tm/packages/
 ::mpm --set-repository ftp://ftp.ctex.org/mirrors/CTAN/systems/win32/miktex/tm/packages/
 echo 源设置成功
-mpm --admin --update --verbose
+start miktex-update_admin
+:isGuiUpdate1
+ping -n 5 127.0.0.1 1>nul 2>nul
+tasklist /nh | find /i "miktex-update_admin" 2>nul 1>nul
+if %ERRORLEVEL% EQU 0 goto isGuiUpdate1
+echo up1complete
+set nStep=9
+goto cleanTemp
+
+
+:1stup
 ping -n 10 127.0.0.1 1>nul 2>nul
+start miktex-update_admin
+:isGuiUpdate2
+ping -n 5 127.0.0.1 1>nul 2>nul
+tasklist /nh | find /i "miktex-update_admin" 1>nul 2>nul
+if %ERRORLEVEL% EQU 0 goto isGuiUpdate2
+echo up2complete
 set nStep=1
 goto cleanTemp
 
 :2edup
+ping -n 10 127.0.0.1 1>nul 2>nul
 mpm --admin --update --verbose
 echo 升级完毕
 set nStep=2

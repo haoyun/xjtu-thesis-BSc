@@ -20,7 +20,7 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is M. Y. Name.
 %
 % This work consists of the files pig.dtx and pig.ins
@@ -272,10 +272,10 @@
 %		页边距：上、下、左、右、装订线的页边距分别为：3.0cm, 2.5cm, 2.6cm, 2.6cm, 0cm，
 %		装订线位置：左。
 %		左右对称页边距。
-% 	I think we may take care about the definition of margin in TeX and the Word. 
+% 	I think we may take care about the definition of margin in TeX and the Word.
 
 % Note! There is an warnning HERE! (2013-01-22)
-%	Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+%	Package Fancyhdr Warning: \headheight is too small (12.0pt):
 %	Make it at least 14.14998pt.
 %	We now make it that large for the rest of the document.
 %	This may cause the page layout to be inconsistent, however.
@@ -291,7 +291,7 @@
 \renewcommand{\makeheadrule}{%
 	\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
 	\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
-} 
+}
 
 \newpagestyle{document}{
 \setlength{\headheight}{0.7cm}%调整页眉字中道页顶距离
@@ -302,7 +302,7 @@
 \renewcommand{\makeheadrule}{%
 		\makebox[0pt][l]{\rule[-0.28\baselineskip]{\linewidth}{0.5pt}}%
 		\rule[-0.34\baselineskip]{\linewidth}{0.5pt}}
-} 
+}
 
 \def\frontmatter{%
 	\clearpage
@@ -335,16 +335,16 @@
 %	这里仅仅是应急方案，是否还有其他的解决方案呢？
 
 \def\sectionname{}
-\titleformat{\section} 
+\titleformat{\section}
 	[hang]
 	{\filcenter\LARGE\bfseries} % 一级标题三号\LARGE
 	{\sectionname\thesection}
-	{1em}{}[] 
+	{1em}{}[]
 \titleformat{\subsection}
 	[hang]
 	{\Large\bfseries} % 二级标题小三号\Large
 	{\thesubsection}
-	{1em}{}[] 
+	{1em}{}[]
 \titleformat{\subsubsection}
 	[hang]
 	{\large\bfseries} % 三级标题三号\large
@@ -507,8 +507,8 @@
 \stepcounter{section}
 \sectionmark{ 附录\arabic{appends}  \hspace{0.15cm}#1}
 \section*{附录\arabic{appends}  \hspace{0.15cm}#1}
-\addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1} 
-%\addtocounter{appendshead}{1} 
+\addcontentsline{toc}{section}{附录\arabic{appends} \hspace{0.15cm} #1}
+%\addtocounter{appendshead}{1}
 }
 
 
@@ -573,7 +573,7 @@
 
 
 %====== Footnote ======%
-%\renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize\arabic{footnote}}}}} 
+%\renewcommand{\thefootnote}{\raisebox{.5pt}{\textcircled{\raisebox{-.5pt}{\scriptsize\arabic{footnote}}}}}
 
 % Comment by hy_haoyun
 %	原来的实现在 pdflatex 报错，具体原因不明，下面参考了 Neals 的做法，
@@ -591,8 +591,9 @@
 
 %====== Acknowledgment ======%
 \newcommand{\XJTU@acknowledgment}{致\hspace{2\ccwd}谢}
-\newenvironment{acknowledgment}{\clearpage\refstepcounter{section}
-       \section*{\XJTU@acknowledgment} 
+\newenvironment{acknowledgment}{
+\clearpage\refstepcounter{section}
+       \section*{\XJTU@acknowledgment}
 		\sectionmark{致谢}
 \addcontentsline{toc}{section}{致谢} % 使用\addcontentsline{toc}{chapter}{致谢}将致谢添加到目录中.
 }{\par}
@@ -626,9 +627,9 @@
 \end{minipage}%
 \begin{minipage}[c]{.35\textwidth}
 	\begin{tabular}{rl}
-		系\hfill(\hfil所\hfil)&\XJTU@uline{}\\
-		系\hfil(所)\hfil主\hfil任&\XJTU@uline{}\\
-		批\hfil准\hfil日\hfil期&\XJTU@uline{}
+		系\hfill(\hfil 所\hfil)&\XJTU@uline{}\\
+		系\hfil(所)\hfil 主\hfil 任&\XJTU@uline{}\\
+		批\hfil 准\hfil 日\hfil 期&\XJTU@uline{}
 	\end{tabular}
 \end{minipage}
 \end{center}
@@ -756,7 +757,7 @@
 
 	\bigskip
 	\begin{tabular}{rl}
-		\XJTU@uline[8]{\XJTU@college} & {\large\bfseries\songti 院} \\                      
+		\XJTU@uline[8]{\XJTU@college} & {\large\bfseries\songti 院} \\
 		\XJTU@uline[8]{\XJTU@department} & \large\bfseries\songti{系(专业)}
 	\end{tabular}
 \end{center}

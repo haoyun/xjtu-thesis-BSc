@@ -4,7 +4,7 @@
 
 \documentclass[%truetimes,
                %xeCJKfntef,
-               %print, 
+               %print,
                %timesmath,
                amsthm,
               ]{xjtubsc}
@@ -49,37 +49,25 @@
 \bdate{2012/12/21}	% 开始时间，格式为：年/月/日
 \edate{2013/2/15}	% 结束时间，格式为：年/月/日
 
-\begin{INFObackground} % 课题的背景、意义及培养目标 
-
+\begin{INFObackground} % 课题的背景、意义及培养目标
 在微分几何中，高斯-博内定理（亦称高斯-博内公式）是关于曲面的图形（由曲率表征）和拓扑（由欧拉示性数表征）间联系的一项重要表述。\xjtunewline
 它是以卡尔·弗里德里希·高斯和皮埃尔·奥西安·博内命名的，前者发现了定理的一个版本但从未发表，后者1848年发表了该定理的一个特例。\xjtunewline
 这里换行请用\textbackslash xjtunewline
-
 \end{INFObackground}
 
 \begin{INFOdata} % 设计(论文)的原始数据与资料
-
-
 \end{INFOdata}
 
 \begin{INFOtask} % 课题的主要任务
-
-
 \end{INFOtask}
 
 \begin{INFOrequirement} % 课题的主要任务
-
-
 \end{INFOrequirement}
 
 \begin{INFOsubmit} % 课题的主要任务
-
-
 \end{INFOsubmit}
 
 \begin{INFOreference} % 课题的主要任务
-
-
 \end{INFOreference}
 
 %================================================
@@ -140,7 +128,7 @@ This template has no authorization from the dean's office. If you have any quest
 %
 %在使用之前要更新宏包：特别是 xeCJK 及其相关依赖。Windows 用户可以参考附录~\ref{append:install}。
 %
-%如果有特殊需求，例如使用 Times 风格的数学字体，还需安装 texgyremath 宏包。 
+%如果有特殊需求，例如使用 Times 风格的数学字体，还需安装 texgyremath 宏包。
 
 为了正常使用此模板，并避免不必要的麻烦，请完全安装 MikTeX（或相应的 C\TeX 套装），TeXLive、MacTex 的最新版，并在线升级\footnote{至少升级 xeCJK 宏包至最新版，如开启 timesmath 选项，请确保有 tex-gyre-math 宏包。}。Windows 用户可以参考附录~\ref{append:install}。
 
@@ -172,7 +160,7 @@ This template has no authorization from the dean's office. If you have any quest
         <导言部分>
     \begin{document}
         <设置基本信息>
-        \frontmatter  
+        \frontmatter
             <任务书等、摘要、目录>
         \mainmatter
             <正文部分>
@@ -214,12 +202,12 @@ xjtupackages.sty
     \place{西安交通大学}	%	毕设地点
     \bdate{2012/12/21}	% 开始时间，格式为：年/月/日
     \edate{2013/2/15}	% 结束时间，格式为：年/月/日
-    
-    \begin{INFObackground} % 课题的背景、意义及培养目标 
+
+    \begin{INFObackground} % 课题的背景、意义及培养目标
         这里输入内容
     \end{INFObackground}
     ……
-    
+
     \frontmatter % 设置为正文前格式
     \extrapages % 用输出任务书、评议书、意见书、答辩结果。
 \end{verbatim}
@@ -231,15 +219,15 @@ xjtupackages.sty
     \begin{abstractcn} % 中文摘要
         中文摘要
     \end{abstractcn}
-    
+
     \keywordscn{中文；摘要；关键词} % 中文关键词
-    
+
     \begin{abstracten} % 英文摘要
         English Abstract.
     \end{abstracten}
-    
+
     \keywordsen{English; Abstract; Key Words} % 英文关键词
-    
+
     \tableofcontents % 生成目录
 \end{verbatim}
 注意为了正确生成目录，需要至少两次编译。
@@ -264,12 +252,12 @@ xjtupackages.sty
 
 \subsection{参考文献}
 
-正文完成后首先使用 \verb|\backmatter| 切换至正文后的排版格式。然后使用相应的命令来实现参考文献的排版。推荐使用 \hologo{BibTeX} 排版参考文献。一个例子如下：
+正文完成后首先使用 \verb|\backmatter| 切换至正文后的排版格式。然后使用相应的命令来实现参考文献的排版。推荐使用 BibTeX 排版参考文献。一个例子如下：
 \begin{verbatim}
     \backmatter % 切换至正文后版式。
 
     \nocite{*} % 显示未明显引用的所有文献
-    \bibliographystyle{GBT7714-2005NLang-UTF8-mod} 
+    \bibliographystyle{GBT7714-2005NLang-UTF8-mod}
     % 使用 GB/T7714-2005 标准的文献格式。
     \bibliography{ref/refs} % bib 文件为 /ref/refs.bib
 \end{verbatim}
@@ -384,7 +372,7 @@ something
 这是图表测试。图，图，图表的图，表，表，图表的表。
 \subsubsection{表格}
 三线表可以用~\textsf{booktabs} 宏包提供的~\verb|\toprule|、\verb|\midrule| 和~\verb|\bottomrule| 绘制。这是简单的三线表。
-\begin{table}[htb] 
+\begin{table}[htb]
 \centering
   \small
 \caption[模板文件1]{文献类型和标志代码}
@@ -392,7 +380,7 @@ something
  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cccc}
  \toprule[1.5pt]
       {文献类型} & {标志代码} &{文献类型} & {标志代码}\\
-       \midrule[1pt]  
+       \midrule[1pt]
       普通图书&M  & 会议录& C\\
       汇编  &  G  & 报纸  & N \\
   \bottomrule[1.5pt]
@@ -412,8 +400,8 @@ something
 \multicolumn{2}{c}{溪流} \\
  \cline{2-5}   %  \cline用于画横线 \cline{i-j}表示从第i列画到第j列
 &0截面   &      90截面   & 0 截面  & 90截面\\
-  \midrule[1pt]  
- 理论值  & 0.04 &0.03& 1.30 & 1.25\\  
+  \midrule[1pt]
+ 理论值  & 0.04 &0.03& 1.30 & 1.25\\
 计算值  &0.04&  0.03& 1.26&  1.21 \\
 误差    & 0.00 &3.12 &3.07 &3.20 \\
   \bottomrule[1.5pt]
@@ -427,7 +415,7 @@ something
 件中的位置对应\footnote{This is not a bug, but a feature of \LaTeX!}，这也是刚使
 用~\LaTeX{} 同学可能遇到的问题。如果要强制固定浮动图形的位置，请使用~\textsf{float} 宏包，
 它提供了~\texttt{[H]} 参数，比如图~\ref{fig:xfig1}。
-\begin{figure}[H] 
+\begin{figure}[H]
   \centering
   \includegraphics[height=3cm]{xjtu3.PNG}
   \caption{单个图形}
@@ -504,8 +492,8 @@ something
 \end{lemma}
 
 \begin{proof}
-前不见古人，后不见来者。 
-念天地之悠悠，独怆然而泪下。 
+前不见古人，后不见来者。
+念天地之悠悠，独怆然而泪下。
 \end{proof}
 
 
@@ -518,7 +506,7 @@ something
 \end{problem}
 
 \begin{conjecture}[题都城南庄]
-去年今日此门中，人面桃花相映红。 人面不知何处去，桃花依旧笑春风。 
+去年今日此门中，人面桃花相映红。 人面不知何处去，桃花依旧笑春风。
 \end{conjecture}
 
 \subsection{图文混排、高级排版}
@@ -637,4 +625,4 @@ this is some test\cite{IEEE-1363,Krasnogor2004e}
 \end{acknowledgment}
 
 
-\end{document} 
+\end{document}

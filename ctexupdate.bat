@@ -23,8 +23,9 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"  
 ::--------------------------------------  
 set nStep=0
-set CtexPath=%CCHZPATH%\..\..\..
-set upDPro=%CtexPath%\MiKTeX\miktex\bin\internal\miktex-update_admin.exe
+where miktex-update_admin | find /i "CTEX\MiKTeX\miktex" >%temp%\ctexUpProPath.txt
+for /f %%t in (%temp%\ctexUpProPath.txt) do set upDPro=%%t
+del %temp%\ctexUpProPath.txt
 :cleanTemp
 dir %temp%\mik* /a /b > %temp%\dirlist.txt 2>nul
 for /f %%i in (%temp%\dirlist.txt) do rd /S /Q %temp%\%%i 2>nul
